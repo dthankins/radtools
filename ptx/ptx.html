@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+        
+
+        <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+		
+	    <!-- Load the jQuery library -->
+	    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+
+
+
+		<link rel="stylesheet" href="styles.css">
+
+
+        <title>Pneumothorax Calculator</title>
+    
+
+    </head>
+
+  	<body>
+      	<h1>Pneumothorax Calculator</h1>
+
+
+      	
+
+
+	  	<input type="range" min="0" max="10" step="0.1" value="5" id="myRange">
+
+
+  		A+B+C = <span id="range-value"></span>
+
+  		PTX % : 
+
+  		<span id="ptx-percent"></span>
+
+
+
+		<img id="ptx-pic" width="250" src="ptx_diagram.jpg"/>
+
+
+        <p id="reference-material"> Collins CD, Lopez A, Mathie A, et al. Quantification of pneumothorax size on chest radiographs using interpleural distances: regression analysis based on volume measurements from helical CT. 
+    	
+    	<a href="http://www.ajronline.org/doi/abs/10.2214/ajr.165.5.7572489"> AJR Am J Roentgenol 1995; 165:1127-1130.</a>
+
+		</p>
+		
+
+
+
+	<script>
+		var slider = document.getElementById("myRange");
+		var output = document.getElementById("range-value");
+		output.innerHTML = slider.value;
+		var ptx_output = document.getElementById("ptx-percent");  
+		ptx_output.innerHTML = parseFloat(slider.value*4.7+4.2).toFixed(0);
+		slider.oninput = function() {
+		   	output.innerHTML = this.value;	
+		  	ptx_output.innerHTML = parseFloat(this.value*4.7+4.2).toFixed(0);
+		 
+		}
+		
+	</script>
+
+	</body>
