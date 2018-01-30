@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+        
+
+        <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+
+        <script src="protocolScripts.js"></script>
+		
+	    <!-- Load the jQuery library, which we'll use to manipulate HTML elements with Javascript. -->
+	    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+
+
+		<!-- Load Bootstrap stylesheet, which will is CSS that makes everything prettier and also responsive (aka will work on all devices of all sizes). 
+	
+		<link rel="stylesheet" href="styles.css">
+	-->
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+
+        <title>Protocol Form</title>
+    
+
+
+
+
+
+    </head>
+
+      <body>
+      	<h1>Protocol Form: </h1>
+
+
+
+		<!-- <form action="/action_page.php"> -->
+
+		 <form id="protocolForm">
+
+		  User Name:  	<input type="text" name="username"><br>
+		  Password:		<input type="password" name="pswd">
+
+			<br><br>			
+			Patient Name: <input type="text" name="pt-name">
+			<br>
+			MRN: <input type="text" name="mrn">
+			<br>
+			Age: <input type="text" name="age">
+			<br>
+			Weight: <input type="text" name="wt">
+			<br>
+			<br>
+			Gender:
+				<input type="checkbox" name="gender" value="male"> Male   
+				<input type="checkbox" id = "female-check" name="gender" value="female" onclick="femaleCheck()" > Female  <br>
+
+			<br>
+
+			<!-- If female, unhide the pregnancy stuff.  Default is hidden. -->
+
+			<div id="preg-questions" style="display:none">
+
+				Urine pregnancy test:
+					<input type="checkbox" name="ucg-result" value="ucg-neg"> Negative  
+					<input type="checkbox" name="ucg-result" value="ucg-pos"> Positive  
+					<input type="checkbox" id="ucg-check" name="ucg-result" value="ucg-not-done" onclick="ucgNotDone()"> Not Done  <br>
+				
+			
+			<!-- Reasons questions only shown if UCG not done.  Default is hidden. -->
+
+				<div id="reason-questions" style="display:none">
+					<br>
+					Reason:		
+						<select name="reason-not-preg">	
+						  <option value="default-reason"> -- Select Reason -- </option>	
+						  <option value="post-menopausal">Post-menopausal</option>
+						  <option value="hysterectomy">Hysterectomy</option>
+						  <option value="pill">The Pill</option>
+						  <option value="IUD">IUD</option>
+						  <option value="depo">Depo</option>
+						  <option value="norplant">Norplant</option>
+						  <option value="abstinence">Abstinence</option>
+						  <option value="recent-period">Recent period at expected / regular time</option>
+						  <option value="none">None of the above</option>
+						</select> 
+				</div>
+
+				<br>
+
+			</div>
+
+			IV Contrast Allergy?
+				<input type="checkbox" name="contrast-allergy" value="yes"> Yes
+				<input type="checkbox" name="contrast-allergy" value="no"> No<br>
+
+
+			Previous IV contrast?
+				<input type="checkbox" name="prev-contrast" value="yes"> Yes
+				<input type="checkbox" name="prev-contrast" value="no"> No<br>
+
+			<br>
+			Indication: <input type="text" name="hx">
+			<br>
+			Prior Studies: <input type="text" name="prior-imaging">
+			<br>
+
+			Ordering clinician: <input type="text" name="refering-doc">       
+			
+			Service:  
+				<select name="service">		
+				  <option value="default-service"> -- Select Specialty -- </option>	
+				  <option value="Surgery">General Surgery</option>
+				  <option value="FP">Family Practice</option>
+				  <option value="Ortho">Orthopedics</option>
+				  <option value="Neuro-surgery">Neurosurgery</option>
+				  <option value="Neuro">Neurology</option>
+				  <option value="Urology">Urology</option>
+				</select>
+			<br>
+			<br>
+			<strong> Exam Ordered: </strong>
+			<br>
+			Modality: 
+				<input type="checkbox" name="modality" value="CT"> CT
+				<input type="checkbox" name="modality" value="MRI"> MRI<br>
+
+
+			Body part:
+				<select name="bodyPart">		
+					  <option value="default-bodyPart"> -- Select Exam Area -- </option>	
+					  <option value="Chest">Chest</option>
+					  <option value="Abdomen">Abdomen</option>
+					  <option value="AandP">Abdomen and Pelvis</option>
+					  <option value="CAP">Chest, Abdomen and Pelvis</option>
+					  <option value="UE">Upper Extremity</option>
+					  <option value="LE">Lower Extremity</option>
+					  <option value="Head">Head</option>
+					  <option value="Face">Face</option>
+					  <option value="Neck">Neck</option>
+					  <option value="Orbits">Orbits</option>
+					  <option value="IAC">IAC</option>
+					  <option value="Other">Other</option>
+				</select>
+				<br>
+
+			IV Contrast:
+				<input type="checkbox" name="IV-contrast" value="W"> With 
+				<input type="checkbox" name="IV-contrast" value="WO"> Without 
+				<input type="checkbox" name="IV-contrast" value="WOW"> With and Without 
+				<input type="checkbox" name="IV-contrast" value="CTA"> CTA 
+
+			<br>
+			Oral: 
+				<input type="checkbox" name="oral" value="yes"> Yes
+				<input type="checkbox" name="oral" value="no"> No<br>
+			<br>
+
+
+
+
+			<strong> Exam Suggested: </strong>
+			<input type="checkbox" id="same-exam-check" name="same-result" value="same-exam" checked onclick="sameExam()"> Same  
+			<br>
+
+
+			<!-- Suggested Exam questions only shown if "Same" NOT selected  not done.  Default is hidden. -->
+
+			<div id="suggested-questions" style="display:none">
+
+
+				Modality: 
+					<input type="checkbox" name="modality" value="CT"> CT
+					<input type="checkbox" name="modality" value="MRI"> MRI<br>
+
+
+				Body part:
+					<select name="bodyPart">		
+						  <option value="default-bodyPart"> -- Select Exam Area -- </option>	
+						  <option value="Chest">Chest</option>
+						  <option value="Abdomen">Abdomen</option>
+						  <option value="AandP">Abdomen and Pelvis</option>
+						  <option value="CAP">Chest, Abdomen and Pelvis</option>
+						  <option value="UE">Upper Extremity</option>
+						  <option value="LE">Lower Extremity</option>
+						  <option value="Head">Head</option>
+						  <option value="Face">Face</option>
+						  <option value="Neck">Neck</option>
+						  <option value="Orbits">Orbits</option>
+						  <option value="IAC">IAC</option>
+						  <option value="Other">Other</option>
+					</select>
+					<br>
+
+				IV Contrast:
+					<input type="checkbox" name="IV-contrast" value="W"> With 
+					<input type="checkbox" name="IV-contrast" value="WO"> Without 
+					<input type="checkbox" name="IV-contrast" value="WOW"> With and Without 
+					<input type="checkbox" name="IV-contrast" value="CTA"> CTA 
+
+				<br>
+				Oral: 
+					<input type="checkbox" name="oral" value="yes"> Yes
+					<input type="checkbox" name="oral" value="no"> No<br>
+
+			</div>
+
+
+
+
+
+
+
+			<br>
+			
+			<br>
+			Date of eGFR: <input type="date" name="DateGFR">
+			<br> 
+			eGFR: >60 <input type="checkbox" id="eGFR-check" name="eGFR" value="sixty-checked" checked onclick="JSshowOlderGFR()">   
+
+	   
+			
+			
+
+			<!-- Questions about older GFR will not show unless GFR<60 
+
+			<input type="checkbox" id="same-exam-check" name="same-result" value="same-exam" checked onclick="sameExam()"> Same  
+			<br>
+
+
+
+			<div id="suggested-questions" style="display:none">
+
+
+
+			 -->
+
+			<div id="showOlderGFR" style="display:none">
+
+				<input type="number" name="currentGFR">
+
+				<br>Older GFR:  <input type="number" name="OlderGFR">
+				<br>
+				Date:  <input type="date" name="DateOlderGFR">
+			</div>
+
+
+
+			<br><br>
+			IV Contrast type:  
+				<select name="IVcontrastType">		
+				  	<option value="Omnipaque350">Omnipaque 350</option>
+				  	<option value="Visipaque320">Visipaque 320</option>
+				  	<option value="MultiHance">MultiHance</option>
+				</select>
+
+			Volume:   <input type="number" name="contrastVolume">
+
+			<br><br>
+			Other Comments:  <input type="text" name="comments">
+
+
+
+
+		  <br>
+		  <br>
+		  
+
+
+
+
+
+  			<input type="submit" value="Submit">
+		
+
+		</form>
+
+
+<!--
+
+
+
+
+
+
+
+
+
+
+
+
+
+-->
+
+			<script>
+			  // Initialize Firebase
+			  var config = {
+			    apiKey: "AIzaSyC0GTC9H2AQCt-EReTwTJtwnhJlsfZHVa4",
+			    authDomain: "testdannyhankins.firebaseapp.com",
+			    databaseURL: "https://testdannyhankins.firebaseio.com",
+			    projectId: "testdannyhankins",
+			    storageBucket: "testdannyhankins.appspot.com",
+			    messagingSenderId: "235442361676"
+			  };
+			  firebase.initializeApp(config);
+
+			  //test to see it is working
+			  console.log(firebase);
+
+
+			// Reference to the protocols object in your Firebase database
+			var protocols = firebase.database().ref("protocols");
+
+			// Save a new protocol to the database, using the input in the form
+			var submitProtocolQuestion = function () {
+
+			  // Get input values from each of the form elements
+			var js_username = document.getElementsByName("username")[0].value;
+
+			var js_scanToDo = document.getElementsByName("scanToDo")[0].value;
+
+			  // Push a new protocol to the database using those values
+			  protocols.push({
+			    "username": js_username,
+			    "scanToDo": js_scanToDo
+			  });
+			};
+
+			// When the window is fully loaded, call this function.
+			// Note: because we are attaching an event listener to a particular HTML element
+			// in this function, we can't do that until the HTML element in question has
+			// been loaded. Otherwise, we're attaching our listener to nothing, and no code
+			// will run when the submit button is clicked.
+			$(window).load(function () {
+
+			  // Find the HTML element with the id recommendationForm, and when the submit
+			  // event is triggered on that element, call submitProtocolQuestion.
+			  $("#protocolForm").submit(submitProtocolQuestion);
+
+			});
+			</script>
+
+
+
+
+		<!--   
+		
+		To DO
+
+			Maybe make oral contrast only come up if appropriate 
+
+		   -->
+
+	</body>
+
+</html>
