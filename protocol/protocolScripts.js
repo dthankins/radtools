@@ -40,6 +40,29 @@ function JSshowOlderGFR() {
     }
 }
 
+
+
+function otherCheck() {
+    var checkBox = document.getElementById("other-check");
+    var text = document.getElementById("otherContrast-textBox");
+    if (checkBox.checked == true){
+        text.style.display = "block";
+    } else {
+       text.style.display = "none";
+    }
+}
+
+function otherCheck2() {
+    var checkBox = document.getElementById("other-check2");
+    var text = document.getElementById("otherContrast-textBox2");
+    if (checkBox.checked == true){
+        text.style.display = "block";
+    } else {
+       text.style.display = "none";
+    }
+}
+
+
 /*
 
 
