@@ -16,6 +16,11 @@ body {
 
 }
 
+.needsIndent {
+	margin-left: 50px;
+
+}
+
 /*
 
 input[type=checkbox] { padding-right: 3px;}
