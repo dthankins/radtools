@@ -1,3 +1,17 @@
+<!--
+To Do
+
+1.  "Same" : if unchecked after intially working hre, should then delete the work.
+2. Auth:  Jeremy
+3. Permissions:  Jeremy
+4. Better CSS look
+5. Get and Push DOM elements
+6. Push in a way not seen in browser address bar
+7. Physician worklist page
+8. Tech print page
+-->
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,14 +28,17 @@
 
 
 		<!-- Load Bootstrap stylesheet, which will is CSS that makes everything prettier and also responsive (aka will work on all devices of all sizes). 
-	
-		<link rel="stylesheet" href="styles.css">
-	-->
-	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">	
+		
+	-->
+
+
+		<link rel="stylesheet" href="protocolStyles.css">
 
         <title>Protocol Form</title>
     
+
 
 
 
@@ -144,11 +161,27 @@
 				</select>
 				<br>
 
+			
 			IV Contrast:
 				<input type="checkbox" name="IV-contrast" value="W"> With 
-				<input type="checkbox" name="IV-contrast" value="WO"> Without 
-				<input type="checkbox" name="IV-contrast" value="WOW"> With and Without 
-				<input type="checkbox" name="IV-contrast" value="CTA"> CTA 
+				<input type="checkbox" class="needsPadding" name="IV-contrast" value="WO"> Without 
+				<input type="checkbox" class="needsPadding" name="IV-contrast" value="WOW"> With and Without 
+				<input type="checkbox" class="needsPadding" name="IV-contrast" value="CTA"> CTA
+				<input type="checkbox" class="needsPadding" name="IV-contrast" value="MRA-WO"> MRA Without
+				<input type="checkbox" class="needsPadding" name="IV-contrast" value="MRA-W"> MRA With
+				<input type="checkbox" class="needsPadding" id="other-check" name="IV-contrast" value="contrastOther" onclick="otherCheck()"> Other *Also choose for a second exam.
+			
+			
+
+			<!-- If OTHER, unhide the other text box stuff.  Default is hidden. -->
+
+
+			<div id="otherContrast-textBox" style="display:none">
+				<br>
+				Other or Second Exam Details: <input type="text" name="otherConttrast-details">
+			</div>
+
+
 
 			<br>
 			Oral: 
@@ -192,11 +225,38 @@
 					</select>
 					<br>
 
-				IV Contrast:
-					<input type="checkbox" name="IV-contrast" value="W"> With 
-					<input type="checkbox" name="IV-contrast" value="WO"> Without 
-					<input type="checkbox" name="IV-contrast" value="WOW"> With and Without 
-					<input type="checkbox" name="IV-contrast" value="CTA"> CTA 
+
+
+<!--
+
+-->
+			IV Contrast:
+				<input type="checkbox" name="IV-contrast" value="W"> With 
+				<input type="checkbox" class="needsPadding" name="IV-contrast" value="WO"> Without 
+				<input type="checkbox" class="needsPadding" name="IV-contrast" value="WOW"> With and Without 
+				<input type="checkbox" class="needsPadding" name="IV-contrast" value="CTA"> CTA
+				<input type="checkbox" class="needsPadding" name="IV-contrast" value="MRA-WO"> MRA Without
+				<input type="checkbox" class="needsPadding" name="IV-contrast" value="MRA-W"> MRA With
+				<input type="checkbox" class="needsPadding" id="other-check2" name="IV-contrast" value="contrastOther" onclick="otherCheck2()"> Other *Also choose for a second exam.
+			
+			
+
+			<!-- If OTHER, unhide the other text box stuff.  Default is hidden. -->
+
+
+			<div id="otherContrast-textBox2" style="display:none">
+				<br>
+				Other or Second Exam Details: <input type="text" name="otherConttrast-details2">
+			</div>
+
+
+
+
+
+
+
+
+
 
 				<br>
 				Oral: 
