@@ -62,6 +62,17 @@ function otherCheck2() {
     }
 }
 
+function contrastAllergyAlert() {
+    var checkBox = document.getElementById("contrast-allergy-check");
+    var text = document.getElementById("contrast-allergy-text");
+    if (checkBox.checked == true){
+    	alert("Premedicate and perform scan in the Hospital NOT Imaging Center!");
+    	text.style.display = "block";
+    } else {
+       text.style.display = "none";
+    }
+}
+
 
 /*
 

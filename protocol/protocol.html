@@ -2,13 +2,22 @@
 To Do
 
 1.  "Same" : if unchecked after intially working hre, should then delete the work.
-2. Auth:  Jeremy
+2. Firebase Auth:  Jeremy
 3. Permissions:  Jeremy
 4. Better CSS look
+	- text input boxes bigger
+	- alignment on form
+	- maybe have items not yet addressed blue so you can spot the parts of the form not yet completed easily?
 5. Get and Push DOM elements
 6. Push in a way not seen in browser address bar
 7. Physician worklist page
 8. Tech print page
+9. Auto select physician service
+10. Maybe have JS choose a Rad Service
+11. Alert if contrast allergy :  "Patient should be premidicated and exam sone in the hospital."  Turn RED.
+12.  GFR < 40 turn RED, 40-50 YELLOW, >50 GREEN
+13. Do I need to ask about Metformin ?
+14. Wt: BMI for oral contrast?
 -->
 
 
@@ -107,14 +116,51 @@ To Do
 
 			</div>
 
-			IV Contrast Allergy?
-				<input type="checkbox" name="contrast-allergy" value="yes"> Yes
-				<input type="checkbox" name="contrast-allergy" value="no"> No<br>
-
-
 			Previous IV contrast?
 				<input type="checkbox" name="prev-contrast" value="yes"> Yes
 				<input type="checkbox" name="prev-contrast" value="no"> No<br>
+
+			IV Contrast Allergy?
+				<input type="checkbox" name="contrast-allergy" id="contrast-allergy-check" value="yes" onclick="contrastAllergyAlert()"> Yes
+				<input type="checkbox" name="contrast-allergy" value="no"> No<br>
+
+
+
+				<!-- If "yes", unhide the contrast question and alert.  Default is hidden. -->
+
+				<div id="contrast-allergy-text" style="display:none">
+					
+					<br><br>
+					<span style="color:red"> <strong> Premedicate and perform scan in the Hospital NOT Imaging Center!</strong></span>
+					<br><br>
+					<span class="needsIndent"></span> Symptoms: <input type="text" name="contrast-allergy-symptoms">
+					<br>
+					<span class="needsIndent"></span> Modality: 
+						<input type="checkbox" name="modality" value="CT"> CT
+						<input type="checkbox" name="modality" value="MRI"> MRI<br>
+					
+					<br>
+				</div>
+
+<!--
+
+add clarification about ct or mri contrast allergy with details.  maybe checlk box plus text comments.
+
+Alert if contrast allergy :  "Patient should be premidicated and exam sone in the hospital."  Turn RED.
+
+				<input type="checkbox" class="needsPadding" id="other-check" name="IV-contrast" value="contrastOther" onclick="otherCheck()"> Other *Also choose for a second exam.
+			
+			
+
+			
+
+
+			<div id="otherContrast-textBox" style="display:none">
+
+
+-->
+
+
 
 			<br>
 			Indication: <input type="text" name="hx">
