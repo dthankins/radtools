@@ -1,26 +1,3 @@
-<!--
-To Do
-
-1.  "Same" : if unchecked after intially working hre, should then delete the work.
-2. Firebase Auth:  Jeremy
-3. Permissions:  Jeremy
-4. Better CSS look
-	- text input boxes bigger
-	- alignment on form
-	- maybe have items not yet addressed blue so you can spot the parts of the form not yet completed easily?
-5. Get and Push DOM elements
-6. Push in a way not seen in browser address bar
-7. Physician worklist page
-8. Tech print page
-9. Auto select physician service
-10. Maybe have JS choose a Rad Service
-11. Alert if contrast allergy :  "Patient should be premidicated and exam sone in the hospital."  Turn RED.
-12.  GFR < 40 turn RED, 40-50 YELLOW, >50 GREEN
-13. Do I need to ask about Metformin ?
-14. Wt: BMI for oral contrast?
--->
-
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -60,7 +37,7 @@ To Do
 
 
 
-		<!-- <form action="/action_page.php"> -->
+
 
 		 <form id="protocolForm">
 
@@ -72,7 +49,10 @@ To Do
 			<br>
 			MRN: <input type="text" name="mrn">
 			<br>
-			Age: <input type="text" name="age">
+
+<!-- Make it calculate age from dob  -->
+
+			Date of Birth: <input type="date" name="DOB">  Age: <input type="text" name="age">
 			<br>
 			Weight: <input type="text" name="wt">
 			<br>
@@ -136,8 +116,8 @@ To Do
 					<span class="needsIndent"></span> Symptoms: <input type="text" name="contrast-allergy-symptoms">
 					<br>
 					<span class="needsIndent"></span> Modality: 
-						<input type="checkbox" name="modality" value="CT"> CT
-						<input type="checkbox" name="modality" value="MRI"> MRI<br>
+						<input type="checkbox" name="allergy-modality" value="CT"> CT
+						<input type="checkbox" name="allergy-modality" value="MRI"> MRI<br>
 					
 					<br>
 				</div>
@@ -185,12 +165,12 @@ Alert if contrast allergy :  "Patient should be premidicated and exam sone in th
 			<strong> Exam Ordered: </strong>
 			<br>
 			Modality: 
-				<input type="checkbox" name="modality" value="CT"> CT
-				<input type="checkbox" name="modality" value="MRI"> MRI<br>
+				<input type="checkbox" name="order-modality" value="CT"> CT
+				<input type="checkbox" name="order-modality" value="MRI"> MRI<br>
 
 
 			Body part:
-				<select name="bodyPart">		
+				<select name="order-bodyPart">		
 					  <option value="default-bodyPart"> -- Select Exam Area -- </option>	
 					  <option value="Chest">Chest</option>
 					  <option value="Abdomen">Abdomen</option>
@@ -209,13 +189,13 @@ Alert if contrast allergy :  "Patient should be premidicated and exam sone in th
 
 			
 			IV Contrast:
-				<input type="checkbox" name="IV-contrast" value="W"> With 
-				<input type="checkbox" class="needsPadding" name="IV-contrast" value="WO"> Without 
-				<input type="checkbox" class="needsPadding" name="IV-contrast" value="WOW"> With and Without 
-				<input type="checkbox" class="needsPadding" name="IV-contrast" value="CTA"> CTA
-				<input type="checkbox" class="needsPadding" name="IV-contrast" value="MRA-WO"> MRA Without
-				<input type="checkbox" class="needsPadding" name="IV-contrast" value="MRA-W"> MRA With
-				<input type="checkbox" class="needsPadding" id="other-check" name="IV-contrast" value="contrastOther" onclick="otherCheck()"> Other *Also choose for a second exam.
+				<input type="checkbox" name="order-IV-contrast" value="W"> With 
+				<input type="checkbox" class="needsPadding" name="order-IV-contrast" value="WO"> Without 
+				<input type="checkbox" class="needsPadding" name="order-IV-contrast" value="WOW"> With and Without 
+				<input type="checkbox" class="needsPadding" name="order-IV-contrast" value="CTA"> CTA
+				<input type="checkbox" class="needsPadding" name="order-IV-contrast" value="MRA-WO"> MRA Without
+				<input type="checkbox" class="needsPadding" name="order-IV-contrast" value="MRA-W"> MRA With
+				<input type="checkbox" class="needsPadding" id="other-check" name="order-IV-contrast" value="contrastOther" onclick="otherCheck()"> Other *Also choose for a second exam.
 			
 			
 
@@ -224,15 +204,15 @@ Alert if contrast allergy :  "Patient should be premidicated and exam sone in th
 
 			<div id="otherContrast-textBox" style="display:none">
 				<br>
-				Other or Second Exam Details: <input type="text" name="otherConttrast-details">
+				Other or Second Exam Details: <input type="text" name="order-otherContrast-details">
 			</div>
 
 
 
 			<br>
 			Oral: 
-				<input type="checkbox" name="oral" value="yes"> Yes
-				<input type="checkbox" name="oral" value="no"> No<br>
+				<input type="checkbox" name="order-oral" value="yes"> Yes
+				<input type="checkbox" name="order-oral" value="no"> No<br>
 			<br>
 
 
@@ -249,12 +229,12 @@ Alert if contrast allergy :  "Patient should be premidicated and exam sone in th
 
 
 				Modality: 
-					<input type="checkbox" name="modality" value="CT"> CT
-					<input type="checkbox" name="modality" value="MRI"> MRI<br>
+					<input type="checkbox" name="suggested-modality" value="CT"> CT
+					<input type="checkbox" name="suggested-modality" value="MRI"> MRI<br>
 
 
 				Body part:
-					<select name="bodyPart">		
+					<select name="suggested-bodyPart">		
 						  <option value="default-bodyPart"> -- Select Exam Area -- </option>	
 						  <option value="Chest">Chest</option>
 						  <option value="Abdomen">Abdomen</option>
@@ -277,13 +257,13 @@ Alert if contrast allergy :  "Patient should be premidicated and exam sone in th
 
 -->
 			IV Contrast:
-				<input type="checkbox" name="IV-contrast" value="W"> With 
-				<input type="checkbox" class="needsPadding" name="IV-contrast" value="WO"> Without 
-				<input type="checkbox" class="needsPadding" name="IV-contrast" value="WOW"> With and Without 
-				<input type="checkbox" class="needsPadding" name="IV-contrast" value="CTA"> CTA
-				<input type="checkbox" class="needsPadding" name="IV-contrast" value="MRA-WO"> MRA Without
-				<input type="checkbox" class="needsPadding" name="IV-contrast" value="MRA-W"> MRA With
-				<input type="checkbox" class="needsPadding" id="other-check2" name="IV-contrast" value="contrastOther" onclick="otherCheck2()"> Other *Also choose for a second exam.
+				<input type="checkbox" name="suggested-IV-contrast" value="W"> With 
+				<input type="checkbox" class="needsPadding" name="suggested-IV-contrast" value="WO"> Without 
+				<input type="checkbox" class="needsPadding" name="suggested-IV-contrast" value="WOW"> With and Without 
+				<input type="checkbox" class="needsPadding" name="suggested-IV-contrast" value="CTA"> CTA
+				<input type="checkbox" class="needsPadding" name="suggested-IV-contrast" value="MRA-WO"> MRA Without
+				<input type="checkbox" class="needsPadding" name="suggested-IV-contrast" value="MRA-W"> MRA With
+				<input type="checkbox" class="needsPadding" id="other-check2" name="suggested-IV-contrast" value="contrastOther" onclick="otherCheck2()"> Other *Also choose for a second exam.
 			
 			
 
@@ -292,7 +272,7 @@ Alert if contrast allergy :  "Patient should be premidicated and exam sone in th
 
 			<div id="otherContrast-textBox2" style="display:none">
 				<br>
-				Other or Second Exam Details: <input type="text" name="otherConttrast-details2">
+				Other or Second Exam Details: <input type="text" name="suggested-otherContrast-details2">
 			</div>
 
 
@@ -306,8 +286,8 @@ Alert if contrast allergy :  "Patient should be premidicated and exam sone in th
 
 				<br>
 				Oral: 
-					<input type="checkbox" name="oral" value="yes"> Yes
-					<input type="checkbox" name="oral" value="no"> No<br>
+					<input type="checkbox" name="suggested-oral" value="yes"> Yes
+					<input type="checkbox" name="suggested-oral" value="no"> No<br>
 
 			</div>
 
@@ -386,51 +366,116 @@ Alert if contrast allergy :  "Patient should be premidicated and exam sone in th
 
 
 
-
-
-
-
-
-
-
-
-
-
 -->
 
 			<script>
-			  // Initialize Firebase
-			  var config = {
-			    apiKey: "AIzaSyC0GTC9H2AQCt-EReTwTJtwnhJlsfZHVa4",
-			    authDomain: "testdannyhankins.firebaseapp.com",
-			    databaseURL: "https://testdannyhankins.firebaseio.com",
-			    projectId: "testdannyhankins",
-			    storageBucket: "testdannyhankins.appspot.com",
-			    messagingSenderId: "235442361676"
-			  };
-			  firebase.initializeApp(config);
+			  	  // Initialize Firebase
+				  var config = {
+				    apiKey: "AIzaSyCpaVltd-dUeV9RP4SgV7rX-5VKRstRcnI",
+				    authDomain: "newprotocolproject.firebaseapp.com",
+				    databaseURL: "https://newprotocolproject.firebaseio.com",
+				    projectId: "newprotocolproject",
+				    storageBucket: "",
+				    messagingSenderId: "467156917316"
+				  };
+				  firebase.initializeApp(config);
 
-			  //test to see it is working
-			  console.log(firebase);
+				  
+				  //test to see it is working
+				 // console.log(firebase);
 
 
-			// Reference to the protocols object in your Firebase database
-			var protocols = firebase.database().ref("protocols");
+				// Reference to the protocols object in your Firebase database
+				var newProtocols = firebase.database().ref("newProtocols");
 
-			// Save a new protocol to the database, using the input in the form
-			var submitProtocolQuestion = function () {
+				// Save a new protocol to the database, using the input in the form
+				var submitNewProtocol = function () {
 
-			  // Get input values from each of the form elements
-			var js_username = document.getElementsByName("username")[0].value;
-
-			var js_scanToDo = document.getElementsByName("scanToDo")[0].value;
+					  // Get input values from each of the form elements
+					var js_username = document.getElementsByName("username")[0].value;
+					var js_pswd = document.getElementsByName("pswd")[0].value;
+					var js_ptname = document.getElementsByName("pt-name")[0].value;
+					var js_mrn = document.getElementsByName("mrn")[0].value;
+					var js_DOB = document.getElementsByName("DOB")[0].value;
+					var js_age = document.getElementsByName("age")[0].value;
+					var js_wt = document.getElementsByName("wt")[0].value;
+					var js_gender = document.getElementsByName("gender")[0].value;
+					var js_ucg_result = document.getElementsByName("ucg-result")[0].value;
+					var js_reason_not_preg = document.getElementsByName("reason-not-preg")[0].value;
+					var js_prev_contrast = document.getElementsByName("prev-contrast")[0].value;
+					var js_contrast_allergy = document.getElementsByName("contrast-allergy")[0].value;
+					var js_contrast_allergy_symptoms = document.getElementsByName("contrast-allergy-symptoms")[0].value;
+					var js_allergy_modality = document.getElementsByName("allergy-modality")[0].value;
+					var js_hx = document.getElementsByName("hx")[0].value;
+					var js_prior_imaging = document.getElementsByName("prior-imaging")[0].value;
+					var js_refering_doc = document.getElementsByName("refering-doc")[0].value;
+					var js_service = document.getElementsByName("service")[0].value;
+					var js_order_modality = document.getElementsByName("order-modality")[0].value;
+					var js_order_bodyPart = document.getElementsByName("order-bodyPart")[0].value;
+					var js_order_IV_contrast = document.getElementsByName("order-IV-contrast")[0].value;
+					var js_order_otherContrast_details = document.getElementsByName("order-otherContrast-details")[0].value;
+					var js_order_oral = document.getElementsByName("order-oral")[0].value;
+					var js_same_result = document.getElementsByName("same-result")[0].value;
+					var js_suggested_modality = document.getElementsByName("suggested-modality")[0].value;
+					
+					var js_suggested_bodyPart = document.getElementsByName("suggested-bodyPart")[0].value;
+					var js_suggested_IV_contrast = document.getElementsByName("suggested-IV-contrast")[0].value;
+					
+					var js_suggested_otherContrast_details2 = document.getElementsByName("suggested-otherContrast-details2")[0].value;
+					var js_suggested_oral = document.getElementsByName("suggested-oral")[0].value;
+					
+					var js_eGFR = document.getElementsByName("eGFR")[0].value;
+					var js_currentGFR = document.getElementsByName("currentGFR")[0].value;
+					var js_OlderGFR = document.getElementsByName("OlderGFR")[0].value;
+					var js_DateOlderGFR = document.getElementsByName("DateOlderGFR")[0].value;
+					var js_IVcontrastType = document.getElementsByName("IVcontrastType")[0].value;
+					var js_contrastVolume = document.getElementsByName("contrastVolume")[0].value;
+					var js_comments = document.getElementsByName("comments")[0].value;
 
 			  // Push a new protocol to the database using those values
-			  protocols.push({
-			    "username": js_username,
-			    "scanToDo": js_scanToDo
-			  });
-			};
+				  newProtocols.push({
+				   	"username": js_username,
+					"pswd": js_pswd, 
+					"pt-name": js_ptname, 
+					"mrn": js_mrn,
+					"DOB": js_DOB,
+					"age": js_age,
+					"wt": js_wt,
+					"gender": js_gender,
+					"ucg-result": js_ucg_result,
+					"reason-not-preg": js_reason_not_preg,
+					"prev-contrast": js_prev_contrast,
+					"contrast-allergy": js_contrast_allergy,
+					"contrast-allergy-symptoms": js_contrast_allergy_symptoms,
+					"allergy-modality": js_allergy_modality,
+					"hx": js_hx,
+					"prior-imaging": js_prior_imaging,
+					"refering-doc": js_refering_doc,
+					"service": js_service,
+					"order-modality": js_order_modality,
+					"order-bodyPart": js_order_bodyPart,
+					"order-IV-contrast": js_order_IV_contrast,
+					"order-otherContrast-details": js_order_otherContrast_details,
+					"order-oral": js_order_oral,
+					"same-result": js_same_result,
+					"suggested-modality": js_suggested_modality,
+					
+					"suggested-bodyPart": js_suggested_bodyPart,
+					"suggested-IV-contrast": js_suggested_IV_contrast,
+					
+					"suggested-otherContrast-details2": js_suggested_otherContrast_details2,
+					"suggested-oral": js_suggested_oral,
+					
+					"eGFR-check": js_eGFR,
+					"currentGFR": js_currentGFR,
+					"OlderGFR": js_OlderGFR,
+					"DateOlderGFR": js_DateOlderGFR,
+					"IVcontrastType": js_IVcontrastType,
+					"contrastVolume": js_contrastVolume,
+					"comments": js_comments
+
+				  });
+				};
 
 			// When the window is fully loaded, call this function.
 			// Note: because we are attaching an event listener to a particular HTML element
@@ -441,7 +486,7 @@ Alert if contrast allergy :  "Patient should be premidicated and exam sone in th
 
 			  // Find the HTML element with the id recommendationForm, and when the submit
 			  // event is triggered on that element, call submitProtocolQuestion.
-			  $("#protocolForm").submit(submitProtocolQuestion);
+			  $("#protocolForm").submit(submitNewProtocol);
 
 			});
 			</script>
@@ -449,14 +494,36 @@ Alert if contrast allergy :  "Patient should be premidicated and exam sone in th
 
 
 
-		<!--   
-		
-		To DO
 
-			Maybe make oral contrast only come up if appropriate 
-
-		   -->
 
 	</body>
+<!--
+To Do
 
+1.  "Same" : if unchecked after intially working hre, should then delete the work.
+2. Firebase Auth:  Jeremy
+3. Permissions:  Jeremy
+4. Better CSS look
+	- text input boxes bigger
+	- alignment on form
+	- maybe have items not yet addressed blue so you can spot the parts of the form not yet completed easily?
+5. Get and Push DOM elements
+6. Push in a way not seen in browser address bar
+7. Physician worklist page
+8. Tech print page
+9. Auto select physician service
+10. Maybe have JS choose a Rad Service
+11. Alert if contrast allergy :  "Patient should be premidicated and exam sone in the hospital."  Turn RED.
+12.  GFR < 40 turn RED, 40-50 YELLOW, >50 GREEN
+13. Do I need to ask about Metformin ?
+14. Wt: BMI for oral contrast?
+15. Maybe make oral contrast only come up if appropriate 
+16. figure out how to search doc name for specialty automatically
+17. I use similar code to hide area ...surely I can make one function rather than 5 different ones to do this
+18. Way to say no older GFR available
+
+Other Apps:  
+1. read pdf for hospital name and doc for electronic delivery and signature
+
+-->
 </html>
