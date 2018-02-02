@@ -57,6 +57,21 @@
 			Weight: <input type="text" name="wt">
 			<br>
 			<br>
+
+<!-- For some reason it thinks all checkbox questions are the first option -->
+
+<!-- For some reason it thinks all people are male-->
+<!-- For some reason it thinks all people are ucg-neg-->
+<!-- For some reason it thinks all answers yes to prior contrast and contrast allergy-->
+<!-- For some reason it thinks all modality for contrast allergy is CT -->
+<!-- For some reason it thinks all modality are CT -->
+<!-- For some reason it thinks yes for all oral contrast-->	
+<!-- For some reason it thinks all are CT-->
+<!-- thinks sixty-checked -->
+
+
+
+
 			Gender:
 				<input type="checkbox" name="gender" value="male"> Male   
 				<input type="checkbox" id = "female-check" name="gender" value="female" onclick="femaleCheck()" > Female  <br>
@@ -67,6 +82,8 @@
 
 			<div id="preg-questions" style="display:none">
 
+<!-- For some reason it thinks all people are ucg-neg-->
+
 				Urine pregnancy test:
 					<input type="checkbox" name="ucg-result" value="ucg-neg"> Negative  
 					<input type="checkbox" name="ucg-result" value="ucg-pos"> Positive  
@@ -75,6 +92,7 @@
 			
 			<!-- Reasons questions only shown if UCG not done.  Default is hidden. -->
 
+			
 				<div id="reason-questions" style="display:none">
 					<br>
 					Reason:		
@@ -95,7 +113,7 @@
 				<br>
 
 			</div>
-
+<!-- For some reason it thinks all answers yes to prior contrast and contrast allergy-->
 			Previous IV contrast?
 				<input type="checkbox" name="prev-contrast" value="yes"> Yes
 				<input type="checkbox" name="prev-contrast" value="no"> No<br>
@@ -115,6 +133,9 @@
 					<br><br>
 					<span class="needsIndent"></span> Symptoms: <input type="text" name="contrast-allergy-symptoms">
 					<br>
+
+<!-- For some reason it thinks all modality for contrast allergy is CT -->
+					
 					<span class="needsIndent"></span> Modality: 
 						<input type="checkbox" name="allergy-modality" value="CT"> CT
 						<input type="checkbox" name="allergy-modality" value="MRI"> MRI<br>
@@ -124,18 +145,6 @@
 
 <!--
 
-add clarification about ct or mri contrast allergy with details.  maybe checlk box plus text comments.
-
-Alert if contrast allergy :  "Patient should be premidicated and exam sone in the hospital."  Turn RED.
-
-				<input type="checkbox" class="needsPadding" id="other-check" name="IV-contrast" value="contrastOther" onclick="otherCheck()"> Other *Also choose for a second exam.
-			
-			
-
-			
-
-
-			<div id="otherContrast-textBox" style="display:none">
 
 
 -->
@@ -147,6 +156,7 @@ Alert if contrast allergy :  "Patient should be premidicated and exam sone in th
 			<br>
 			Prior Studies: <input type="text" name="prior-imaging">
 			<br>
+
 
 			Ordering clinician: <input type="text" name="refering-doc">       
 			
@@ -162,6 +172,9 @@ Alert if contrast allergy :  "Patient should be premidicated and exam sone in th
 				</select>
 			<br>
 			<br>
+
+<!-- For some reason it thinks all modality are CT -->
+
 			<strong> Exam Ordered: </strong>
 			<br>
 			Modality: 
@@ -187,7 +200,6 @@ Alert if contrast allergy :  "Patient should be premidicated and exam sone in th
 				</select>
 				<br>
 
-			
 			IV Contrast:
 				<input type="checkbox" name="order-IV-contrast" value="W"> With 
 				<input type="checkbox" class="needsPadding" name="order-IV-contrast" value="WO"> Without 
@@ -201,6 +213,8 @@ Alert if contrast allergy :  "Patient should be premidicated and exam sone in th
 
 			<!-- If OTHER, unhide the other text box stuff.  Default is hidden. -->
 
+
+<!-- For some reason it thinks yes for all oral contrast-->	
 
 			<div id="otherContrast-textBox" style="display:none">
 				<br>
@@ -217,6 +231,7 @@ Alert if contrast allergy :  "Patient should be premidicated and exam sone in th
 
 
 
+<!-- For some reason it thinks same exam even if unchecked-->	
 
 			<strong> Exam Suggested: </strong>
 			<input type="checkbox" id="same-exam-check" name="same-result" value="same-exam" checked onclick="sameExam()"> Same  
@@ -227,7 +242,7 @@ Alert if contrast allergy :  "Patient should be premidicated and exam sone in th
 
 			<div id="suggested-questions" style="display:none">
 
-
+<!-- For some reason it thinks all are CT-->	
 				Modality: 
 					<input type="checkbox" name="suggested-modality" value="CT"> CT
 					<input type="checkbox" name="suggested-modality" value="MRI"> MRI<br>
@@ -253,9 +268,6 @@ Alert if contrast allergy :  "Patient should be premidicated and exam sone in th
 
 
 
-<!--
-
--->
 			IV Contrast:
 				<input type="checkbox" name="suggested-IV-contrast" value="W"> With 
 				<input type="checkbox" class="needsPadding" name="suggested-IV-contrast" value="WO"> Without 
@@ -283,7 +295,6 @@ Alert if contrast allergy :  "Patient should be premidicated and exam sone in th
 
 
 
-
 				<br>
 				Oral: 
 					<input type="checkbox" name="suggested-oral" value="yes"> Yes
@@ -295,7 +306,7 @@ Alert if contrast allergy :  "Patient should be premidicated and exam sone in th
 
 
 
-
+<!-- thinks sixty-checked -->
 
 			<br>
 			
@@ -417,13 +428,10 @@ Alert if contrast allergy :  "Patient should be premidicated and exam sone in th
 					var js_order_oral = document.getElementsByName("order-oral")[0].value;
 					var js_same_result = document.getElementsByName("same-result")[0].value;
 					var js_suggested_modality = document.getElementsByName("suggested-modality")[0].value;
-					
 					var js_suggested_bodyPart = document.getElementsByName("suggested-bodyPart")[0].value;
 					var js_suggested_IV_contrast = document.getElementsByName("suggested-IV-contrast")[0].value;
-					
 					var js_suggested_otherContrast_details2 = document.getElementsByName("suggested-otherContrast-details2")[0].value;
 					var js_suggested_oral = document.getElementsByName("suggested-oral")[0].value;
-					
 					var js_eGFR = document.getElementsByName("eGFR")[0].value;
 					var js_currentGFR = document.getElementsByName("currentGFR")[0].value;
 					var js_OlderGFR = document.getElementsByName("OlderGFR")[0].value;
@@ -436,37 +444,34 @@ Alert if contrast allergy :  "Patient should be premidicated and exam sone in th
 				  newProtocols.push({
 				   	"username": js_username,
 					"pswd": js_pswd, 
-					"pt-name": js_ptname, 
+					"pt_name": js_ptname, 
 					"mrn": js_mrn,
 					"DOB": js_DOB,
 					"age": js_age,
 					"wt": js_wt,
 					"gender": js_gender,
-					"ucg-result": js_ucg_result,
-					"reason-not-preg": js_reason_not_preg,
-					"prev-contrast": js_prev_contrast,
-					"contrast-allergy": js_contrast_allergy,
-					"contrast-allergy-symptoms": js_contrast_allergy_symptoms,
-					"allergy-modality": js_allergy_modality,
+					"ucg_result": js_ucg_result,
+					"reason_not_preg": js_reason_not_preg,
+					"prev_contrast": js_prev_contrast,
+					"contrast_allergy": js_contrast_allergy,
+					"contrast_allergy_symptoms": js_contrast_allergy_symptoms,
+					"allergy_modality": js_allergy_modality,
 					"hx": js_hx,
-					"prior-imaging": js_prior_imaging,
-					"refering-doc": js_refering_doc,
+					"prior_imaging": js_prior_imaging,
+					"refering_doc": js_refering_doc,
 					"service": js_service,
-					"order-modality": js_order_modality,
-					"order-bodyPart": js_order_bodyPart,
-					"order-IV-contrast": js_order_IV_contrast,
-					"order-otherContrast-details": js_order_otherContrast_details,
-					"order-oral": js_order_oral,
-					"same-result": js_same_result,
-					"suggested-modality": js_suggested_modality,
-					
-					"suggested-bodyPart": js_suggested_bodyPart,
-					"suggested-IV-contrast": js_suggested_IV_contrast,
-					
-					"suggested-otherContrast-details2": js_suggested_otherContrast_details2,
-					"suggested-oral": js_suggested_oral,
-					
-					"eGFR-check": js_eGFR,
+					"order_modality": js_order_modality,
+					"order_bodyPart": js_order_bodyPart,
+					"order_IV_contrast": js_order_IV_contrast,
+					"order_otherContrast_details": js_order_otherContrast_details,
+					"order_oral": js_order_oral,
+					"same_result": js_same_result,
+					"suggested_modality": js_suggested_modality,
+					"suggested_bodyPart": js_suggested_bodyPart,
+					"suggested_IV_contrast": js_suggested_IV_contrast,
+					"suggested_otherContrast_details2": js_suggested_otherContrast_details2,
+					"suggested_oral": js_suggested_oral,
+					"eGFR_check": js_eGFR,
 					"currentGFR": js_currentGFR,
 					"OlderGFR": js_OlderGFR,
 					"DateOlderGFR": js_DateOlderGFR,
@@ -521,6 +526,8 @@ To Do
 16. figure out how to search doc name for specialty automatically
 17. I use similar code to hide area ...surely I can make one function rather than 5 different ones to do this
 18. Way to say no older GFR available
+19. Use DOB to get age.  Also can later use for verification when 2 patients have same MRN
+20. 
 
 Other Apps:  
 1. read pdf for hospital name and doc for electronic delivery and signature
