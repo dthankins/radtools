@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+        <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+		
+	    <!-- Load the jQuery library, which we'll use to manipulate HTML elements with Javascript. -->
+	    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+
+
+		<!-- Load Bootstrap stylesheet, which will is CSS that makes everything prettier and also responsive (aka will work on all devices of all sizes). 
+
+	    
+
+
+		<link rel="stylesheet" href="styles.css">
+		-->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">	
+
+
+        <title>Rad Protocol Approval Page</title>
+    
+
+
+
+
+
+    </head>
+
+  	<body>
+      	<h1>Rad Protocol Approval Page</h1>
+
+<!--  the javascript will add li and p elements here to list items from the database
+	
+      	<p>
+      
+      	<ul id="protocol-List">
+
+      		 
+
+      	</ul>
+-->
+
+<!-- New Stuff  -->
+      <table id="myTable" class="table table-striped" width="100%">
+        <thead>
+          <tr>
+		    <th>Name</th>
+		    <th>MRN</th> 
+		    <th>DOB</th>
+
+	    	<th>GFR</th>
+	    	<th>Indication</th>
+
+	    	<th>Exam Ordered</th>
+
+	    	<th>Exam Suggested</th>
+	    	<th>Contrast</th>
+	    	<th>Volume</th>
+
+	    	<th>Oral</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr id="tr">
+            <!-- This is empty for now, but it will be filled out by an event handler in application.js with the most recent recommendation data from Firebase. -->
+            <td id="name" width="20%"></td>
+            <td id="mrn" width="10"></td>
+            <td id = "dob" width="10"> </td>
+
+            <td id = "currentGFR" width="10"> </td>
+            <td id = "hx" width="10"> </td>
+
+            <td id = "dob" width="10"> </td>
+            <td id = "dob" width="10"> </td>
+            <td id = "dob" width="10"> </td>
+            <td id = "dob" width="10"> </td>
+
+            <td id = "dob" width="10"> </td>
+          </tr>
+        </tbody>
+      </table>
+
+
+
+
+<!-- New Stuff  -->
+
+
+
+		<script>
+
+			// Initialize Firebase
+			var config = {
+			apiKey: "AIzaSyCpaVltd-dUeV9RP4SgV7rX-5VKRstRcnI",
+			authDomain: "newprotocolproject.firebaseapp.com",
+			databaseURL: "https://newprotocolproject.firebaseio.com",
+			projectId: "newprotocolproject",
+			storageBucket: "",
+			messagingSenderId: "467156917316"
+			};
+			firebase.initializeApp(config);
+
+
+			// Reference to the protocols object in your Firebase database
+
+
+			var database = firebase.database();
+			var ref = database.ref("newProtocols");
+
+
+
+			ref.on("value", gotData);
+
+
+			function gotData(data) {
+				var newProtocols = data.val();
+				var keys = Object.keys(newProtocols);
+
+			  // Grab the keys to iterate over the object
+			  
+
+			  for (var i = 0; i < keys.length; i++) {
+			    var key = keys[i];
+			    // Look at each protocol object
+			    var protocol = newProtocols[key];
+			    
+
+
+/*	
+
+			   	var js_username= protocol.username;
+				var js_pswd = protocol.pswd; 
+				var js_ptname = protocol.pt_name; 
+				var js_mrn = protocol.mrn;
+				var js_DOB = protocol.DOB;
+				var js_age = protocol.age;
+				var js_wt = protocol.wt;
+				var js_gender = protocol.gender;
+				var js_ucg_result = protocol.ucg_result;
+				var js_reason_not_preg = protocol.reason_not_preg;
+				var js_prev_contrast= protocol.prev_contrast;
+				var js_contrast_allergy = protocol.contrast_allergy;
+				var js_contrast_allergy_symptoms = protocol.contrast_allergy_symptoms;
+				var js_allergy_modality = protocol.allergy_modality;
+				var js_hx = protocol.hx;
+				var js_prior_imaging = protocol.prior_imaging;
+				var js_refering_doc = protocol.refering_doc;
+				var js_service = protocol.service;
+				var js_order_modality = protocol.order_modality;
+				var js_order_bodyPart = protocol.order_bodyPart;
+				var js_order_IV_contrast = protocol.order_IV_contrast;
+				var js_order_otherContrast_details = protocol.order_otherContrast_details; 
+				var js_order_oral = protocol.order_oral;
+				var js_same_result = protocol.same_result;
+				var js_suggested_modality = protocol.suggested_modality;
+				var js_suggested_bodyPart = protocol.suggested_bodyPart;
+				var js_suggested_IV_contrast = protocol.suggested_IV_contrast;
+				var js_suggested_otherContrast_details2 = protocol.suggested_otherContrast_details2;
+				var js_suggested_oral = protocol.suggested_oral;
+				var js_eGFR = protocol.eGFR_check;
+				var js_currentGFR = protocol.currentGFR;
+				var js_OlderGFR = protocol.OlderGFR;
+				var js_DateOlderGFR = protocol.DateOlderGFR;
+				var js_IVcontrastType = protocol.IVcontrastType;
+				var js_contrastVolume = protocol.contrastVolume;
+				var js_comments = protocol.comments;
+
+
+
+
+
+			    var li = document.createElement("LI");                					 // Create a <li> node
+			    // var dataForLI = document.createTextNode(js_username + " " + scanToDo); 	// Create a text node
+			    
+				var dataForLI = document.createTextNode(
+						js_username + " " + 
+						js_pswd + " " + 
+						js_ptname + " " +
+						js_mrn + " " +
+						js_DOB + " " +
+						js_age + " " +
+						js_wt + " " +
+						js_gender + " " +
+						js_ucg_result + " " +
+						js_reason_not_preg + " " +
+						js_prev_contrast + " " +
+						js_contrast_allergy + " " +
+						js_contrast_allergy_symptoms + " " +
+						js_allergy_modality + " " +
+						js_hx + " " +
+						js_prior_imaging + " " +
+						js_refering_doc + " " +
+						js_service + " " +
+						js_order_modality + " " +
+						js_order_bodyPart + " " +
+						js_order_IV_contrast + " " +
+						js_order_otherContrast_details + " " +
+						js_order_oral + " " +
+						js_same_result + " " +
+						js_suggested_modality + " " +
+						js_suggested_bodyPart + " " +
+						js_suggested_IV_contrast + " " +
+						js_suggested_otherContrast_details2 + " " +
+						js_suggested_oral + " " +
+						js_eGFR + " " +
+						js_currentGFR + " " +
+						js_OlderGFR + " " +
+						js_DateOlderGFR + " " +
+						js_IVcontrastType + " " +
+						js_contrastVolume + " " +
+						js_comments);
+
+
+		
+ 
+				li.appendChild(dataForLI);												// Append the text to <li>
+				document.getElementById("protocol-List").appendChild(li);    // Append <li> to <ul> with id="protocol-List"
+
+				var para = document.createElement("P");                       // Create a <p> node
+				document.getElementById("protocol-List").appendChild(para);    // Append <p> to <ul> with id="protocol-List"
+*/
+
+
+
+//New table stuff
+				var content = '';
+				content +='<tr>';
+		                content += '<td>' + protocol.pt_name + '</td>';
+		                content += '<td>' + protocol.mrn + '</td>';
+		                content += '<td>' + protocol.DOB + '</td>';
+
+		                content += '<td>' + protocol.currentGFR + '</td>';
+		                content += '<td>' + protocol.hx + '</td>';
+
+		                orderedExam = 	protocol.order_modality + " " + 
+										protocol.order_bodyPart + " " +
+										protocol.order_IV_contrast;
+		                content += '<td>' + orderedExam + '</td>';
+
+		                
+		                orderedSuggested = 	protocol.suggested_modality + " " + 
+										protocol.suggested_bodyPart + " " +
+										protocol.suggested_IV_contrast;
+		                content += '<td>' + orderedSuggested + '</td>';
+
+
+
+		                content += '<td>' + protocol.IVcontrastType + '</td>';
+		                content += '<td>' + protocol.contrastVolume + '</td>';
+
+		                content += '<td>' + protocol.order_oral + '</td>';
+
+		                content += '</tr>';
+                $('#myTable').append(content);
+
+			  }
+			}	
+
+
+
+		</script>
+
+
+
+
+    </body>
+
+</html>
