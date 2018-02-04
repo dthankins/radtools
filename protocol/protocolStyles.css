@@ -1,15 +1,63 @@
+*:focus {
+    outline: none;
+}
+
+
 h1 {
 	color: rgb(0);
 	font-family: sans-serif;
 	text-align: left;
-		
   	display: inline-block;
 	padding-right: 10px;
 }
 body {
-  background-color: rgb(222, 222, 222);
+  background-color: lightgray;
   font-family: sans-serif;
 }
+
+
+.horizontal-select select {
+  appearance: none;
+  -webkit-appearance: none;   /*      Removes default chrome and safari style */
+  -moz-appearance: none;      /*     Removes Default Firefox style              */
+  background-color: transparent !important; 
+  border: 0;
+  padding: 10px;
+  margin: -7px -25px -20px -5px;   /*clockwise starting with top .....top, right, bottom, left */
+  
+}
+
+.horizontal-select option {
+  margin-right: 5px;            /* This spaces my boxes out (between the label options) in my horizontal dropdown list */
+  text-align: center;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 5px;
+}
+
+#horizontal-select select option {
+  display:inline-block;
+
+    background-color: white;   /* I want this to be white eventually */
+    padding-right:20px;       /* This gives space around the labels in my horizontal dropdown list */
+    padding-left: 20px;
+}
+
+#horizontal-select {
+  display:inline-block;
+  vertical-align:top;
+  overflow:hidden;
+}
+
+
+.needsLessTopMargin {
+	margin-top: -35px;
+}
+
+.needsSlightlyLessTopMargin {
+	margin-top: -15px;
+}
+
 
 .needsPadding {
 	margin-left: 15px;
@@ -21,8 +69,7 @@ body {
 
 }
 
-/*
 
-input[type=checkbox] { padding-right: 3px;}
+/*
 
 */

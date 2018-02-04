@@ -2,9 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        
-        
-
+   
         <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
 
         <script src="protocolScripts.js"></script>
@@ -12,31 +10,22 @@
 	    <!-- Load the jQuery library, which we'll use to manipulate HTML elements with Javascript. -->
 	    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 
+	    <link rel="stylesheet" href="protocolStyles.css">
+
 
 		<!-- Load Bootstrap stylesheet, which will is CSS that makes everything prettier and also responsive (aka will work on all devices of all sizes). 
 
 	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">	
 		
-	-->
-
-
-		<link rel="stylesheet" href="protocolStyles.css">
+		-->
 
         <title>Protocol Form</title>
     
-
-
-
-
-
 
     </head>
 
       <body>
       	<h1>Protocol Form: </h1>
-
-
-
 
 
 		 <form id="protocolForm">
@@ -50,31 +39,26 @@
 			MRN: <input type="text" name="mrn">
 			<br>
 
-<!-- Make it calculate age from dob  -->
+<!-- Need to Make it calculate age from dob  -->
 
-			Date of Birth: <input type="date" name="DOB">  Age: <input type="text" name="age">
+			Date of Birth: <input type="date" name="DOB">  
+			<span class="needsIndent"></span> 
+			Age: <input type="text" name="age">
 			<br>
 			Weight: <input type="text" name="wt">
 			<br>
-			<br>
 
-<!-- For some reason it thinks all checkbox questions are the first option -->
-
-<!-- For some reason it thinks all people are male-->
-<!-- For some reason it thinks all people are ucg-neg-->
-<!-- For some reason it thinks all answers yes to prior contrast and contrast allergy-->
-<!-- For some reason it thinks all modality for contrast allergy is CT -->
-<!-- For some reason it thinks all modality are CT -->
-<!-- For some reason it thinks yes for all oral contrast-->	
-<!-- For some reason it thinks all are CT-->
-<!-- thinks sixty-checked -->
-
-
+<!-- For some reason it thinks all checkbox questions are the first option 
+	checkbox JS trick would probably work but I did horizontal selector instead    http://jsfiddle.net/Y9f66/162/   -->
 
 
 			Gender:
-				<input type="checkbox" name="gender" value="male"> Male   
-				<input type="checkbox" id = "female-check" name="gender" value="female" onclick="femaleCheck()" > Female  <br>
+			<div id="horizontal-select" class="horizontal-select">
+		  		<select name="gender" class="horizontal-select" size="2">
+			      <option onclick="femaleCheck()">Male</option>
+			      <option id = "female-check" onclick="femaleCheck()">Female</option>
+		  		</select>
+			</div>
 
 			<br>
 
@@ -82,19 +66,22 @@
 
 			<div id="preg-questions" style="display:none">
 
-<!-- For some reason it thinks all people are ucg-neg-->
 
 				Urine pregnancy test:
-					<input type="checkbox" name="ucg-result" value="ucg-neg"> Negative  
-					<input type="checkbox" name="ucg-result" value="ucg-pos"> Positive  
-					<input type="checkbox" id="ucg-check" name="ucg-result" value="ucg-not-done" onclick="ucgNotDone()"> Not Done  <br>
+				<div id="horizontal-select" class="horizontal-select">
+			  		<select name="ucg-result" class="horizontal-select" size="3">
+					      <option onclick="ucgNotDone()">Negative</option>
+					      <option onclick="ucgNotDone()">Positive</option>
+					      <option id = "ucg-check" onclick="ucgNotDone()">Not Done</option>
+			  		</select>
+				</div>
 				
-			
+
 			<!-- Reasons questions only shown if UCG not done.  Default is hidden. -->
 
 			
 				<div id="reason-questions" style="display:none">
-					<br>
+					
 					Reason:		
 						<select name="reason-not-preg">	
 						  <option value="default-reason"> -- Select Reason -- </option>	
@@ -109,46 +96,63 @@
 						  <option value="none">None of the above</option>
 						</select> 
 				</div>
+				
 
-				<br>
+			</div> 
 
-			</div>
-<!-- For some reason it thinks all answers yes to prior contrast and contrast allergy-->
+			<br>
+
+
 			Previous IV contrast?
-				<input type="checkbox" name="prev-contrast" value="yes"> Yes
-				<input type="checkbox" name="prev-contrast" value="no"> No<br>
+				<div id="horizontal-select" class="horizontal-select">
+			  		<select name="prev-contrast" class="horizontal-select" size="3">
+					      <option>Yes</option>
+					      <option>No</option>
+					      <option>Not Sure</option>
+			  		</select>
+				</div>
 
-			IV Contrast Allergy?
-				<input type="checkbox" name="contrast-allergy" id="contrast-allergy-check" value="yes" onclick="contrastAllergyAlert()"> Yes
-				<input type="checkbox" name="contrast-allergy" value="no"> No<br>
+				
+			<span class="needsIndent"></span> 
+			<span class="needsIndent"></span> 
 
+			IV Contrast Allergy? 
+				<div id="horizontal-select" class="horizontal-select">
+			  		<select name="contrast-allergy" class="horizontal-select" size="3">
+					      <option id = "contrast-allergy-check" onclick="contrastAllergyAlert()">Yes</option>
+					      <option onclick="contrastAllergyAlert()">No</option>
+					      <option onclick="contrastAllergyAlert()">Not Sure</option>
 
+			  		</select>
+				</div>
+			
 
 				<!-- If "yes", unhide the contrast question and alert.  Default is hidden. -->
 
 				<div id="contrast-allergy-text" style="display:none">
 					
-					<br><br>
+					
 					<span style="color:red"> <strong> Premedicate and perform scan in the Hospital NOT Imaging Center!</strong></span>
 					<br><br>
-					<span class="needsIndent"></span> Symptoms: <input type="text" name="contrast-allergy-symptoms">
+					<span class="needsIndent"></span> 
+					Symptoms: <input type="text" name="contrast-allergy-symptoms">
 					<br>
 
-<!-- For some reason it thinks all modality for contrast allergy is CT -->
+
 					
-					<span class="needsIndent"></span> Modality: 
-						<input type="checkbox" name="allergy-modality" value="CT"> CT
-						<input type="checkbox" name="allergy-modality" value="MRI"> MRI<br>
-					
-					<br>
+					<span class="needsIndent"></span> 
+
+					Modality: 
+					<div id="horizontal-select" class="horizontal-select">
+				  		<select name="allergy-modality" class="horizontal-select" size="3">
+						      <option>CT</option>
+						      <option>MRI</option>
+						      <option>Not Sure</option>
+				  		</select>
+					</div>
+
+
 				</div>
-
-<!--
-
-
-
--->
-
 
 
 			<br>
@@ -160,6 +164,8 @@
 
 			Ordering clinician: <input type="text" name="refering-doc">       
 			
+			<span class="needsIndent"></span> 
+
 			Service:  
 				<select name="service">		
 				  <option value="default-service"> -- Select Specialty -- </option>	
@@ -173,83 +179,24 @@
 			<br>
 			<br>
 
-<!-- For some reason it thinks all modality are CT -->
 
-			<strong> Exam Ordered: </strong>
-			<br>
-			Modality: 
-				<input type="checkbox" name="order-modality" value="CT"> CT
-				<input type="checkbox" name="order-modality" value="MRI"> MRI<br>
-
-
-			Body part:
-				<select name="order-bodyPart">		
-					  <option value="default-bodyPart"> -- Select Exam Area -- </option>	
-					  <option value="Chest">Chest</option>
-					  <option value="Abdomen">Abdomen</option>
-					  <option value="AandP">Abdomen and Pelvis</option>
-					  <option value="CAP">Chest, Abdomen and Pelvis</option>
-					  <option value="UE">Upper Extremity</option>
-					  <option value="LE">Lower Extremity</option>
-					  <option value="Head">Head</option>
-					  <option value="Face">Face</option>
-					  <option value="Neck">Neck</option>
-					  <option value="Orbits">Orbits</option>
-					  <option value="IAC">IAC</option>
-					  <option value="Other">Other</option>
-				</select>
+			<strong> 
+			Exam Ordered: </strong>
+			<div class="needsIndent">
+				
 				<br>
-
-			IV Contrast:
-				<input type="checkbox" name="order-IV-contrast" value="W"> With 
-				<input type="checkbox" class="needsPadding" name="order-IV-contrast" value="WO"> Without 
-				<input type="checkbox" class="needsPadding" name="order-IV-contrast" value="WOW"> With and Without 
-				<input type="checkbox" class="needsPadding" name="order-IV-contrast" value="CTA"> CTA
-				<input type="checkbox" class="needsPadding" name="order-IV-contrast" value="MRA-WO"> MRA Without
-				<input type="checkbox" class="needsPadding" name="order-IV-contrast" value="MRA-W"> MRA With
-				<input type="checkbox" class="needsPadding" id="other-check" name="order-IV-contrast" value="contrastOther" onclick="otherCheck()"> Other *Also choose for a second exam.
-			
-			
-
-			<!-- If OTHER, unhide the other text box stuff.  Default is hidden. -->
-
-
-<!-- For some reason it thinks yes for all oral contrast-->	
-
-			<div id="otherContrast-textBox" style="display:none">
-				<br>
-				Other or Second Exam Details: <input type="text" name="order-otherContrast-details">
-			</div>
-
-
-
-			<br>
-			Oral: 
-				<input type="checkbox" name="order-oral" value="yes"> Yes
-				<input type="checkbox" name="order-oral" value="no"> No<br>
-			<br>
-
-
-
-<!-- For some reason it thinks same exam even if unchecked-->	
-
-			<strong> Exam Suggested: </strong>
-			<input type="checkbox" id="same-exam-check" name="same-result" value="same-exam" checked onclick="sameExam()"> Same  
-			<br>
-
-
-			<!-- Suggested Exam questions only shown if "Same" NOT selected  not done.  Default is hidden. -->
-
-			<div id="suggested-questions" style="display:none">
-
-<!-- For some reason it thinks all are CT-->	
 				Modality: 
-					<input type="checkbox" name="suggested-modality" value="CT"> CT
-					<input type="checkbox" name="suggested-modality" value="MRI"> MRI<br>
+						<div id="horizontal-select" class="horizontal-select">
+					  		<select name="order-modality" class="horizontal-select" size="2">
+							      <option>CT</option>
+							      <option>MRI</option>
+							      
+					  		</select>
+						</div>
 
 
 				Body part:
-					<select name="suggested-bodyPart">		
+					<select name="order-bodyPart">		
 						  <option value="default-bodyPart"> -- Select Exam Area -- </option>	
 						  <option value="Chest">Chest</option>
 						  <option value="Abdomen">Abdomen</option>
@@ -267,81 +214,143 @@
 					<br>
 
 
+				IV Contrast:  
+						<div id="horizontal-select" class="horizontal-select">
+					  		<select multiple name="order-IV-contrast" class="horizontal-select" size="4">
+							      <option onclick="otherCheck()">With</option>
+							      <option onclick="otherCheck()">Without</option>
+							      <option onclick="otherCheck()">Angiogram</option>
+							      <option id = "other-check" onclick="otherCheck()">Other</option>
+					      	</select>
+						</div>			
+				Hold down the Ctrl (windows) / Command (Mac) button to select multiple options.
+				
 
-			IV Contrast:
-				<input type="checkbox" name="suggested-IV-contrast" value="W"> With 
-				<input type="checkbox" class="needsPadding" name="suggested-IV-contrast" value="WO"> Without 
-				<input type="checkbox" class="needsPadding" name="suggested-IV-contrast" value="WOW"> With and Without 
-				<input type="checkbox" class="needsPadding" name="suggested-IV-contrast" value="CTA"> CTA
-				<input type="checkbox" class="needsPadding" name="suggested-IV-contrast" value="MRA-WO"> MRA Without
-				<input type="checkbox" class="needsPadding" name="suggested-IV-contrast" value="MRA-W"> MRA With
-				<input type="checkbox" class="needsPadding" id="other-check2" name="suggested-IV-contrast" value="contrastOther" onclick="otherCheck2()"> Other *Also choose for a second exam.
-			
-			
-
-			<!-- If OTHER, unhide the other text box stuff.  Default is hidden. -->
+	<!--  If OTHER, unhide the other text box stuff.  Default is hidden. -->
 
 
-			<div id="otherContrast-textBox2" style="display:none">
+					<div class ="needsLessTopMargin" id="otherContrast-textBox" style="display:none">
+						Other or Second Exam Details: <input type="text" name="order-otherContrast-details">
+						
+						
+					</div>
+
 				<br>
-				Other or Second Exam Details: <input type="text" name="suggested-otherContrast-details2">
+				<div class="needsSlightlyLessTopMargin">
+					Oral: 
+					<div id="horizontal-select" class="horizontal-select">
+					  		<select name="order-oral" class="horizontal-select" size="2">
+							      <option>Yes</option>
+							      <option>No</option>
+							      
+					  		</select>
+					</div>
+
+				</div>
+				<br>
+
 			</div>
 
 
-
-
-
-
-
-
-
+			<div class="needsSlightlyLessTopMargin">
+				<strong> Exam Suggested: </strong>
+				<input type="checkbox" id="same-exam-check" name="same-result" value="same-exam" checked onclick="sameExam()"> Same  
 				<br>
-				Oral: 
-					<input type="checkbox" name="suggested-oral" value="yes"> Yes
-					<input type="checkbox" name="suggested-oral" value="no"> No<br>
+				
+				<div class="needsIndent">	
+					
 
+
+					<!-- Suggested Exam questions only shown if "Same" NOT selected  not done.  Default is hidden. -->
+
+					<div id="suggested-questions" style="display:none">
+
+						<br>
+						Modality: 
+								<div id="horizontal-select" class="horizontal-select">
+							  		<select name="suggested-modality" class="horizontal-select" size="2">
+									      <option>CT</option>
+									      <option>MRI</option>
+									      
+							  		</select>
+								</div>
+
+
+						Body part:
+							<select name="suggested-bodyPart">		
+								  <option value="default-bodyPart"> -- Select Exam Area -- </option>	
+								  <option value="Chest">Chest</option>
+								  <option value="Abdomen">Abdomen</option>
+								  <option value="AandP">Abdomen and Pelvis</option>
+								  <option value="CAP">Chest, Abdomen and Pelvis</option>
+								  <option value="UE">Upper Extremity</option>
+								  <option value="LE">Lower Extremity</option>
+								  <option value="Head">Head</option>
+								  <option value="Face">Face</option>
+								  <option value="Neck">Neck</option>
+								  <option value="Orbits">Orbits</option>
+								  <option value="IAC">IAC</option>
+								  <option value="Other">Other</option>
+							</select>
+							<br>
+
+
+						IV Contrast:  
+								<div id="horizontal-select" class="horizontal-select">
+							  		<select multiple name="suggested-IV-contrast" class="horizontal-select" size="4">
+									      <option onclick="otherCheck2()">With</option>
+									      <option onclick="otherCheck2()">Without</option>
+									      <option onclick="otherCheck2()">Angiogram</option>
+									      <option id = "other-check2" onclick="otherCheck2()">Other</option>
+							      	</select>
+								</div>			
+						Hold down the Ctrl (windows) / Command (Mac) button to select multiple options.
+						
+
+
+			<!--  If OTHER, unhide the other text box stuff.  Default is hidden. -->
+
+
+							<div class ="needsLessTopMargin" id="otherContrast-textBox2" style="display:none">
+								Other or Second Exam Details: <input type="text" name="suggested-otherContrast-details2">
+													
+							</div>
+
+						<br>
+						<div class="needsSlightlyLessTopMargin">
+							Oral: 
+								<div id="horizontal-select" class="horizontal-select">
+								  		<select name="suggested-oral" class="horizontal-select" size="2">
+										      <option>Yes</option>
+										      <option>No</option>
+										      
+								  		</select>
+								</div>
+						</div>
+						
+
+				</div>
 			</div>
-
-
-
-
+		</div>
 
 <!-- thinks sixty-checked -->
 
 			<br>
-			
-			<br>
-			Date of eGFR: <input type="date" name="DateGFR">
 			<br> 
-			eGFR: >60 <input type="checkbox" id="eGFR-check" name="eGFR" value="sixty-checked" checked onclick="JSshowOlderGFR()">   
-
-	   
+			Date of eGFR: <input type="date" name="DateGFR">   
+			<span class="needsIndent"></span> 
+			eGFR: >60 <input type="checkbox" id="eGFR-check" name="eGFR" value="sixty-checked" checked onclick="JSshowOlderGFR()">
 			
-			
+			<input type="number" name="currentGFR">
 
-			<!-- Questions about older GFR will not show unless GFR<60 
-
-			<input type="checkbox" id="same-exam-check" name="same-result" value="same-exam" checked onclick="sameExam()"> Same  
-			<br>
-
-
-
-			<div id="suggested-questions" style="display:none">
-
-
-
-			 -->
+<!-- Questions about older GFR will not show unless GFR<60 -->
 
 			<div id="showOlderGFR" style="display:none">
-
-				<input type="number" name="currentGFR">
-
-				<br>Older GFR:  <input type="number" name="OlderGFR">
 				<br>
 				Date:  <input type="date" name="DateOlderGFR">
+				<span class="needsIndent"></span> 
+				Older GFR:  <input type="number" name="OlderGFR">
 			</div>
-
-
 
 			<br><br>
 			IV Contrast type:  
@@ -350,23 +359,17 @@
 				  	<option value="Visipaque320">Visipaque 320</option>
 				  	<option value="MultiHance">MultiHance</option>
 				</select>
+			
+			<span class="needsIndent"></span> 
 
 			Volume:   <input type="number" name="contrastVolume">
 
 			<br><br>
-			Other Comments:  <input type="text" name="comments">
-
-
-
+			Other Comments:  <input type="text" name="comments" size="100">
 
 		  <br>
 		  <br>
-		  
-
-
-
-
-
+	
   			<input type="submit" value="Submit">
 		
 
@@ -375,7 +378,7 @@
 
 <!--
 
-
+I think I can move this to my js file
 
 -->
 
@@ -411,6 +414,9 @@
 					var js_age = document.getElementsByName("age")[0].value;
 					var js_wt = document.getElementsByName("wt")[0].value;
 					var js_gender = document.getElementsByName("gender")[0].value;
+
+					// console.log(js_gender);
+
 					var js_ucg_result = document.getElementsByName("ucg-result")[0].value;
 					var js_reason_not_preg = document.getElementsByName("reason-not-preg")[0].value;
 					var js_prev_contrast = document.getElementsByName("prev-contrast")[0].value;
@@ -504,6 +510,38 @@
 	</body>
 <!--
 To Do
+
+1.  "Same" : if unchecked after intially working hre, should then delete the work.
+2. Firebase Auth:  Jeremy
+3. Permissions:  Jeremy
+4. Better CSS look
+	- text input boxes bigger
+	- alignment on form
+	- maybe have items not yet addressed blue so you can spot the parts of the form not yet completed easily?
+5. Get and Push DOM elements
+6. Push in a way not seen in browser address bar
+7. Physician worklist page
+8. Tech print page
+9. Auto select physician service
+10. Maybe have JS choose a Rad Service
+11. Alert if contrast allergy :  "Patient should be premidicated and exam sone in the hospital."  Turn RED.
+12.  GFR < 40 turn RED, 40-50 YELLOW, >50 GREEN
+13. Do I need to ask about Metformin ?
+14. Wt: BMI for oral contrast?
+15. Maybe make oral contrast only come up if appropriate 
+16. figure out how to search doc name for specialty automatically
+17. I use similar code to hide area ...surely I can make one function rather than 5 different ones to do this
+18. Way to say no older GFR available
+19. Use DOB to get age.  Also can later use for verification when 2 patients have same MRN
+20. fix checkbox value issues as above
+21. dates cannot be in the future
+22. need NA option for GFR.  maybe even hide this if noncon exam
+
+Other Apps:  
+1. read pdf for hospital name and doc for electronic delivery and signature
+2. tirads
+3. pirads
+
+
 -->
-	
 </html>
