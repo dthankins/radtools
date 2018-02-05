@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+        <script src="button.js"></script>
+	    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+		<link rel="stylesheet" href="button.css">
+        <title>Button Practice</title>
+    </head>
+
+   	<body>
+      	<h1>Button Practice: </h1>
+      	
+      	Gender:
+	      	<input type="button" class="button" name="genderSelect" value ="Male" onclick="buttonCheck(this.name, this.value)">  
+			<input type="button" class= "button" name="genderSelect" value ="Female" onclick="buttonCheck(this.name, this.value)">
+			<br>
+			
+			<input type="text" id="genderSelect" value="">	<!-- Change text (debugging) to hidden (form) JS will fill in value -->
+		<br>
+		Previous IV contrast:
+	      	<input type="button" class="button" name="previosIVcontrast" value ="Yes" onclick="buttonCheck(this.name, this.value)"><input type="button" class= "button" name="previosIVcontrast" value ="No" onclick="buttonCheck(this.name, this.value)">
+			<input type="button" class= "button" name="previosIVcontrast" value ="Not Sure" onclick="buttonCheck(this.name, this.value)">
+			<br>
+			<input type="text" id="previosIVcontrast" value="">  <!-- Change text (debugging) to hidden (form) JS fill in value -->
+
+    </body>
+
+</html>
