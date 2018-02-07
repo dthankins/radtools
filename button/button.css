@@ -45,6 +45,14 @@ body {
     margin: 4px 2px;
 }
 
+.hideDIV{
+    display: none;
+}
 
+.smallContainer{
+    margin-left: 5%;
+}
 
-
+.fortyPercentContainer{
+    width: 10px;
+}

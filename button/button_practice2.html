@@ -11,19 +11,113 @@
 
    	<body>
       	<h1>Button Practice: </h1>
+
+<!-- I need to change all the names to id on the part of the form that pushes and recieves data -->
       	
-      	Gender:
-	      	<input type="button" class="button" name="genderSelect" value ="Male" onclick="buttonCheck(this.name, this.value)">  
-			<input type="button" class= "button" name="genderSelect" value ="Female" onclick="buttonCheck(this.name, this.value)">
-			<br>
+      	Gender:		<!-- below are the two functions to hide and show relevent info  -->
+				      	 
+			<input type="button" class= "button" name="genderSelect" value ="Male" onclick="var divToHide ='hiddenDivFemale'; hideToggle(divToHide); buttonCheck(this.name, this.value)">
 			
-			<input type="text" id="genderSelect" value="">	<!-- Change text (debugging) to hidden (form) JS will fill in value -->
+			<input type="button" class= "button" name="genderSelect" value ="Female" onclick="var divToUnHide ='hiddenDivFemale'; unHide(divToUnHide); buttonCheck(this.name, this.value)">
+			<br>
+				
+			<input type="hidden" id="genderSelect" value="">	<!-- hidden id will be sent to form  -->
+
+			<div id="hiddenDivFemale" class="hideDIV">
+				This is hidden when button not pressed
+			</div>
+		
 		<br>
 		Previous IV contrast:
 	      	<input type="button" class="button" name="previosIVcontrast" value ="Yes" onclick="buttonCheck(this.name, this.value)"><input type="button" class= "button" name="previosIVcontrast" value ="No" onclick="buttonCheck(this.name, this.value)">
 			<input type="button" class= "button" name="previosIVcontrast" value ="Not Sure" onclick="buttonCheck(this.name, this.value)">
+			
+			<input type="hidden" id="previosIVcontrast" value="">  <!-- hidden (form) value -->
+			
+
+		<span style="margin-left: 50px">
+		IV contrast Allergy:
+			<input type="button" class= "button" name="contrast-allergy" value ="Yes" onclick="var divToUnHide ='hiddenDivAllergy'; unHide(divToUnHide); buttonCheck(this.name, this.value)">
+			<input type="button" class= "button" name="contrast-allergy" value ="No" onclick="var divToHide ='hiddenDivAllergy'; hideToggle(divToHide); buttonCheck(this.name, this.value)">
+			
+			<input type="hidden" id="contrast-allergy" value="">  <!-- hidden (form) value -->
 			<br>
-			<input type="text" id="previosIVcontrast" value="">  <!-- Change text (debugging) to hidden (form) JS fill in value -->
+			<div id="hiddenDivAllergy" class="hideDIV">
+				This is hidden when button not pressed
+			</div>
+
+		<br>	
+		Exam Ordered:
+		Modality:
+	      	<input type="button" class="button" name="order-modality" value ="CT" onclick="buttonCheck(this.name, this.value)">
+	      	<input type="button" class= "button" name="order-modality" value ="MRI" onclick="buttonCheck(this.name, this.value)">
+	      	<input type="hidden" id="order-modality" value="">  <!-- hidden (form) value -->
+
+      	
+		<!-- -->
+		<span style="margin-left: 123px">
+		
+		IV Contrast:
+
+			<input type="button" class= "button" name="ordered-IV-contrast" value ="Angiogram" onclick="buttonCheckMulti(this.name, this.value)">
+
+	      	<input type="button" class="button" name="ordered-IV-contrast" value ="With" onclick="buttonCheckMulti(this.name, this.value)">
+
+	      	<input type="button" class= "button" name="ordered-IV-contrast" value ="Without" onclick="buttonCheckMulti(this.name, this.value)">
+			
+			<input type="button" class= "button" name="ordered-IV-contrast" value ="Other" onclick="var divToUnHide ='hiddenOrderedOther'; unHideMulti(divToUnHide); buttonCheckMulti(this.name, this.value)">
+
+
+			<br>
+			<input type="hidden" size="100" id="ordered-IV-contrast" value="">  <!-- hidden (form) value -->
+
+
+			<div id="hiddenOrderedOther" class="hideDIV">
+				This is hidden when button not pressed
+			</div>
+		</span>
+		
+		<br>
+		
+		Body part:
+			<select name="order-bodyPart" onchange="var oralUnHide='hiddenOrderedOral'; checkOral(oralUnHide)">		
+				  <option value="default-bodyPart"> -- Select Exam Area -- </option>	
+				  <option value="Chest">Chest</option>
+				  <option value="Abdomen">Abdomen</option>
+				  <option value="Abdomen and Pelvis">Abdomen and Pelvis</option>
+				  <option value="Chest, Abdomen and Pelvis">Chest, Abdomen and Pelvis</option>
+				  <option value="Upper Extremity">Upper Extremity</option>
+				  <option value="Lower Extremity">Lower Extremity</option>
+				  <option value="Head">Head</option>
+				  <option value="Face">Face</option>
+				  <option value="Neck">Neck</option>
+				  <option value="Orbits">Orbits</option>
+				  <option value="IAC">IAC</option>
+				  <option value="Other">Other</option>
+			</select>
+		
+		
+
+		<span id="hiddenOrderedOral" class="hideDIV" style="margin-left: 247px;">
+								
+				Oral Contrast:
+					<input type="button" class="button" name="order-oral" value ="Yes" onclick="buttonCheck(this.name, this.value)">
+					<input type="button" class= "button" name="order-oral" value ="No" onclick="buttonCheck(this.name, this.value)">
+										
+					<input type="text" id="order-oral" value="">  <!-- hidden (form) value -->
+
+		</span>
+
+
+		<br>
+
+
+
+<!--
+
+
+-->
+
 
     </body>
 
