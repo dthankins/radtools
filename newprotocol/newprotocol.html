@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+        <script src="newprotocol.js"></script>
+	    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+		<link rel="stylesheet" href="newprotocol.css">
+        <title>Button Practice</title>
+    </head>
+
+   	<body>
+      	<h1>Protocol Form: </h1>
+
+<!-- I need to change all the names to id on the part of the form that pushes and recieves data -->
+		<section>
+
+			<form id="protocolForm" method="post">
+
+				
+				User Name:  		<input type="text" name="username">
+				<br>
+				
+				Password:			<input type="password" name="pswd">
+				<br>
+				<br>	
+				
+				Patient Name: 		<input type="text" name="pt-name">
+				<br>
+			
+				MRN: 				<input type="text" name="mrn">
+				<br>
+
+	<!-- Need to Make it calculate age from dob  -->
+
+	<!-- It is not getting the multiple selects for contrast type ordered and suggested -->
+
+				Date of Birth: <input type="date" name="DOB" onchange="var dateToSend=this.value; var sendWt = 'hiddenWt'; ageCalc(dateToSend, sendWt)">  
+				
+				Age: <input type="text" name="age" size="5" style="text-align: center">
+				<br>
+				
+				<div id="hiddenWt" class="hideDIV">
+					Weight: <input type="text" name="wt">
+				</div>
+
+	      	
+		  		Gender:		<!-- below are the two functions to hide and show relevent info  -->
+						      	 
+					<input type="button" class= "button" name="genderSelect" value ="Male" onclick="var divToHide ='hiddenDivFemale'; hideToggle(divToHide); buttonCheck(this.name, this.value)">
+					
+					<input type="button" class= "button" name="genderSelect" value ="Female" onclick="var divToUnHide ='hiddenDivFemale'; unHide(divToUnHide); buttonCheck(this.name, this.value)">
+					<br>
+						
+					<input type="hidden" id="genderSelect" value="">	<!-- hidden id will be sent to form  -->
+
+
+					<div id="hiddenDivFemale" class="hideDIV">
+						
+						Urine pregnancy test:
+							
+							<input type="button" class="button" name="ucg-result" value ="Negative" onclick="buttonCheck(this.name, this.value); var divToHide='hiddenDivReasons'; hideToggle(divToUnHide)">
+
+							<input type="button" class= "button" name="ucg-result" value ="Positive" onclick="buttonCheck(this.name, this.value); var divToHide='hiddenDivReasons'; hideToggle(divToUnHide)">
+
+							<input type="button" class= "button" name="ucg-result" value ="Not Done" onclick="buttonCheck(this.name, this.value); var divToUnHide='hiddenDivReasons'; unHide(divToUnHide)">
+							
+							<input type="hidden" id="ucg-result" value="">  <!-- hidden (form) value -->
+						
+
+					<!-- Reasons questions only shown if UCG not done.  Default is hidden. -->
+						<div id="hiddenDivReasons" class="hideDIV">
+							
+							Reason:		
+								<select name="reason-not-preg">	
+								  <option value="default-reason"> -- Select Reason -- </option>	
+								  <option value="post-menopausal">Post-menopausal</option>
+								  <option value="hysterectomy">Hysterectomy</option>
+								  <option value="pill">The Pill</option>
+								  <option value="IUD">IUD</option>
+								  <option value="depo">Depo</option>
+								  <option value="norplant">Norplant</option>
+								  <option value="abstinence">Abstinence</option>
+								  <option value="recent-period">Recent period at expected / regular time</option>
+								  <option value="none">None of the above</option>
+								</select> 
+						</div>
+
+					</div> 
+					<br>
+
+
+
+				Previous IV contrast:
+			      	<input type="button" class="button" name="previosIVcontrast" value ="Yes" onclick="buttonCheck(this.name, this.value)"><input type="button" class= "button" name="previosIVcontrast" value ="No" onclick="buttonCheck(this.name, this.value)">
+					<input type="button" class= "button" name="previosIVcontrast" value ="Not Sure" onclick="buttonCheck(this.name, this.value)">
+					
+					<input type="hidden" id="previosIVcontrast" value="">  <!-- hidden (form) value -->
+					
+
+				
+				IV contrast Allergy:
+					<input type="button" class= "button" name="contrast-allergy" value ="Yes" onclick="var divToUnHide ='hiddenDivAllergy'; unHide(divToUnHide); buttonCheck(this.name, this.value)">
+					<input type="button" class= "button" name="contrast-allergy" value ="No" onclick="var divToHide ='hiddenDivAllergy'; hideToggle(divToHide); buttonCheck(this.name, this.value)">
+					
+					<input type="hidden" id="contrast-allergy" value="">  <!-- hidden (form) value -->
+					<br>
+					<div id="hiddenDivAllergy" class="hideDIV">
+						This is hidden when button not pressed
+					</div>
+
+				<br>	
+				Indication: <input type="text" name="hx">
+				<br>
+				Prior Studies: <input type="text" name="prior-imaging">
+				<br>
+
+
+				Ordering clinician: <input type="text" name="refering-doc" onchange="doctor(this.value)">       
+				
+				<span class="needsIndent"></span> 
+
+				Service:  
+					<select name="service">		
+					  <option value="default-service"> -- Select Specialty -- </option>	
+					  <option value="Surgery">General Surgery</option>
+					  <option value="FP">Family Practice</option>
+					  <option value="Ortho">Orthopedics</option>
+					  <option value="Neuro-surgery">Neurosurgery</option>
+					  <option value="Neuro">Neurology</option>
+					  <option value="Urology">Urology</option>
+					</select>
+				<br>
+				<br>
+
+
+				<strong> 
+				Exam Ordered: </strong>
+				<br>
+				<span class="needsIndent"></span> 
+				Modality:
+			      	<input type="button" class="button" name="order-modality" value ="CT" onclick="buttonCheck(this.name, this.value)">
+			      	<input type="button" class= "button" name="order-modality" value ="MRI" onclick="buttonCheck(this.name, this.value)">
+			      	<input type="hidden" id="order-modality" value="">  <!-- hidden (form) value -->
+
+		      	
+				<!-- <span style="margin-left: 123px"> -->
+				
+				<span class="needsIndent"></span> 
+				IV Contrast:
+
+					<input type="button" class= "button" name="ordered-IV-contrast" value ="Angiogram" onclick="buttonCheckMulti(this.name, this.value)">
+
+			      	<input type="button" class="button" name="ordered-IV-contrast" value ="With" onclick="buttonCheckMulti(this.name, this.value)">
+
+			      	<input type="button" class= "button" name="ordered-IV-contrast" value ="Without" onclick="buttonCheckMulti(this.name, this.value)">
+					
+					<input type="button" class= "button" name="ordered-IV-contrast" value ="Other" onclick="var divToUnHide ='hiddenOrderedOther'; unHideMulti(divToUnHide); buttonCheckMulti(this.name, this.value)">
+
+
+					<br>
+					<input type="hidden" size="100" id="ordered-IV-contrast" value="">  <!-- hidden (form) value -->
+
+<!-- Needs to add code for other order -->
+
+					<div id="hiddenOrderedOther" class="hideDIV">
+						This is hidden when button not pressed
+					</div>
+				
+				<span class="needsIndent"></span> 
+				Body part:
+					<select name="order-bodyPart" onchange="var oralUnHide='hiddenOrderedOral'; checkOral(oralUnHide)">		
+						  <option value="default-bodyPart"> -- Select Exam Area -- </option>	
+						  <option value="Chest">Chest</option>
+						  <option value="Abdomen">Abdomen</option>
+						  <option value="Abdomen and Pelvis">Abdomen and Pelvis</option>
+						  <option value="Chest, Abdomen and Pelvis">Chest, Abdomen and Pelvis</option>
+						  <option value="Upper Extremity">Upper Extremity</option>
+						  <option value="Lower Extremity">Lower Extremity</option>
+						  <option value="Head">Head</option>
+						  <option value="Face">Face</option>
+						  <option value="Neck">Neck</option>
+						  <option value="Orbits">Orbits</option>
+						  <option value="IAC">IAC</option>
+						  <option value="Other">Other</option>
+					</select>
+				
+				
+
+				<span id="hiddenOrderedOral" class="hideDIV" style="margin-left: 247px;"> 
+										
+						Oral Contrast:
+							<input type="button" class="button" name="order-oral" value ="Yes" onclick="buttonCheck(this.name, this.value)">
+							<input type="button" class= "button" name="order-oral" value ="No" onclick="buttonCheck(this.name, this.value)">
+												
+							<input type="hidden" id="order-oral" value="">  <!-- hidden (form) value -->
+				</span>
+			
+
+
+				<br>
+				<br>
+
+
+
+
+
+<!--  Here is the new stuff to fix -->
+
+				
+						
+					
+				<strong> Exam Suggested: </strong>
+
+				
+
+				<input type="checkbox" id="same-exam-check" name="same-result" value="true" checked onchange="var suggestedUnhide='hiddenSuggestedStuff'; sameCheck(suggestedUnhide)"> Same 
+
+				<div id="hiddenSuggestedStuff" class="hideDIV"> 
+					
+					
+					<span class="needsIndent"></span> 
+
+					Modality:
+				      	<input type="button" class="button" name="order-modality" value ="CT" onclick="buttonCheck(this.name, this.value)">
+				      	<input type="button" class= "button" name="order-modality" value ="MRI" onclick="buttonCheck(this.name, this.value)">
+				      	<input type="hidden" id="order-modality" value="">  <!-- hidden (form) value -->
+
+			      	
+					<!-- <span style="margin-left: 123px"> -->
+					
+					<span class="needsIndent"></span> 
+					IV Contrast:
+
+						<input type="button" class= "button" name="ordered-IV-contrast" value ="Angiogram" onclick="buttonCheckMulti(this.name, this.value)">
+
+				      	<input type="button" class="button" name="ordered-IV-contrast" value ="With" onclick="buttonCheckMulti(this.name, this.value)">
+
+				      	<input type="button" class= "button" name="ordered-IV-contrast" value ="Without" onclick="buttonCheckMulti(this.name, this.value)">
+						
+						<input type="button" class= "button" name="ordered-IV-contrast" value ="Other" onclick="var divToUnHide ='hiddenOrderedOther'; unHideMulti(divToUnHide); buttonCheckMulti(this.name, this.value)">
+
+
+						<br>
+						<input type="hidden" size="100" id="ordered-IV-contrast" value="">  <!-- hidden (form) value -->
+
+
+						<div id="hiddenOrderedOther" class="hideDIV">
+							This is hidden when button not pressed
+						</div>
+					
+					
+					
+					<span class="needsIndent"></span> 
+					Body part:
+						<select name="order-bodyPart" onchange="var oralUnHide='hiddenOrderedOral'; checkOral(oralUnHide)">		
+							  <option value="default-bodyPart"> -- Select Exam Area -- </option>	
+							  <option value="Chest">Chest</option>
+							  <option value="Abdomen">Abdomen</option>
+							  <option value="Abdomen and Pelvis">Abdomen and Pelvis</option>
+							  <option value="Chest, Abdomen and Pelvis">Chest, Abdomen and Pelvis</option>
+							  <option value="Upper Extremity">Upper Extremity</option>
+							  <option value="Lower Extremity">Lower Extremity</option>
+							  <option value="Head">Head</option>
+							  <option value="Face">Face</option>
+							  <option value="Neck">Neck</option>
+							  <option value="Orbits">Orbits</option>
+							  <option value="IAC">IAC</option>
+							  <option value="Other">Other</option>
+						</select>
+					
+					
+
+					<span id="hiddenOrderedOral" class="hideDIV" style="margin-left: 247px;"> 
+											
+							Oral Contrast:
+								<input type="button" class="button" name="order-oral" value ="Yes" onclick="buttonCheck(this.name, this.value)">
+								<input type="button" class= "button" name="order-oral" value ="No" onclick="buttonCheck(this.name, this.value)">
+													
+								<input type="hidden" id="order-oral" value="">  <!-- hidden (form) value -->
+					</span>
+				
+				</div>  <!-- closes the hidden div suggested -->
+	
+
+				<br>
+				<br> 
+				Date of eGFR: <input type="date" name="DateGFR">   
+				<span class="needsIndent"></span> 
+				eGFR: >60 <input type="checkbox" id="eGFR-check" name="eGFR" value="sixty-checked" checked onclick="JSshowOlderGFR()">
+				
+				<input type="number" name="currentGFR">
+
+	<!-- Questions about older GFR will not show unless GFR<60 -->
+
+				<div id="showOlderGFR" style="display:none">
+					<br>
+					Date:  <input type="date" name="DateOlderGFR">
+					<span class="needsIndent"></span> 
+					Older GFR:  <input type="number" name="OlderGFR">
+				</div>
+
+				<br><br>
+				IV Contrast type:  
+					<select name="IVcontrastType">		
+					  	<option value="Omnipaque350">Omnipaque 350</option>
+					  	<option value="Visipaque320">Visipaque 320</option>
+					  	<option value="MultiHance">MultiHance</option>
+					</select>
+				
+				<span class="needsIndent"></span> 
+
+				Volume:   <input type="number" name="contrastVolume">
+
+				<br><br>
+				Other Comments:  <input type="text" name="comments" size="100">
+
+			  <br>
+			  <br>
+		
+	  			<input type="submit" value="Submit">
+
+
+
+
+
+
+<!-- ABOVE Here is the new stuff to fix -->
+
+
+
+
+
+
+
+
+
+
+
+	<!--
+
+
+	-->
+			</form>
+
+		</section>
+
+    </body>
+
+</html>
