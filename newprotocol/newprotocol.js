@@ -70,8 +70,8 @@ function buttonCheckMulti(btnName, btnValue) {
 }
 
 
-function checkOral(selectionToUnHide) {
-	var oral = document.getElementsByName("order-bodyPart")[0].value; // need to make this work for "suggested also"
+function checkOral(name, selectionToUnHide) {
+	var oral = document.getElementsByName(name)[0].value; // "order-bodyPart"
 
 	if(oral==="Chest, Abdomen and Pelvis" || oral==="Abdomen and Pelvis" || oral==="Abdomen"){
 		unHide(selectionToUnHide);
@@ -93,9 +93,9 @@ function ageCalc(dateOfBirth, hiddenWtId){
 } 
 
 function doctor(doc){
-	// https://www.baptistfirst.org/find-a-doctor/provider-search-results?ProviderText=daniel&&LocationDescendants=true
+
 	var url = "https://www.baptistfirst.org/find-a-doctor/provider-search-results?ProviderText="+ doc + "&&LocationDescendants=true";
-	window.open(url, "_blank", "scrollbars=yes,resizable=yes,top=300,left=500,width=560,height=700");	
+	window.open(url, "_blank", "scrollbars=yes,resizable=yes,top=300,left=800,width=400,height=600");	
 }
 
 function sameCheck(hiddenDIV){

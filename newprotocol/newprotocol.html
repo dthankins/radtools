@@ -116,7 +116,7 @@
 				<br>
 
 
-				Ordering clinician: <input type="text" name="refering-doc" onchange="doctor(this.value)">       
+				Ordering clinician (click "tab" after entering name): <input type="text" name="refering-doc" onchange="doctor(this.value)">       
 				
 				<span class="needsIndent"></span> 
 
@@ -169,7 +169,7 @@
 				
 				<span class="needsIndent"></span> 
 				Body part:
-					<select name="order-bodyPart" onchange="var oralUnHide='hiddenOrderedOral'; checkOral(oralUnHide)">		
+					<select name="order-bodyPart" onchange="var oralUnHide='hiddenOrderedOral'; checkOral(this.name, oralUnHide)">		
 						  <option value="default-bodyPart"> -- Select Exam Area -- </option>	
 						  <option value="Chest">Chest</option>
 						  <option value="Abdomen">Abdomen</option>
@@ -253,7 +253,7 @@
 					
 					<span class="needsIndent"></span> 
 					Body part:
-						<select name="order-bodyPart" onchange="var oralUnHide='hiddenOrderedOral'; checkOral(oralUnHide)">		
+						<select name="suggested-bodyPart" onchange="var oralUnHide='hiddenSuggestedOral'; checkOral(this.name, oralUnHide)">		
 							  <option value="default-bodyPart"> -- Select Exam Area -- </option>	
 							  <option value="Chest">Chest</option>
 							  <option value="Abdomen">Abdomen</option>
@@ -271,7 +271,7 @@
 					
 					
 
-					<span id="hiddenOrderedOral" class="hideDIV" style="margin-left: 247px;"> 
+					<span id="hiddenSuggestedOral" class="hideDIV" style="margin-left: 247px;"> 
 											
 							Oral Contrast:
 								<input type="button" class="button" name="order-oral" value ="Yes" onclick="buttonCheck(this.name, this.value)">
