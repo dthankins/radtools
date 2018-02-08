@@ -31,9 +31,6 @@
 				MRN: 				<input type="text" name="mrn">
 				<br>
 
-	<!-- Need to Make it calculate age from dob  -->
-
-	<!-- It is not getting the multiple selects for contrast type ordered and suggested -->
 
 				Date of Birth: <input type="date" name="DOB" onchange="var dateToSend=this.value; var sendWt = 'hiddenWt'; ageCalc(dateToSend, sendWt)">  
 				
@@ -287,18 +284,24 @@
 				<br> 
 				Date of eGFR: <input type="date" name="DateGFR">   
 				<span class="needsIndent"></span> 
-				eGFR: >60 <input type="checkbox" id="eGFR-check" name="eGFR" value="sixty-checked" checked onclick="JSshowOlderGFR()">
+				eGFR: >60 <input type="checkbox" id="eGFR-check" name="eGFR" value="sixty-checked" checked onchange="var gfrCheck = 'showOlderGFR'; sameCheck(gfrCheck)">
 				
-				<input type="number" name="currentGFR">
+				
 
-	<!-- Questions about older GFR will not show unless GFR<60 -->
+	<!-- Questions about older GFR will not show unless GFR<60 
 
-				<div id="showOlderGFR" style="display:none">
+
+
+	-->
+
+				<span id="showOlderGFR" class="hideDIV">
+
+					<input type="number" name="currentGFR" style="width: 50px; text-align: center;" >
 					<br>
 					Date:  <input type="date" name="DateOlderGFR">
 					<span class="needsIndent"></span> 
-					Older GFR:  <input type="number" name="OlderGFR">
-				</div>
+					Older GFR:  <input type="number" name="OlderGFR" style="width: 50px; text-align: center;"  >
+				</span>
 
 				<br><br>
 				IV Contrast type:  
@@ -310,7 +313,7 @@
 				
 				<span class="needsIndent"></span> 
 
-				Volume:   <input type="number" name="contrastVolume">
+				Volume:   <input type="number" name="contrastVolume" style="width: 50px; text-align: center;">
 
 				<br><br>
 				Other Comments:  <input type="text" name="comments" size="100">
@@ -338,6 +341,17 @@
 
 
 	<!--
+To Do
+
+1.  Pre-load suggested based on the ordered.
+2.  preload the type of IV contrast and the volume
+3. Add comments about the allergy and if CT or MR
+4. Line stuff up
+5. check all ID's and make form sbmit again
+6. work on radList
+7. radDetails page
+8. add id for form "show"
+9. add tech print page
 
 
 	-->
