@@ -6,6 +6,10 @@ body {
     background-color: lightgray;
 }
 
+input[type=date] {
+    -webkit-inner-spin-button;
+}
+
 .button {
     appearance: none;
     -webkit-appearance: none;   /*      Removes default chrome and safari style */
