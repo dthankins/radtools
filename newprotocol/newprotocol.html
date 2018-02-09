@@ -13,34 +13,52 @@
       	<h1>Protocol Form: </h1>
 
 <!-- I need to change all the names to id on the part of the form that pushes and recieves data -->
-		<section>
+
 
 			<form id="protocolForm" method="post">
 
+			<table>
+
+				<!--
+
+				<tr>
+					<td class="one"> User Name:</td>  	<td class="two"> <input type="text" name="username"> </td> <td class="three"> </td>
+				</tr>
+				<tr>	
+					<td class="one">Password:</td>		<td class="two"> <input type="password" name="pswd"></td> 	<td class="three"> </td>
+				</tr>
 				
-				User Name:  		<input type="text" name="username">
-				<br>
+				-->
 				
-				Password:			<input type="password" name="pswd">
-				<br>
-				<br>	
-				
-				Patient Name: 		<input type="text" name="pt-name">
-				<br>
+				<tr>
+					<td class="one">Patient Name: <span style="margin-left:26px">Last: </span> </td>	
+					<td class="two"> 		<input type="text" name="lastName" style="width: 9em"></td> 	
+					<td class="three">First: 	<input type="text" name="firstName" size="15"></td>
+					<td class="four"> </td> 		
+
+				</tr>
 			
-				MRN: 				<input type="text" name="mrn">
-				<br>
+				<tr>
+					<td class="one" style="text-align: right"> MRN:</td>		
+					<td class="two"><input type="number" name="mrn" style="width: 9em">	</td>
+				</tr>
 
+				<tr>
+					<td class="one" style="text-align: right"> Date of Birth: </td>	
 
-				Date of Birth: <input type="date" name="DOB" onchange="var dateToSend=this.value; var sendWt = 'hiddenWt'; ageCalc(dateToSend, sendWt)">  
-				
-				Age: <input type="text" name="age" size="5" style="text-align: center">
-				<br>
-				
-				<div id="hiddenWt" class="hideDIV">
-					Weight: <input type="text" name="wt">
-				</div>
+					<td class="two"> <input type="date" name="DOB" style="width: 9em" onchange="var dateToSend=this.value; var sendWt = 'hiddenWt'; ageCalc(dateToSend, sendWt)">  
+					</td>
+					<td class="three">
+						Age: <input type="text" name="age" size="1" style="text-align: center">
+										
+						<span id="hiddenWt" class="hideDIV" style="margin-left:4px">
+						Weight: <input type="text" name="wt" size="1" style="background-color: red; text-align: center;" onchange="this.style.backgroundColor = 'white';">
+						</span>
+					</td>
+					<td class="four"> </td>
+				</tr>
 
+			</table>
 	      	
 		  		Gender:		<!-- below are the two functions to hide and show relevent info  -->
 						      	 
@@ -84,7 +102,7 @@
 						</div>
 
 					</div> 
-					<br>
+				
 
 
 
@@ -94,7 +112,6 @@
 					
 					<input type="hidden" id="previosIVcontrast" value="">  <!-- hidden (form) value -->
 					
-
 				
 				IV contrast Allergy:
 					<input type="button" class= "button" name="contrast-allergy" value ="Yes" onclick="var divToUnHide ='hiddenDivAllergy'; unHide(divToUnHide); buttonCheck(this.name, this.value)">
@@ -103,7 +120,9 @@
 					<input type="hidden" id="contrast-allergy" value="">  <!-- hidden (form) value -->
 					<br>
 					<div id="hiddenDivAllergy" class="hideDIV">
-						This is hidden when button not pressed
+						This is hidden when button not pressed.
+						<br>
+						Will need to ask if allergy was to CT or MRI contrast and what happened
 					</div>
 
 				<br>	
@@ -184,7 +203,7 @@
 				
 				
 
-				<span id="hiddenOrderedOral" class="hideDIV" style="margin-left: 247px;"> 
+				<span id="hiddenOrderedOral" class="hideDIV" style="margin-left: 59px;"> 
 										
 						Oral Contrast:
 							<input type="button" class="button" name="order-oral" value ="Yes" onclick="buttonCheck(this.name, this.value)">
@@ -215,13 +234,14 @@
 
 				<div id="hiddenSuggestedStuff" class="hideDIV"> 
 					
-					
+<!--  Need to auto-populate suggested initial values based on ordered exam-->
+
 					<span class="needsIndent"></span> 
 
 					Modality:
-				      	<input type="button" class="button" name="order-modality" value ="CT" onclick="buttonCheck(this.name, this.value)">
-				      	<input type="button" class= "button" name="order-modality" value ="MRI" onclick="buttonCheck(this.name, this.value)">
-				      	<input type="hidden" id="order-modality" value="">  <!-- hidden (form) value -->
+				      	<input type="button" class="button" name="suggested-modality" value ="CT" onclick="buttonCheck(this.name, this.value)">
+				      	<input type="button" class= "button" name="suggested-modality" value ="MRI" onclick="buttonCheck(this.name, this.value)">
+				      	<input type="hidden" id="suggested-modality" value="">  <!-- hidden (form) value -->
 
 			      	
 					<!-- <span style="margin-left: 123px"> -->
@@ -229,20 +249,20 @@
 					<span class="needsIndent"></span> 
 					IV Contrast:
 
-						<input type="button" class= "button" name="ordered-IV-contrast" value ="Angiogram" onclick="buttonCheckMulti(this.name, this.value)">
+						<input type="button" class= "button" name="suggested-IV-contrast" value ="Angiogram" onclick="buttonCheckMulti(this.name, this.value)">
 
-				      	<input type="button" class="button" name="ordered-IV-contrast" value ="With" onclick="buttonCheckMulti(this.name, this.value)">
+				      	<input type="button" class="button" name="suggested-IV-contrast" value ="With" onclick="buttonCheckMulti(this.name, this.value)">
 
-				      	<input type="button" class= "button" name="ordered-IV-contrast" value ="Without" onclick="buttonCheckMulti(this.name, this.value)">
+				      	<input type="button" class= "button" name="suggested-IV-contrast" value ="Without" onclick="buttonCheckMulti(this.name, this.value)">
 						
-						<input type="button" class= "button" name="ordered-IV-contrast" value ="Other" onclick="var divToUnHide ='hiddenOrderedOther'; unHideMulti(divToUnHide); buttonCheckMulti(this.name, this.value)">
+						<input type="button" class= "button" name="suggested-IV-contrast" value ="Other" onclick="var divToUnHide ='hiddenSuggestedOther'; unHideMulti(divToUnHide); buttonCheckMulti(this.name, this.value)">
 
 
 						<br>
-						<input type="hidden" size="100" id="ordered-IV-contrast" value="">  <!-- hidden (form) value -->
+						<input type="hidden" size="100" id="suggested-IV-contrast" value="">  <!-- hidden (form) value -->
 
 
-						<div id="hiddenOrderedOther" class="hideDIV">
+						<div id="hiddenSuggestedOther" class="hideDIV">
 							This is hidden when button not pressed
 						</div>
 					
@@ -268,13 +288,13 @@
 					
 					
 
-					<span id="hiddenSuggestedOral" class="hideDIV" style="margin-left: 247px;"> 
+					<span id="hiddenSuggestedOral" class="hideDIV" style="margin-left: 59px;"> 
 											
 							Oral Contrast:
-								<input type="button" class="button" name="order-oral" value ="Yes" onclick="buttonCheck(this.name, this.value)">
-								<input type="button" class= "button" name="order-oral" value ="No" onclick="buttonCheck(this.name, this.value)">
+								<input type="button" class="button" name="suggested-oral" value ="Yes" onclick="buttonCheck(this.name, this.value)">
+								<input type="button" class= "button" name="suggested-oral" value ="No" onclick="buttonCheck(this.name, this.value)">
 													
-								<input type="hidden" id="order-oral" value="">  <!-- hidden (form) value -->
+								<input type="hidden" id="suggested-oral" value="">  <!-- hidden (form) value -->
 					</span>
 				
 				</div>  <!-- closes the hidden div suggested -->
@@ -357,7 +377,7 @@ To Do
 	-->
 			</form>
 
-		</section>
+		
 
     </body>
 
