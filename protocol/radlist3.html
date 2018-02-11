@@ -246,17 +246,19 @@
 
 		                orderedExam = 	protocol.order_modality + " " + 
 										protocol.order_bodyPart + " " +
-										protocol.order_IV_contrast;
+										protocol.order_IV_contrast +" " +
+										protocol.order_otherContrast_details;
 		                content += '<td>' + orderedExam + '</td>';
 
 		                
 
-		                if(protocol.suggested_modality===protocol.order_modality && protocol.suggested_bodyPart===protocol.order_bodyPart && protocol.order_IV_contrast===protocol.suggested_IV_contrast){
+		                if(protocol.suggested_modality===protocol.order_modality && protocol.suggested_bodyPart===protocol.order_bodyPart && protocol.order_IV_contrast===protocol.suggested_IV_contrast && protocol.suggestedOther===protocol.order_otherContrast_details){
 	                		examSuggested = "Same";
 		                } else {
 		                	examSuggested = 	protocol.suggested_modality + " " + 
 										protocol.suggested_bodyPart + " " +
-										protocol.suggested_IV_contrast;
+										protocol.suggested_IV_contrast + " " +
+										protocol.suggestedOther;
 		                }
 		                
 		                content += '<td>' + examSuggested + '</td>';
