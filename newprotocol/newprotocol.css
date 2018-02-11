@@ -117,7 +117,7 @@ input[type=number] {
     cursor: pointer;
 }
 
-/* Create a custom checkbox */
+/* Create a custom checkbox  */
 .checkmark {
     position: absolute;
     top: 0;
@@ -132,9 +132,9 @@ input[type=number] {
     background-color: darkgray;
 }
 
-/* When the checkbox is checked, add a blue background */
+/* When the checkbox is checked, add a blue background #2196F3 */
 .container input:checked ~ .checkmark {
-    background-color: #2196F3;
+    background-color: blue;
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
