@@ -174,8 +174,8 @@
 
 
 				Modality:
-			      	<input type="button" class="button" name="order-modality" value ="CT" onclick="buttonCheck(this.name, this.value); buttonCheck(document.getElementsByName('suggested-modality')[0].name, document.getElementsByName('suggested-modality')[0].value); checkOral(); updateContrastInfo(document.getElementById('order-modality').value)">
-			      	<input type="button" class="button" name="order-modality" value ="MRI" onclick="buttonCheck(this.name, this.value); buttonCheck(document.getElementsByName('suggested-modality')[1].name, document.getElementsByName('suggested-modality')[1].value); checkOral(); updateContrastInfo(document.getElementById('order-modality').value)">
+			      	<input type="button" class="button" name="order-modality" value ="CT" onclick="buttonCheck(this.name, this.value); buttonCheck(document.getElementsByName('suggested-modality')[0].name, document.getElementsByName('suggested-modality')[0].value); checkOral()">
+			      	<input type="button" class="button" name="order-modality" value ="MRI" onclick="buttonCheck(this.name, this.value); buttonCheck(document.getElementsByName('suggested-modality')[1].name, document.getElementsByName('suggested-modality')[1].value); checkOral()">
 			      	  			      	
 			      	<input type="hidden" id="order-modality" value="">  <!-- hidden (form) value -->
 
@@ -207,7 +207,7 @@
 
 
 				Body part:
-					<select name="order-bodyPart" style="width: 205px" onchange="checkOral(); updateContrastInfo(document.getElementById('order-modality').value, this.value)">		
+					<select name="order-bodyPart" style="width: 205px" onchange="checkOral()">		
 						  <option value="default-bodyPart"> -- Select Exam Area -- </option>	
 						  <option value="Chest">Chest</option>
 						  <option value="Abdomen">Abdomen</option>
@@ -291,9 +291,9 @@
 					<span class="needsIndent"></span> 
 
 					Modality:
-				      	<input type="button" class="button" name="suggested-modality" value ="CT" onclick="buttonCheck(this.name, this.value);checkOralSuggested(); updateContrastInfo(document.getElementById('suggested-modality').value)">
+				      	<input type="button" class="button" name="suggested-modality" value ="CT" onclick="buttonCheck(this.name, this.value);checkOralSuggested()">
 
-				      	<input type="button" class="button" name="suggested-modality" value ="MRI" onclick="buttonCheck(this.name, this.value);checkOralSuggested(); updateContrastInfo(document.getElementById('suggested-modality').value)">
+				      	<input type="button" class="button" name="suggested-modality" value ="MRI" onclick="buttonCheck(this.name, this.value);checkOralSuggested()">
 
 				      	
 
@@ -326,7 +326,7 @@
 					
 					<span class="needsIndent"></span> 
 					Body part:
-						<select name="suggested-bodyPart" style="width: 205px" onchange="checkOralSuggested(); updateContrastInfo(document.getElementById('suggested-modality').value, getElementsByName(suggestedBodyPart)[0].value)">		
+						<select name="suggested-bodyPart" style="width: 205px" onchange="checkOralSuggested()">		
 							  <option value="default-bodyPart"> -- Select Exam Area -- </option>	
 							  <option value="Chest">Chest</option>
 							  <option value="Abdomen">Abdomen</option>
@@ -342,37 +342,6 @@
 							  <option value="Other">Other</option>
 						</select>
 <!-- 
-
-id="same-exam-check" 
-name="suggested-modality"
-
-name="suggested-IV-contrast" 
-	name="suggested-IV-contrast" value ="Angiogram" 
-	name="suggested-IV-contrast" value ="With" 
-	name="suggested-IV-contrast" value ="Without" 
-	name="suggested-IV-contrast" value ="Other" 
-	
-<input type="hidden" size="100" id="suggested-IV-contrast" value="">  
-
-<select name="suggested-bodyPart" style="width: 205px" onchange="var oralUnHide='hiddenSuggestedOral'; checkOral(this.name, oralUnHide)">		
-	  <option value="default-bodyPart">  Select Exam Area  </option>	
-	  <option value="Chest">Chest</option>
-	  <option value="Abdomen">Abdomen</option>
-	  <option value="Abdomen and Pelvis">Abdomen and Pelvis</option>
-	  <option value="Chest, Abdomen and Pelvis">Chest, Abdomen and Pelvis</option>
-	  <option value="Upper Extremity">Upper Extremity</option>
-	  <option value="Lower Extremity">Lower Extremity</option>
-	  <option value="Head">Head</option>
-	  <option value="Face">Face</option>
-	  <option value="Neck">Neck</option>
-	  <option value="Orbits">Orbits</option>
-	  <option value="IAC">IAC</option>
-	  <option value="Other">Other</option>
-</select>
-
-"button" name="suggested-oral" value ="No" onclick="buttonCheck(this.name, this.value)">
-													
-Make sure it actually changes then hidden values
 
  -->						
 					
@@ -402,15 +371,17 @@ Make sure it actually changes then hidden values
 
 				<br><br>
 				IV Contrast type:  
-					<select name="IVcontrastType" style="margin-left: 6px">		
-					  	<option value="Omnipaque350">Omnipaque 350</option>
-					  	<option value="Visipaque320">Visipaque 320</option>
+					<select name="IVcontrastType" style="margin-left: 6px">	
+						<option value=""></option>	
+						<option value="None">None</option>	
+					  	<option value="Omnipaque 350">Omnipaque 350</option>
+					  	<option value="Visipaque 320">Visipaque 320</option>
 					  	<option value="MultiHance">MultiHance</option>
 					</select>
 				
 				<span class="needsIndent"></span> 
 
-				Volume:   <input type="number" name="contrastVolume" style="width: 25px; text-align: center;"> cc
+				Volume:   <input type="number" name="contrastVolume" placeholder="" style="width: 25px; text-align: center;"> cc
 
 				<br><br>
 				Other Comments:  <input type="text" name="comments" size="100" style="margin-left: 3px">
@@ -418,78 +389,17 @@ Make sure it actually changes then hidden values
 			  <br>
 			  <br>
 		
-	  			<input type="submit" value="Submit">
-
+<!--		
 	  			<input type="button" name="SendForm" Value="Send Form" class="button" onclick="submitNewProtocol()">
+
+	  			send will send it without clearing it 
+-->
+	  			<input type="submit" name="Submit Form" Value="Submit" class="button" onclick="submitNewProtocol()">
+
+	  			
 
 		</form>
 
 
-		<script>
-			$(window).load(function () {
-
-			// Find the HTML element with the id recommendationForm, and when the submit
-			// event is triggered on that element, call submitProtocolQuestion.
-			$("#protocolForm").submit(submitNewProtocol);
-
-			});
-		</script>
-			
-
-
     </body>
 </html>
-<!--
-
-Questions:
-
-How do I get the checked value?
-Why is the form not submitting
-how do I submit the form with Jquery
-
-
-To Do
-
-1.  "Same" : if unchecked after intially working hre, should then delete the work.
-2. Firebase Auth:  Jeremy
-3. Permissions:  Jeremy
-4. Better CSS look
-	- text input boxes bigger
-	- alignment on form
-	- maybe have items not yet addressed blue so you can spot the parts of the form not yet completed easily?
-5. Get and Push DOM elements
-6. Push in a way not seen in browser address bar
-7. Physician worklist page
-8. Tech print page
-9. Auto select physician service
-10. Maybe have JS choose a Rad Service
-11. Alert if contrast allergy :  "Patient should be premidicated and exam sone in the hospital."  Turn RED.
-12.  GFR < 40 turn RED, 40-50 YELLOW, >50 GREEN
-13. Do I need to ask about Metformin ?
-14. Wt: BMI for oral contrast?
-15. Maybe make oral contrast only come up if appropriate 
-16. figure out how to search doc name for specialty automatically
-17. I use similar code to hide area ...surely I can make one function rather than 5 different ones to do this
-18. Way to say no older GFR available
-19. Use DOB to get age.  Also can later use for verification when 2 patients have same MRN
-20. fix checkbox value issues as above
-21. dates cannot be in the future
-22. need NA option for GFR.  maybe even hide this if noncon exam
-23. It is not getting the multiple selects for contrast type ordered and suggested 
-
-Other Apps:  
-1. read pdf for hospital name and doc for electronic delivery and signature
-2. tirads
-3. pirads
-
-
-
-
-Notes:
-get is public in line
-post is more secure
-
-
-
-
--->
