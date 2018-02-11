@@ -112,11 +112,11 @@
 
 
 
-			ref.on("value", gotData);
+			ref.on("value", gotData);   				// got data is a function we just created
 
 
-			function gotData(data) {
-				var newProtocols = data.val();
+			function gotData(data) {   					// data is our variable not intrinsic
+				var newProtocols = data.val();			// .val is method to get data from data. 
 				var keys = Object.keys(newProtocols);
 
 			  // Grab the keys to iterate over the object
@@ -228,7 +228,7 @@
 //New table stuff
 				var content = '';
 				content +='<tr>';
-		                content += '<td>' + protocol.pt_name + '</td>';
+		                content += '<td>' + protocol.lastname + ", " + protocol.firstname + '</td>';
 		                content += '<td>' + protocol.mrn + '</td>';
 		                content += '<td>' + protocol.DOB + '</td>';
 
