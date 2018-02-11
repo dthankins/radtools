@@ -1,5 +1,5 @@
 // Initialize Firebase
-  var config = {
+var config = {
     apiKey: "AIzaSyCpaVltd-dUeV9RP4SgV7rX-5VKRstRcnI",
     authDomain: "newprotocolproject.firebaseapp.com",
     databaseURL: "https://newprotocolproject.firebaseio.com",
@@ -11,7 +11,7 @@
 
   
   //test to see it is working
- // console.log(firebase);
+console.log(firebase);
 
 
 // Reference to the protocols object in your Firebase database
@@ -43,7 +43,7 @@ var submitNewProtocol = function () {
 
 	var js_order_modality = document.getElementById("order-modality").value;
 	var js_order_bodyPart = document.getElementsByName("order-bodyPart")[0].value;
-	var js_order_IV_contrast = document.getElementById("order-IV-contrast").value;
+	var js_order_IV_contrast = document.getElementById("ordered-IV-contrast").value;
 	var js_order_oral = document.getElementById("order-oral").value;
 	var js_order_otherContrast_details = document.getElementsByName("orderOther")[0].value;
 
@@ -61,78 +61,81 @@ var submitNewProtocol = function () {
 	var js_suggested_bodyPart = document.getElementsByName("suggested-bodyPart")[0].value;
 	var js_suggested_IV_contrast = document.getElementById("suggested-IV-contrast").value;
 	var js_suggested_oral = document.getElementById("suggested-oral").value;
-	var js_suggested_otherContrast_details = document.getElementsByName("suggestedOther")[0].value;
+	var js_suggestedOther = document.getElementsByName("suggestedOther")[0].value;
 
 	var js_IVcontrastType = document.getElementsByName("IVcontrastType")[0].value;
 	var js_contrastVolume = document.getElementsByName("contrastVolume")[0].value;
 	var js_comments = document.getElementsByName("comments")[0].value;
 
 // Push a new protocol to the database using those values
-  newProtocols.push({
+	  newProtocols.push({
 
-	"lastname": js_lastname, 
-	"firstname": js_firstname, 
-	"mrn": js_mrn,
-	"DOB": js_DOB,
-	"age": js_age,
-	"wt": js_wt,
-	"gender": js_gender,
-	"ucg_result": js_ucg_result,
-	"reason_not_preg": js_reason_not_preg,
-	"prev_contrast": js_prev_contrast,
-	"contrast_allergy": js_contrast_allergy,
-	"contrast_allergy_symptoms": js_contrast_allergy_symptoms,
-	"allergy_modality": js_allergy_modality,
-	"hx": js_hx,
-	"prior_imaging": js_prior_imaging,
-	"refering_doc": js_refering_doc,
-	"service": js_service,
-	"order_modality": js_order_modality,
-	"order_bodyPart": js_order_bodyPart,
-	"order_IV_contrast": js_order_IV_contrast,
-	"order_otherContrast_details": js_order_otherContrast_details,
-	"order_oral": js_order_oral,
-	"same_result": js_same_result,
-	"suggested_modality": js_suggested_modality,
-	"suggested_bodyPart": js_suggested_bodyPart,
-	"suggested_IV_contrast": js_suggested_IV_contrast,
-	"suggested_otherContrast_details2": js_suggested_otherContrast_details2,
-	"suggested_oral": js_suggested_oral,
-	"eGFR_check": js_eGFR,
-	"DateGFR": js_DateGFR,
-	"currentGFR": js_currentGFR,
-	"OlderGFR": js_OlderGFR,
-	"DateOlderGFR": js_DateOlderGFR,
-	"IVcontrastType": js_IVcontrastType,
-	"contrastVolume": js_contrastVolume,
-	"comments": js_comments
+		"lastname": js_lastname, 
+		"firstname": js_firstname, 
+		"mrn": js_mrn,
+		"DOB": js_DOB,
+		"age": js_age,
+		"wt": js_wt,
+		"gender": js_gender,
+		"ucg_result": js_ucg_result,
+		"reason_not_preg": js_reason_not_preg,
+		"prev_contrast": js_prev_contrast,
+		"contrast_allergy": js_contrast_allergy,
+		"contrast_allergy_symptoms": js_contrast_allergy_symptoms,
+		"allergy_modality": js_allergy_modality,
+		"hx": js_hx,
+		"prior_imaging": js_prior_imaging,
+		"refering_doc": js_refering_doc,
+		"service": js_service,
+		"order_modality": js_order_modality,
+		"order_bodyPart": js_order_bodyPart,
+		"order_IV_contrast": js_order_IV_contrast,
+		"order_otherContrast_details": js_order_otherContrast_details,
+		"order_oral": js_order_oral,
+		"same_result": js_same_result,
+		"suggested_modality": js_suggested_modality,
+		"suggested_bodyPart": js_suggested_bodyPart,
+		"suggested_IV_contrast": js_suggested_IV_contrast,
+		"suggestedOther": js_suggestedOther,
+		"suggested_oral": js_suggested_oral,
+		"eGFR_check": js_eGFR,
+		"DateGFR": js_DateGFR,
+		"currentGFR": js_currentGFR,
+		"OlderGFR": js_OlderGFR,
+		"DateOlderGFR": js_DateOlderGFR,
+		"IVcontrastType": js_IVcontrastType,
+		"contrastVolume": js_contrastVolume,
+		"comments": js_comments
 
-  });
-};
+	  });
+	};
 
-// When the window is fully loaded, call this function.
-// Note: because we are attaching an event listener to a particular HTML element
-// in this function, we can't do that until the HTML element in question has
-// been loaded. Otherwise, we're attaching our listener to nothing, and no code
-// will run when the submit button is clicked.
-$(window).load(function () {
+	// When the window is fully loaded, call this function.
+	// Note: because we are attaching an event listener to a particular HTML element
+	// in this function, we can't do that until the HTML element in question has
+	// been loaded. Otherwise, we're attaching our listener to nothing, and no code
+	// will run when the submit button is clicked.
 
-// Find the HTML element with the id recommendationForm, and when the submit
-// event is triggered on that element, call submitProtocolQuestion.
-$("#protocolForm").submit(submitNewProtocol);
-
-});
 
 
 
 // ref.push(data);  data is my variable
 // window.onload(); of <body onload="whateverJSfunction()">   might be the function for JS
+		
 
 
 
+// I too the submit part from here below  and put it on the HTML
+/*
+	$(window).load(function () {
 
+	// Find the HTML element with the id recommendationForm, and when the submit
+	// event is triggered on that element, call submitProtocolQuestion.
+	$("#protocolForm").submit(submitNewProtocol);
 
+	});
 
+*/
 
 
 
