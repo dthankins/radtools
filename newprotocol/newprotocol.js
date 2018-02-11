@@ -10,8 +10,8 @@ var config = {
   firebase.initializeApp(config);
 
   
-  //test to see it is working
-console.log(firebase);
+  //test to see it is working  it never acts like it is working   console.log(firebase);
+
 
 
 // Reference to the protocols object in your Firebase database
@@ -215,7 +215,30 @@ function buttonCheckMulti(btnName, btnValue) {
 	}
 	
 	document.getElementById(btnName).value = valueTotal;
+
+
+
+	updateContrastInfo();
+
+
+
+
+/*
+// this part is going to adjust the contrast type and volume to none if without checked but not with
+// actually this part will send it to eval the with part if without is pressed
+	var without = document.getElementsByName("suggested-IV-contrast")[2].className;  // 2 is the value of without
+	var IdToSend = "suggested-IV-contrast";
+
+	if (without==="buttonPressed"){
+		// var OrderedOrSuggested = document.getElementById ("suggested-IV-contrast"); // This is just in case i need to chck if ordered or suggested.  I think it will work without this discrimination because the suggested auto equals the ordered until it is changed.
+		checkContrastNone(IdToSend);
+	}
+*/
+	
 }
+
+
+
 
 
 function checkOral() {
@@ -304,18 +327,6 @@ function setSuggestedToOrdered(){
 }
 
 
-
-function updateContrastInfo(modality){	// take the ordered exam and give choices for indication and contrast type
-	
-	if(modality==="CT"){
-		document.getElementsByName("IVcontrastType")[0].value = "Omnipaque350";
-		document.getElementsByName("contrastVolume")[0].value = 100;
-	} else { // it must be an MRI
-		document.getElementsByName("IVcontrastType")[0].value ="MultiHance";
-		document.getElementsByName("contrastVolume")[0].value = 10;
-	}
-}
-
 function checkOrderOtherDetails(){
 	// var divToUnHide ='hiddenSuggestedOther'; unHideMulti(divToUnHide)
 	// <input type="text" name="orderOther" size="100" onchange="getElementsByName(suggestedOther)[0].value=this.value">
@@ -325,6 +336,76 @@ function checkOrderOtherDetails(){
 	 if(orderOtherDetails!=null){
 	 	document.getElementsByName("suggestedOther")[0].value = orderOtherDetails;
 	 }
+}
+
+
+function updateContrastInfo(){	// take the ordered exam and give choices for indication and contrast type
+
+// Need to have it check the value of the suggested-IV-Contrast to see is with is pushed
+	
 	
 
+	var OrderedModality = document.getElementById("order-modality").value;
+	var SuggestedModality = document.getElementById("suggested-modality").value;
+
+	if(typeof SuggestedModality !== "undefined"){
+		// do based on suggested
+		var modality=SuggestedModality;
+
+	} else {
+		// do based on ordered
+		var modality=OrderedModality;
+
+	}
+	
+	
+
+
+
+
+	if(modality==="CT"){
+		document.getElementsByName("IVcontrastType")[0].value = "Omnipaque 350";
+		document.getElementsByName("contrastVolume")[0].value = 100;
+	} else { // it must be an MRI
+		document.getElementsByName("IVcontrastType")[0].value ="MultiHance";
+		document.getElementsByName("contrastVolume")[0].value = 10;
+	}
+
+
+
+
+
+
+	var OrderedButtonClassName = document.getElementsByName("ordered-IV-contrast")[2].className;
+	var SuggestedButtonClassName = document.getElementsByName("suggested-IV-contrast")[2].className;
+
+	if(typeof SuggestedButtonClassName !== "undefined"){
+		// do based on suggested
+		checkContrastNone ("suggested-IV-contrast");
+		// console.log("suggested was defined.");
+
+	} else {
+		// do based on ordered
+		checkContrastNone ("ordered-IV-contrast");
+		// console.log("suggested was NOT defined.");
+
+	}
+
+}
+
+
+
+function checkContrastNone(nameOfSending){
+	
+	// I want to check if the "With" button is buttonPressed. If not, change contrast type and volume
+
+	var withPressed = document.getElementsByName(nameOfSending)[1].className;			// [1] is the array position for "With"
+
+	//console.log("checking contrast none function now");
+	//console.log(withPressed);
+
+	if (withPressed === "button"){
+		document.getElementsByName("IVcontrastType")[0].value ="None";
+		document.getElementsByName("contrastVolume")[0].value = "";
+	}
 }
