@@ -26,8 +26,8 @@
 
 				<tr>
 					<td class="one">Patient Name: <span style="margin-left:26px">Last: </span> </td>	
-					<td class="two"> 		<input type="text" name="lastName" style="width: 9em"></td> 	
-					<td class="three">First: 	<input type="text" name="firstName" size="15"></td>
+					<td class="two"> 		<input type="text" name="lastname" style="width: 9em"></td> 	
+					<td class="three">First: 	<input type="text" name="firstname" size="15"></td>
 					<td class="four"> </td> 		
 
 				</tr>
@@ -420,11 +420,76 @@ Make sure it actually changes then hidden values
 		
 	  			<input type="submit" value="Submit">
 
+	  			<input type="button" name="SendForm" Value="Send Form" class="button" onclick="submitNewProtocol()">
+
+		</form>
 
 
+		<script>
+			$(window).load(function () {
+
+			// Find the HTML element with the id recommendationForm, and when the submit
+			// event is triggered on that element, call submitProtocolQuestion.
+			$("#protocolForm").submit(submitNewProtocol);
+
+			});
+		</script>
+			
 
 
-
-			</form>
     </body>
 </html>
+<!--
+
+Questions:
+
+How do I get the checked value?
+Why is the form not submitting
+how do I submit the form with Jquery
+
+
+To Do
+
+1.  "Same" : if unchecked after intially working hre, should then delete the work.
+2. Firebase Auth:  Jeremy
+3. Permissions:  Jeremy
+4. Better CSS look
+	- text input boxes bigger
+	- alignment on form
+	- maybe have items not yet addressed blue so you can spot the parts of the form not yet completed easily?
+5. Get and Push DOM elements
+6. Push in a way not seen in browser address bar
+7. Physician worklist page
+8. Tech print page
+9. Auto select physician service
+10. Maybe have JS choose a Rad Service
+11. Alert if contrast allergy :  "Patient should be premidicated and exam sone in the hospital."  Turn RED.
+12.  GFR < 40 turn RED, 40-50 YELLOW, >50 GREEN
+13. Do I need to ask about Metformin ?
+14. Wt: BMI for oral contrast?
+15. Maybe make oral contrast only come up if appropriate 
+16. figure out how to search doc name for specialty automatically
+17. I use similar code to hide area ...surely I can make one function rather than 5 different ones to do this
+18. Way to say no older GFR available
+19. Use DOB to get age.  Also can later use for verification when 2 patients have same MRN
+20. fix checkbox value issues as above
+21. dates cannot be in the future
+22. need NA option for GFR.  maybe even hide this if noncon exam
+23. It is not getting the multiple selects for contrast type ordered and suggested 
+
+Other Apps:  
+1. read pdf for hospital name and doc for electronic delivery and signature
+2. tirads
+3. pirads
+
+
+
+
+Notes:
+get is public in line
+post is more secure
+
+
+
+
+-->
