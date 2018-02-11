@@ -232,7 +232,16 @@
 		                content += '<td>' + protocol.mrn + '</td>';
 		                content += '<td>' + protocol.DOB + '</td>';
 
-		                content += '<td>' + protocol.currentGFR + '</td>';
+
+
+	                	if(protocol.currentGFR < 1){
+	                		content += '<td>' + "NA or >60" + '</td>';
+	                	} else {
+	                		content += '<td>' + protocol.currentGFR + '</td>';
+	                	}
+		                
+
+
 		                content += '<td>' + protocol.hx + '</td>';
 
 		                orderedExam = 	protocol.order_modality + " " + 
@@ -241,10 +250,19 @@
 		                content += '<td>' + orderedExam + '</td>';
 
 		                
-		                orderedSuggested = 	protocol.suggested_modality + " " + 
+
+		                if(protocol.suggested_modality===protocol.order_modality && protocol.suggested_bodyPart===protocol.order_bodyPart && protocol.order_IV_contrast===protocol.suggested_IV_contrast){
+	                		examSuggested = "Same";
+		                } else {
+		                	examSuggested = 	protocol.suggested_modality + " " + 
 										protocol.suggested_bodyPart + " " +
 										protocol.suggested_IV_contrast;
-		                content += '<td>' + orderedSuggested + '</td>';
+		                }
+		                
+		                content += '<td>' + examSuggested + '</td>';
+
+
+
 
 
 
