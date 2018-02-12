@@ -297,6 +297,10 @@ function setSuggestedToOrdered(){
 	document.getElementsByName("suggested-IV-contrast")[0].value= document.getElementsByName("ordered-IV-contrast")[0].value
 	document.getElementsByName("suggested-bodyPart")[0].value= document.getElementsByName("order-bodyPart")[0].value
 	document.getElementsByName("suggested-oral")[0].value= document.getElementsByName("order-oral")[0].value
+	document.getElementsByName("suggestedOther")[0].value= document.getElementsByName("order_otherContrast_details")[0].value
+
+
+	// order_otherContrast_details suggetedOther
 
 /*
 	if (document.getElementsByName("order-modality")[0].className==="buttonPushed"){
@@ -331,9 +335,9 @@ function checkOrderOtherDetails(){
 	// var divToUnHide ='hiddenSuggestedOther'; unHideMulti(divToUnHide)
 	// <input type="text" name="orderOther" size="100" onchange="getElementsByName(suggestedOther)[0].value=this.value">
 
-	orderOtherDetails = document.getElementsByName("orderOther")[0].value;
-	console.log(orderOtherDetails);
-	 if(orderOtherDetails!=null){
+	orderOtherDetails = document.getElementsByName("orderOther")[0].value; // order_otherContrast_details
+	//console.log(orderOtherDetails);
+	 if(orderOtherDetails!=="undefined"){
 	 	document.getElementsByName("suggestedOther")[0].value = orderOtherDetails;
 	 }
 }
