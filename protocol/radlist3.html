@@ -48,7 +48,7 @@
           <tr>
 		    <th>Name</th>
 		    <th>MRN</th> 
-		    <th>DOB</th>
+		    <th>Age</th>
 
 	    	<th>GFR</th>
 	    	<th>Indication</th>
@@ -66,19 +66,19 @@
         <tbody>
           <tr id="tr">
             <!-- This is empty for now, but it will be filled out by an event handler in application.js with the most recent recommendation data from Firebase. -->
-            <td id="name" width="20%"></td>
-            <td id="mrn" width="10"></td>
-            <td id = "dob" width="10"> </td>
+            <td id="name" width="15%"></td>
+            <td id="mrn" width="5"></td>
+            <td id = "age" width="5"> </td>
 
-            <td id = "currentGFR" width="10"> </td>
-            <td id = "hx" width="10"> </td>
+            <td id = "currentGFR" width="5"> </td>
+            <td id = "hx" width="15"> </td>
 
-            <td id = "dob" width="10"> </td>
-            <td id = "dob" width="10"> </td>
-            <td id = "dob" width="10"> </td>
-            <td id = "dob" width="10"> </td>
+            <td id = "examOrdered" width="20%"> </td>
+            <td id = "examSuggested" width="20%"> </td>
+            <td id = "contrast" width="10"> </td>
+            <td id = "volume" width="5"> </td>
 
-            <td id = "dob" width="10"> </td>
+            <td id = "oral" width="5"> </td>
           </tr>
         </tbody>
       </table>
@@ -230,7 +230,7 @@
 				content +='<tr>';
 		                content += '<td>' + protocol.lastname + ", " + protocol.firstname + '</td>';
 		                content += '<td>' + protocol.mrn + '</td>';
-		                content += '<td>' + protocol.DOB + '</td>';
+		                content += '<td>' + protocol.age + '</td>';
 
 
 
