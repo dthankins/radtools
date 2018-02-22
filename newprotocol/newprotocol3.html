@@ -250,7 +250,8 @@ Need to change the js not to worry about peds age for wt in the function
 				Prior Studies: <input type="text" name="prior-imaging" style="width: 820px">
 				<br>
 				<br>
-				<strong> Clinical History: </strong> (Complete as much as you are able.)
+				<strong> 
+				Clinical History: </strong> (Complete as much as you are able.)
 				<br>
 
 				<!-- Episode: --> 
@@ -261,12 +262,40 @@ Need to change the js not to worry about peds age for wt in the function
 		      	<input type="hidden" id="episode" value="">  <!-- hidden (form) value -->
 		      	
 				<br>
+
+
+				<input type="button" style ="margin-left: 40px" class="button" name="MVC" value ="MVC" onclick="unHide('mvcDetails'); buttonToggle(this.name); updateHx(this.value)">
+
+
+				<!-- hidden if no MVC -->
+				
+				<span id ="mvcDetails" class="hideDIV">
+				<!--  Restrained -->
+					<input type="button" style ="margin-left: 40px" class="button" name="restrained" value ="Restrained" onclick="buttonCheck(this.name, this.value); updateHx(this.value)">
+			      	<input type="button" style ="width: 110px" class="button" name="restrained" value ="Unrestrained" onclick="buttonCheck(this.name, this.value); updateHx(this.value)">
+			      	<input type="hidden" id="restrained" value="">  <!-- hidden (form) value -->
+
+		      	<!-- Driver  -->
+
+					<input type="button" style ="margin-left: 40px" class="button" name="driver" value ="Driver" onclick="buttonCheck(this.name, this.value); updateHx(this.value)">
+			      	<input type="button" class="button" name="driver" value ="Passenger" onclick="buttonCheck(this.name, this.value); updateHx(this.value)">
+			      	<input type="hidden" id="driver" value="">  <!-- hidden (form) value -->
+
+				<!-- Airbag  --> 
+					<input type="button" style ="margin-left: 40px" class="button" name="airbag" value ="No airbag" onclick="buttonCheck(this.name, this.value); updateHx(this.value)">
+			      	<input type="button" class="button" name="airbag" value ="Airbag" onclick="buttonCheck(this.name, this.value); updateHx(this.value)">
+			      	<input type="hidden" id="airbag" value="">  <!-- hidden (form) value -->
+
+			     </span> 	
+
+			     <br>
+
 				
 				<!-- Pain -->
-				<input type="button" style ="margin-left: 40px" class="button" name="pain" value ="Pain" onclick="unHide('painDetails'); buttonToggle(this.name)">
+				<input type="button" style ="margin-left: 40px" class="button" name="pain" value ="Pain" onclick="unHide('painDetails'); buttonToggle(this.name); updateHx(this.value)">
 
 				<span id ="painDetails" class="hideDIV">
-					<input type="text" name="painDetails" style="width: 764px" placeholder="Enter laterality / localize, context, severity, duration?" >
+					<input type="text" name="painDetails" style="width: 764px" placeholder="Enter laterality / localize, context, severity, duration?" onchange="updateHx(this.value)">
 				</span>
 				<br>
 				
@@ -274,42 +303,19 @@ Need to change the js not to worry about peds age for wt in the function
 				
 				
 				<!-- The No's -->
-				<input type="button" style ="margin-left: 40px" class="button" name="injury" value ="Injury" onclick="unHide('theNosDetails'); buttonToggle(this.name);">
+				<input type="button" style ="margin-left: 40px" class="button" name="injury" value ="Injury" onclick="unHide('theNosDetails'); buttonToggle(this.name); updateHx(this.value)">
 				
-				<input type="button" class="button" name="surgery" value ="Surgery" onclick="unHide('theNosDetails'); buttonToggle(this.name);">
+				<input type="button" class="button" name="surgery" value ="Surgery" onclick="unHide('theNosDetails'); buttonToggle(this.name); updateHx(this.value)">
 				
-				<input type="button" class="button" name="cancer" value ="Cancer" onclick="unHide('theNosDetails'); buttonToggle(this.name);">
+				<input type="button" class="button" name="cancer" value ="Cancer" onclick="unHide('theNosDetails'); buttonToggle(this.name); updateHx(this.value)">
 				
 				<span id ="theNosDetails" class="hideDIV">
-					<input type="text" name="theNosDetails" style="width: 547px" placeholder="Enter details related to the injury, surgery or cancer." >
+					<input type="text" name="theNosDetails" style="width: 547px" placeholder="Enter details related to the injury, surgery or cancer." onchange="updateHx(this.value)">
 				</span>
-				<br>
+			
 
 				
-				<input type="button" style ="margin-left: 40px" class="button" name="MVC" value ="MVC" onclick="unHide('mvcDetails'); buttonToggle(this.name);">
 
-<!-- I need to change the unhide thing here to toggle because only a sinlge option.  Prob similar for the No's and Pain -->
-
-				<!-- hidden if no MVC -->
-				
-				<span id ="mvcDetails" class="hideDIV">
-				<!--  Restrained -->
-					<input type="button" style ="margin-left: 40px" class="buttonPressed" name="restrained" value ="Restrained" onclick="buttonCheck(this.name, this.value);">
-			      	<input type="button" style ="width: 110px" class="button" name="restrained" value ="Unrestrained" onclick="buttonCheck(this.name, this.value);">
-			      	<input type="hidden" id="restrained" value="">  <!-- hidden (form) value -->
-
-		      	<!-- Driver  -->
-
-					<input type="button" style ="margin-left: 40px" class="buttonPressed" name="driver" value ="Driver" onclick="buttonCheck(this.name, this.value);">
-			      	<input type="button" class="button" name="driver" value ="Passenger" onclick="buttonCheck(this.name, this.value);">
-			      	<input type="hidden" id="driver" value="">  <!-- hidden (form) value -->
-
-				<!-- Airbag  --> 
-					<input type="button" style ="margin-left: 40px" class="buttonPressed" name="airbag" value ="No airbag" onclick="buttonCheck(this.name, this.value);">
-			      	<input type="button" class="button" name="airbag" value ="Airbag" onclick="buttonCheck(this.name, this.value);">
-			      	<input type="hidden" id="airbag" value="">  <!-- hidden (form) value -->
-
-			     </span> 	
 
 
 <!-- 
@@ -497,11 +503,6 @@ Need to change the js not to worry about peds age for wt in the function
 
 <!--
 
-Need to add this to the js from small computer
-function buttonToggle(btnName){
-	var element = document.getElementsByName(btnName)[0];
-	element.classList.toggle("buttonPressed");
-	element.classList.toggle("button");
-}
+
 
 	-->
