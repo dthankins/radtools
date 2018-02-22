@@ -248,7 +248,8 @@ Need to change the js not to worry about peds age for wt in the function
 
 				
 				<!-- Ordered Exam Text: -->
-				<input type="text" id="totalOrder" style="width: 862px; margin-left: 50px; margin-top: 10px;" placeholder="Order the Radiologist will see.  Auto updated from the above. Edit text as needed. " onclick="buildOrder()">
+				<br>
+				<input type="text" id="totalOrder" style="width: 862px; margin-left: 50px; margin-top: 10px;" placeholder="Click here to update text to the order the Radiologist will see.  You may then edit the text as needed. " onclick="buildOrder()">
 
 				<br>
 				<br>
@@ -275,26 +276,26 @@ My totalHistory plan has a flaw.  If you choose Driver then change to Passenger,
 				<br>
 
 
-				<input type="button" style ="margin-left: 40px" class="button" name="MVC" value ="MVC" onclick="unHide('mvcDetails'); buttonToggle(this.name); updateHx(this.value)">
+				<input type="button" style ="margin-left: 40px" class="button" name="MVC" value ="MVC" onclick="unHide('mvcDetails'); buttonToggle(this.name);">
 
 
 				<!-- hidden if no MVC -->
 				
 				<span id ="mvcDetails" class="hideDIV">
 				<!--  Restrained -->
-					<input type="button" style ="margin-left: 40px" class="button" name="restrained" value ="Restrained" onclick="buttonCheck(this.name, this.value); updateHx(this.value)">
-			      	<input type="button" style ="width: 110px" class="button" name="restrained" value ="Unrestrained" onclick="buttonCheck(this.name, this.value); updateHx(this.value)">
+					<input type="button" style ="margin-left: 40px" class="button" name="restrained" value ="Restrained" onclick="buttonCheck(this.name, this.value);">
+			      	<input type="button" style ="width: 110px" class="button" name="restrained" value ="Unrestrained" onclick="buttonCheck(this.name, this.value);">
 			      	<input type="hidden" id="restrained" value="">  <!-- hidden (form) value -->
 
 		      	<!-- Driver  -->
 
-					<input type="button" style ="margin-left: 40px" class="button" name="driver" value ="Driver" onclick="buttonCheck(this.name, this.value); updateHx(this.value)">
-			      	<input type="button" class="button" name="driver" value ="Passenger" onclick="buttonCheck(this.name, this.value); updateHx(this.value)">
+					<input type="button" style ="margin-left: 40px" class="button" name="driver" value ="Driver" onclick="buttonCheck(this.name, this.value);">
+			      	<input type="button" class="button" name="driver" value ="Passenger" onclick="buttonCheck(this.name, this.value);">
 			      	<input type="hidden" id="driver" value="">  <!-- hidden (form) value -->
 
 				<!-- Airbag  --> 
-					<input type="button" style ="margin-left: 40px" class="button" name="airbag" value ="No airbag" onclick="buttonCheck(this.name, this.value); updateHx(this.value)">
-			      	<input type="button" class="button" name="airbag" value ="Airbag" onclick="buttonCheck(this.name, this.value); updateHx(this.value)">
+					<input type="button" style ="margin-left: 40px" class="button" name="airbag" value ="No airbag" onclick="buttonCheck(this.name, this.value);">
+			      	<input type="button" class="button" name="airbag" value ="Airbag" onclick="buttonCheck(this.name, this.value);">
 			      	<input type="hidden" id="airbag" value="">  <!-- hidden (form) value -->
 
 			     </span> 	
@@ -303,10 +304,10 @@ My totalHistory plan has a flaw.  If you choose Driver then change to Passenger,
 
 				
 				<!-- Pain -->
-				<input type="button" style ="margin-left: 40px" class="button" name="pain" value ="Pain" onclick="unHide('painDetails'); buttonToggle(this.name); updateHx(this.value)">
+				<input type="button" style ="margin-left: 40px" class="button" name="pain" value ="Pain" onclick="unHide('painDetails'); buttonToggle(this.name);">
 
 				<span id ="painDetails" class="hideDIV">
-					<input type="text" name="painDetails" style="width: 764px" placeholder="Enter laterality / localize, context, severity, duration?" onchange="updateHx(this.value)">
+					<input type="text" name="painDetails" style="width: 764px" placeholder="Enter laterality / localize, context, severity, duration?">
 				</span>
 				<br>
 				
@@ -314,29 +315,26 @@ My totalHistory plan has a flaw.  If you choose Driver then change to Passenger,
 				
 				
 				<!-- The No's -->
-				<input type="button" style ="margin-left: 40px" class="button" name="injury" value ="Injury" onclick="unHide('theNosDetails'); buttonToggle(this.name); updateHx(this.value)">
+				<input type="button" style ="margin-left: 40px" class="button" name="injury" value ="Injury" onclick="unHide('theNosDetails'); buttonToggle(this.name);">
 				
-				<input type="button" class="button" name="surgery" value ="Surgery" onclick="unHide('theNosDetails'); buttonToggle(this.name); updateHx(this.value)">
+				<input type="button" class="button" name="surgery" value ="Surgery" onclick="unHide('theNosDetails'); buttonToggle(this.name);">
 				
-				<input type="button" class="button" name="cancer" value ="Cancer" onclick="unHide('theNosDetails'); buttonToggle(this.name); updateHx(this.value)">
+				<input type="button" class="button" name="cancer" value ="Cancer" onclick="unHide('theNosDetails'); buttonToggle(this.name);">
 				
 				<span id ="theNosDetails" class="hideDIV">
-					<input type="text" name="theNosDetails" style="width: 547px" placeholder="Enter details related to the injury, surgery or cancer." onchange="updateHx(this.value)">
+					<input type="text" name="theNosDetails" style="width: 547px" placeholder="Enter details related to the injury, surgery or cancer.">
 				</span>
 			
 
-				
-
-
 
 <!-- 
-				<br><br>
-				Anything Else: 
-				<input type="text" style ="margin-left: 40px; width: 868px" name="anythingElse" placeholder="Anything not already addressed?" >
+
+I need updateHx2 function to paste the updated hx after it is done.  should be like the updateOrder
+
 --> 
 				<br><br>
 				<!-- Indication: --> 
-				<textarea name="hx" rows="3" style="vertical-align: top; margin-left: 40px; width: 868px" placeholder="This is the history that will be seen by the Radiologist.  It will automatically fill as you choose from the selections above.  You may also add text as needed."></textarea>
+				<textarea name="hx" rows="3" style="vertical-align: top; margin-left: 40px; width: 868px" placeholder="Click here to update text to the history that will be seen by the Radiologist. You may then add text as needed." onclick="updateHx()"></textarea>
 
 				<br><br>
 
