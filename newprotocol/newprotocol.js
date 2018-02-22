@@ -10,9 +10,9 @@ function buildOrder(){
   IVcontrast+="IV contrast. "
 
   if (oralNeeded==="Yes"){
-    oral = ". Oral contral.";
+    oral = "Oral contrast.";
   } else if (oralNeeded==="No"){
-    oral = ". No oral.";
+    oral = "No oral.";
   }
 
   console.log(modality);
@@ -20,7 +20,7 @@ function buildOrder(){
   console.log (IVcontrast);
   console.log (orderOther);
   console.log (oral);
-  var orderText = " " + modality + " " + bodyPart + " " + IVcontrast + " " + orderOther + " " + oral;
+  var orderText = modality + " " + bodyPart + " " + IVcontrast + orderOther + oral;
 
   document.getElementById("totalOrder").value = orderText;
 }
