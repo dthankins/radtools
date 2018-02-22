@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+        <script src="newprotocol.js"></script>
+
+        <!-- <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script> -->
+
+		<link rel="stylesheet" href="newprotocol.css">
+
+        <title>Tech List</title>
+    </head>
+<!-- my scroll lock function does not work  -->
+   	<body onscroll="calculate_top()">
+        <div id="scrollLock" >
+            <h2 style="text-align: center">Technologist Work List</h2>
+
+            <h3 style="text-align: center; color: blue;">Tech Name Here</h3>
+
+            <div id="location" class="center" value="">
+                <input type="button" class= "button" value ="NIC" name ="location" onclick="buttonCheck(this.name, this.value)">
+                <input type="button" class= "button" value ="EMIC" name ="location" onclick="buttonCheck(this.name, this.value)">
+                <input type="button" class= "button" value ="PIC" name ="location" onclick="buttonCheck(this.name, this.value)">
+
+                <br>
+
+                <input type="button" class= "button" value ="South" name ="location" onclick="buttonCheck(this.name, this.value)">
+                <input type="button" class= "button" value ="East" name ="location" onclick="buttonCheck(this.name, this.value)">
+                <input type="button" class= "button" value ="Prattville" name ="location" onclick="buttonCheck(this.name, this.value)">
+
+            </div>
+
+            <br>
+
+            <div id="techModality" class="center" value="">
+                <input type="button" class= "button" value ="CT" name ="techModality" onclick="buttonCheck(this.name, this.value);updateTechList();">
+                <input type="button" class= "button" value ="MRI" name ="techModality" onclick="buttonCheck(this.name, this.value);updateTechList();">
+                
+
+            </div>
+
+            <br>
+
+            <div id="linkSelection" class="center" value="">
+      
+                <input type="button" class="submitButton" value ="New Protocol" name ="linkSelection" onclick="confirmMakeNewProtocol()">
+                <input type="button" class="submitButton" value ="Search" name ="linkSelection" onclick="window.open('search.html')">
+                <input type="button" class="submitButton" value ="Tomorrow's Cases" name ="linkSelection" onclick="window.open('tomorrow.html')">
+                <input type="button" class="submitButton" value ="Today's Cases" name ="linkSelection" onclick="window.open('today.html')">
+            </div>
+
+            
+            <h3> <span style="text-align: left; color: blue;">EMIC CT </span> Work List </h3>
+
+        </div>
+
+        <div id="techList"> <!-- style="padding-top: 340px" -->
+            <div id ="dataList" style="color: green">
+                <tr>Patient 1</tr> <br>
+                <tr style="color: black">Patient 2.  Make green and link to print page if ready or black text otherwise pending. </tr> <br>
+                <tr>Patient 3</tr> <br>
+                <tr>Patient 4</tr> <br>
+                <tr>Patient 5</tr> <br>
+                <tr>Patient 5</tr> <br>
+                <tr>Patient 5</tr> <br>
+                <tr>Patient 5</tr> <br>
+                <tr>Patient 5</tr> <br>
+                <tr>Patient 5</tr> <br>
+                <tr>Patient 5</tr> <br>
+                <tr>Patient 5</tr> <br>
+                <tr>Patient 5</tr> <br>
+                <tr>Patient 5</tr> <br>
+                <tr>Patient 5</tr> <br>
+                <tr>Patient 5</tr> <br>
+                <tr>Patient 5</tr> <br>
+
+                
+            </div>
+
+        </div>
+
+
+
+    </body>
+</html>
+
+<!-- 
+I need to fix the js for inner html function called updateTechList
+I also want a scroll lock feature after the words "Tech Work List"
+Then the cases approved by the rad would be listed here and be clickable.  Link directs to page to print the details for that case
+-->

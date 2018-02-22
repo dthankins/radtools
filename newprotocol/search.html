@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+        <script src="newprotocol.js"></script>
+
+        <!-- <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script> -->
+
+		<link rel="stylesheet" href="newprotocol.css">
+
+        <title>Search</title>
+    </head>
+
+   	<body>
+        <h1 style="text-align: center">Search</h1>
+        <h4>Date:</h4>
+        <p class="margin60"> Start:
+        <input type="date" name="startDate">
+        </p>
+        
+        <p class="margin60"> End:
+<!-- I want to default the end date to todays date  -->
+        <input type="date" name="endDate" style="margin-left: 2px" value="">
+        </p>
+        
+       <br>
+
+
+
+        <div id="location" value="">
+            <h4>Facility:</h4>
+            <input type="button" class= "button" value ="NIC" name ="location" onclick="buttonCheck(this.name, this.value)">
+            <input type="button" class= "button" value ="EMIC" name ="location" onclick="buttonCheck(this.name, this.value)">
+            <input type="button" class= "button" value ="PIC" name ="location" onclick="buttonCheck(this.name, this.value)">
+
+            <br>
+
+            <input type="button" class= "button" value ="South" name ="location" onclick="buttonCheck(this.name, this.value)">
+            <input type="button" class= "button" value ="East" name ="location" onclick="buttonCheck(this.name, this.value)">
+            <input type="button" class= "button" value ="Prattville" name ="location" onclick="buttonCheck(this.name, this.value)">
+
+        </div>
+
+        <br><br>
+
+        <div id="techModality" value="">
+            <h4>Modality:</h4>
+            <input type="button" class= "button" value ="CT" name ="techModality" onclick="buttonCheck(this.name, this.value);">
+            <input type="button" class= "button" value ="MRI" name ="techModality" onclick="buttonCheck(this.name, this.value);">
+            
+
+        </div>
+
+
+        <br><br>
+
+        <input type="button" class="submitButton" value ="Search" name ="linkSelection" onclick="window.open('searchResults.html')">
+
+
+
+
+    </body>
+</html>
