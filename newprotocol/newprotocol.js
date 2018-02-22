@@ -1,3 +1,9 @@
+function buttonToggle(btnName){
+	var element = document.getElementsByName(btnName)[0];
+	element.classList.toggle("buttonPressed");
+	element.classList.toggle("button");
+}
+
 function updateTechList(){
 	var modality =document.getElementById("techModality").value;
 	var locaction = document.getElementById("location").value
