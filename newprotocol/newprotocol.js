@@ -298,7 +298,7 @@ function buttonCheckMulti(btnName, btnValue) {
 
   for (t=0; t<numValues; t++){  
     if(document.getElementsByName(btnName)[t].className === "buttonPressed"){
-      valueTotal +=  document.getElementsByName(btnName)[t].value + "   ";      
+      valueTotal +=  document.getElementsByName(btnName)[t].value + " ";      
     }
   }
   
