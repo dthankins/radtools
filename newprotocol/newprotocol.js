@@ -1,10 +1,39 @@
+
+function buildOrder(){
+  var oral = " ";
+  var modality = document.getElementById("order-modality").value;
+  var IVcontrast = document.getElementById("ordered-IV-contrast").value;
+  var orderOther = document.getElementsByName("orderOther")[0].value; 
+  var bodyPart = document.getElementsByName("order-bodyPart")[0].value;
+  var oralNeeded = document.getElementById("order-oral").value;
+
+  IVcontrast+="IV contrast. "
+
+  if (oralNeeded==="Yes"){
+    oral = ". Oral contral.";
+  } else if (oralNeeded==="No"){
+    oral = ". No oral.";
+  }
+
+  console.log(modality);
+  console.log (bodyPart);
+  console.log (IVcontrast);
+  console.log (orderOther);
+  console.log (oral);
+  var orderText = " " + modality + " " + bodyPart + " " + IVcontrast + " " + orderOther + " " + oral;
+
+  document.getElementById("totalOrder").value = orderText;
+}
+
+
+
+
+
 function updateHx(btnValue){
   var totalHistory = document.getElementsByName("hx")[0].value
   totalHistory += btnValue + ". ";
   document.getElementsByName("hx")[0].value = totalHistory;
 }
-
-
 
 function buttonToggle(btnName){
   var element = document.getElementsByName(btnName)[0];
