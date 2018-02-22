@@ -245,11 +245,21 @@ Need to change the js not to worry about peds age for wt in the function
 						<input type="text" name="orderOther" size="100" onclick="var divToUnHide ='hiddenSuggestedOther'; unHideMulti(divToUnHide)">
 				</div>
 
+				
+				<!-- Ordered Exam Text: -->
+				<input type="text" id="totalOrder" style="width: 862px; margin-left: 50px; margin-top: 10px;" placeholder="Order the Radiologist will see.  Auto updated from the above. Edit text as needed. " onclick="buildOrder()">
+
 				<br>
 				<br>
 				Prior Studies: <input type="text" name="prior-imaging" style="width: 820px">
 				<br>
 				<br>
+
+<!--
+My totalHistory plan has a flaw.  If you choose Driver then change to Passenger, it lists both.  I need to have the function reevaluate the entire button selection each time to avoid this .... urg, more code!
+
+-->
+
 				<strong> 
 				Clinical History: </strong> (Complete as much as you are able.)
 				<br>
