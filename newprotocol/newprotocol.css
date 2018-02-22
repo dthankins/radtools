@@ -1,3 +1,40 @@
+.center {
+    text-align: center;
+}
+
+.submitButton {
+    border-color: gray;  
+    border-width: 3px;  
+    cursor: pointer;
+    border-radius: 5px;
+ 
+    width: 200px;
+    padding: 5px 10px;
+
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+
+}
+
+.margin60 {
+    margin-left: 60px;
+}
+
+#scrollLock {
+     /*
+     position:fixed;
+     */
+}
+
+
+
+
+
+
+
 *:focus {
     outline: none;
 }
@@ -9,6 +46,10 @@ body {
 input[type=date] {
     -webkit-inner-spin-button;
 }
+
+
+
+
 
 .button {
     appearance: none;
