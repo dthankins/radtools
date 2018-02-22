@@ -28,12 +28,62 @@ function buildOrder(){
 
 
 
-
+/*
 function updateHx(btnValue){
   var totalHistory = document.getElementsByName("hx")[0].value
   totalHistory += btnValue + ". ";
   document.getElementsByName("hx")[0].value = totalHistory;
 }
+*/
+function updateHx(){
+  var totalHistory ="";
+  var mvcPressed = document.getElementsByName("MVC")[0].className; // button or buttonPressed class
+
+  var restrained = document.getElementById("restrained").value;
+  var driver = document.getElementById("driver").value;
+  var airbag = document.getElementById("airbag").value;
+
+  var painPressed = document.getElementsByName("pain")[0].className;
+  var painDetails = document.getElementsByName("painDetails")[0].value;
+          
+  var injuryPressed = document.getElementsByName("injury")[0].className;
+  var surgeryPressed = document.getElementsByName("surgery")[0].className;
+  var cancerPressed = document.getElementsByName("cancer")[0].className;
+
+  var theNosDetails = "";
+  theNosDetails += document.getElementsByName("theNosDetails")[0].value;
+
+  var episode = document.getElementById("episode").value;
+
+  if(mvcPressed==="buttonPressed"){
+      totalHistory="MVC, " +  restrained + " " + driver + " with " + airbag + " deployment.";
+  }
+
+  if(painPressed==="buttonPressed"){
+    totalHistory += " Complains of pain. " + painDetails + ". ";
+  }
+
+  if(injuryPressed==="buttonPressed"){
+    totalHistory += " Injury. ";
+  }
+
+  if(surgeryPressed==="buttonPressed"){
+    totalHistory += " Surgery. ";
+  }
+
+  if(cancerPressed==="buttonPressed"){
+    totalHistory += " Cancer. ";
+  }
+
+  totalHistory += theNosDetails + " " + episode + " study.";
+
+  console.log(totalHistory);
+
+  document.getElementsByName("hx")[0].value = totalHistory;
+}
+
+
+
 
 function buttonToggle(btnName){
   var element = document.getElementsByName(btnName)[0];
