@@ -1,3 +1,48 @@
+function updateTechList(){
+	var modality =document.getElementById("techModality").value;
+	var locaction = document.getElementById("location").value
+	
+	// I fogot how inner html works.  I want it to write "EMIC CT Tech Work List" 
+
+}
+
+
+function confirmMakeNewProtocol() {
+	if (confirm('Prepare New Protocol?')) {
+		window.open('http://www.radtools.us/newprotocol/newprotocol3.html');
+	}
+}
+
+//my scroll lock function does not work
+function calculate_top() {
+    //var y = 0;    
+    element=document.getElementById("scrollLock");
+
+    console.log(document.getElementsByTagName("body")[0].scrollTop);
+    console.log(document.getElementById("scrollLock").scrollTop);
+
+    var y=element.scrollTop;
+    //you can see y values while you scrolling
+    console.log(" y = " + y);
+    /*
+    if( y > 340){//old style
+        document.getElementById("scrollLock").style.position='fixed';
+        document.getElementById("scrollLock").style.top=0+'px';
+    }else{
+        document.getElementById("scrollLock").style.position='relative';
+    }
+    */
+}
+
+
+
+
+
+
+
+
+
+
 // Initialize Firebase
 var config = {
     apiKey: "AIzaSyCpaVltd-dUeV9RP4SgV7rX-5VKRstRcnI",
