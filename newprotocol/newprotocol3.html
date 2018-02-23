@@ -116,7 +116,8 @@ Need to change the js not to worry about peds age for wt in the function
 
 				<span class="needsIndent"></span>
 				Previous IV contrast:
-			      	<input type="button" class="button" name="previosIVcontrast" value ="Yes" onclick="buttonCheck(this.name, this.value)"><input type="button" class= "button" name="previosIVcontrast" value ="No" onclick="buttonCheck(this.name, this.value)">
+			      	<input type="button" class="button" name="previosIVcontrast" value ="Yes" onclick="buttonCheck(this.name, this.value)">
+			      	<input type="button" class= "button" name="previosIVcontrast" value ="No" onclick="buttonCheck(this.name, this.value)">
 					<input type="button" class= "button" name="previosIVcontrast" value ="Not Sure" onclick="buttonCheck(this.name, this.value)">
 					
 					<input type="hidden" id="previosIVcontrast" value="">  <!-- hidden (form) value -->
@@ -154,9 +155,9 @@ Need to change the js not to worry about peds age for wt in the function
 				<br>
 
 				Ordering clinician: <input type="text" style ="width: 249px; text-align: center" name="refering-doc" placeholder ="click 'tab' after entering name" onchange="doctor(this.value); style ='width: 249px; text-align: left'">       
+
 				
-				
-				<span style="margin-left: 15px">
+				<span style="margin-left: 15px" >
 				Service:  </span> 
 					<select name="service">		
 						<option value="default-service"> -- Select Specialty -- </option>	
@@ -180,8 +181,8 @@ Need to change the js not to worry about peds age for wt in the function
 
 
 				Modality:
-			      	<input type="button" class="button" name="order-modality" value ="CT" onclick="buttonCheck(this.name, this.value); buttonCheck(document.getElementsByName('suggested-modality')[0].name, document.getElementsByName('suggested-modality')[0].value); checkOral()">
-			      	<input type="button" class="button" name="order-modality" value ="MRI" onclick="buttonCheck(this.name, this.value); buttonCheck(document.getElementsByName('suggested-modality')[1].name, document.getElementsByName('suggested-modality')[1].value); checkOral()">
+			      	<input type="button" class="button" name="order-modality" value ="CT" onclick="buttonCheck(this.name, this.value); checkOral()">
+			      	<input type="button" class="button" name="order-modality" value ="MRI" onclick="buttonCheck(this.name, this.value); checkOral()">
 			      	  			      	
 			      	<input type="hidden" id="order-modality" value="">  <!-- hidden (form) value -->
 
@@ -191,11 +192,11 @@ Need to change the js not to worry about peds age for wt in the function
 				<span style="margin-left: 64px;"></span> 
 				IV Contrast:
 
-					<input type="button" class= "button" name="ordered-IV-contrast" value ="Angiogram" onclick="buttonCheckMulti(this.name, this.value); buttonCheckMulti(document.getElementsByName('suggested-IV-contrast')[0].name, document.getElementsByName('suggested-IV-contrast')[0].value)">
+					<input type="button" class= "button" name="ordered-IV-contrast" value ="Angiogram" onclick="buttonCheckMulti(this.name, this.value);">
 
-			      	<input type="button" class="button" name="ordered-IV-contrast" value ="With" onclick="buttonCheckMulti(this.name, this.value); buttonCheckMulti(document.getElementsByName('suggested-IV-contrast')[1].name, document.getElementsByName('suggested-IV-contrast')[1].value)">
+			      	<input type="button" class="button" name="ordered-IV-contrast" value ="With" onclick="buttonCheckMulti(this.name, this.value);">
 
-			      	<input type="button" class= "button" name="ordered-IV-contrast" value ="Without" onclick="buttonCheckMulti(this.name, this.value); buttonCheckMulti(document.getElementsByName('suggested-IV-contrast')[2].name, document.getElementsByName('suggested-IV-contrast')[2].value)">
+			      	<input type="button" class= "button" name="ordered-IV-contrast" value ="Without" onclick="buttonCheckMulti(this.name, this.value);">
 					
 					<!--
 					<input type="button" class= "button" name="ordered-IV-contrast" value ="Other" onclick="var divToUnHide ='hiddenOrderedOther'; unHideMulti(divToUnHide); buttonCheckMulti(this.name, this.value); buttonCheckMulti(document.getElementsByName('suggested-IV-contrast')[3].name, document.getElementsByName('suggested-IV-contrast')[3].value)">
@@ -235,15 +236,15 @@ Need to change the js not to worry about peds age for wt in the function
 				<span id="hiddenOrderedOral" class="hideDIV" style="margin-left: 40px;"> 
 										
 						Oral Contrast:
-							<input type="button" class="button" name="order-oral" value ="Yes" onclick="buttonCheck(this.name, this.value); buttonCheck(document.getElementsByName('suggested-oral')[0].name, document.getElementsByName('suggested-oral')[0].value)">
-							<input type="button" class= "button" name="order-oral" value ="No" onclick="buttonCheck(this.name, this.value); buttonCheck(document.getElementsByName('suggested-oral')[1].name, document.getElementsByName('suggested-oral')[1].value)">
+							<input type="button" class="button" name="order-oral" value ="Yes" onclick="buttonCheck(this.name, this.value);">
+							<input type="button" class= "button" name="order-oral" value ="No" onclick="buttonCheck(this.name, this.value);">
 												
 							<input type="hidden" id="order-oral" value="">  <!-- hidden (form) value -->
 				</span>
 			
 				<div id="hiddenOrderedOther" class="hideDIV" style="margin-left: 31px; margin-top: 5px">
 						Other details: 
-						<input type="text" name="orderOther" size="100" onclick="var divToUnHide ='hiddenSuggestedOther'; unHideMulti(divToUnHide)">
+						<input type="text" name="orderOther" size="100">
 				</div>
 
 				
@@ -332,9 +333,9 @@ My totalHistory plan has a flaw.  If you choose Driver then change to Passenger,
 I need updateHx2 function to paste the updated hx after it is done.  should be like the updateOrder
 
 --> 
-				<br><br>
+				<br>
 				<!-- Indication: --> 
-				<textarea name="hx" rows="3" style="vertical-align: top; margin-left: 40px; width: 868px" placeholder="Click here to update text to the history that will be seen by the Radiologist. You may then add text as needed." onclick="updateHx()"></textarea>
+				<textarea name="hx" rows="2" class="" style="vertical-align: top; margin-left: 40px; width: 868px" placeholder="Click here to update text to the history that will be seen by the Radiologist. You may then add text as needed." onclick="updateHx()"></textarea>
 
 				<br><br>
 
@@ -385,7 +386,7 @@ I need updateHx2 function to paste the updated hx after it is done.  should be l
 				<br><br>	
 				<strong> Exam Suggested: </strong>
 				<label class="container">Same
-					<input type="checkbox" id="same-exam-check" name="same-result" value="true" checked onchange="var suggestedUnhide='hiddenSuggestedStuff'; sameCheck(suggestedUnhide); setSuggestedToOrdered();checkOralSuggested();checkOrderOtherDetails()">
+					<input type="checkbox" id="same-exam-check" name="same-result" checked onchange="var suggestedUnhide='hiddenSuggestedStuff'; sameCheck(suggestedUnhide); setSuggestedToOrdered();checkOralSuggested();">
 					<span class="checkmark"></span>
 				</label>
 
