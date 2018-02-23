@@ -22,7 +22,8 @@ function buildOrder(){
 
   if(modality === "CT" && angio === "buttonPressed" && without === "buttonPressed"){
       window.alert("That order looks funny!  Please check again!");
-  }
+      document.getElementById("totalOrder").classList.add("red");
+  } else document.getElementById("totalOrder").classList.remove("red");
 
 
   var orderText = modality + " " + bodyPart + " " + IVcontrast + orderOther + oral;
