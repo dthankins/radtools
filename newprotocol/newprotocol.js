@@ -3,6 +3,7 @@ function buildOrder(){
   var oral = " ";
   var modality = document.getElementById("order-modality").value;
   var IVcontrast = document.getElementById("ordered-IV-contrast").value;
+// I think the orderOther is not obselete
   var orderOther = document.getElementsByName("orderOther")[0].value; 
   var bodyPart = document.getElementsByName("order-bodyPart")[0].value;
   var oralNeeded = document.getElementById("order-oral").value;
@@ -15,26 +16,21 @@ function buildOrder(){
     oral = "No oral.";
   }
 
-  console.log(modality);
-  console.log (bodyPart);
-  console.log (IVcontrast);
-  console.log (orderOther);
-  console.log (oral);
+  var angio = document.getElementsByName("ordered-IV-contrast")[0].className;   // angio
+  var without = document.getElementsByName("ordered-IV-contrast")[2].className; // without
+
+
+  if(modality === "CT" && angio === "buttonPressed" && without === "buttonPressed"){
+      window.alert("That order looks funny!  Please check again!");
+  }
+
+
   var orderText = modality + " " + bodyPart + " " + IVcontrast + orderOther + oral;
 
   document.getElementById("totalOrder").value = orderText;
 }
 
 
-
-
-/*
-function updateHx(btnValue){
-  var totalHistory = document.getElementsByName("hx")[0].value
-  totalHistory += btnValue + ". ";
-  document.getElementsByName("hx")[0].value = totalHistory;
-}
-*/
 function updateHx(){
   var totalHistory ="";
   var mvcPressed = document.getElementsByName("MVC")[0].className; // button or buttonPressed class
@@ -56,7 +52,14 @@ function updateHx(){
   var episode = document.getElementById("episode").value;
 
   if(mvcPressed==="buttonPressed"){
+    if(restrained==="" || driver ==="" || airbag===""){
+      window.alert("Must choose one of each of the MVC option buttons!");
+      document.getElementsByName("hx")[0].classList.add("red");
+      
+    } else {
       totalHistory="MVC, " +  restrained + " " + driver + " with " + airbag + " deployment.";
+      document.getElementsByName("hx")[0].classList.remove("red");
+    }
   }
 
   if(painPressed==="buttonPressed"){
@@ -65,19 +68,18 @@ function updateHx(){
 
   if(injuryPressed==="buttonPressed"){
     totalHistory += " Injury. ";
-  }
+  } else totalHistory += " No injury. ";
 
   if(surgeryPressed==="buttonPressed"){
     totalHistory += " Surgery. ";
-  }
+  } else totalHistory += " No previous surgery in the region of interest. ";
 
   if(cancerPressed==="buttonPressed"){
     totalHistory += " Cancer. ";
-  }
+  } else totalHistory += " No known history of cancer. ";
 
   totalHistory += theNosDetails + " " + episode + " study.";
 
-  console.log(totalHistory);
 
   document.getElementsByName("hx")[0].value = totalHistory;
 }
@@ -419,10 +421,12 @@ function ageCalc(dateOfBirth, hiddenWtId){
 } 
 
 function doctor(doc){
-
-  var url = "https://www.baptistfirst.org/find-a-doctor/provider-search-results?ProviderText="+ doc + "&&LocationDescendants=true";
-  window.open(url, "_blank", "scrollbars=yes,resizable=yes,top=300,left=800,width=400,height=600"); 
+  window.open("https://www.baptistfirst.org/find-a-doctor/provider-search-results?ProviderText="+ doc + "&&LocationDescendants=true", "_blank", "scrollbars=yes,resizable=yes,top=300,left=800,width=400,height=600");
 }
+
+
+
+
 
 function sameCheck(hiddenDIV){
   var element = document.getElementById(hiddenDIV);
