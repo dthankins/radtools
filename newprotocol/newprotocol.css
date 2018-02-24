@@ -114,20 +114,26 @@ td {
 }
 
 .one {
-    width:  100px;
-    /* I previously used these percentages but converted to pixels at 700px for 100%.  12.5% 12.5% 24%, 50%   */
+    width:  86px;
+    /* I previously used these percentages but converted to pixels at 700px for 100%.  12.5% 12.5% 24%, 50% 
+    at 700, this works 100px, 88, 176, 336
+    Assume 600 for iphone, then:  86, 75, 150, 288
+    most people use 600x800 but 50 taken by brower on either side so horizontal is 700 rather than 800  
+    412x628 usable physical pixels for iphone 8 plus in safari
+    https://www.kylejlarson.com/blog/iphone-6-screen-size-web-design-tips/
+     */
 }
 
 .two{
-    width: 88px;
+    width: 75px;
 }
 
 .three {
-    width: 176px;
+    width: 150px;
 }
 
 .four {
-    width: 336px;
+    width: 288px;
 }
 
 input[type=number]::-webkit-outer-spin-button,
