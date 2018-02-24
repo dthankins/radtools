@@ -1,26 +1,114 @@
+function updateContrastTypeAndVolume(orderedOrSuggested){
+  if(orderedOrSuggested==="ordered"){
+    // based off ordered
+    if (document.getElementsByName("ordered-IV-contrast")[1].className==="buttonPressed"){ // [1] is with
+        if (document.getElementById("order-modality").value==="CT"){
+            document.getElementsByName("IVcontrastType")[0].value = "Omnipaque 350";
+            document.getElementsByName("contrastVolume")[0].value = 100;
+          } else { // it must be an MRI
+              document.getElementsByName("IVcontrastType")[0].value ="MultiHance";
+              document.getElementsByName("contrastVolume")[0].value = 10;
+            }
+        } else {
+            document.getElementsByName("IVcontrastType")[0].value ="None";
+            document.getElementsByName("contrastVolume")[0].value = "";
+          }
+
+    } else { // must be suggested
+         if (document.getElementsByName("suggested-IV-contrast")[1].className==="buttonPressed"){ // [1] is with
+            if (document.getElementById("suggested-modality").value==="CT"){
+                document.getElementsByName("IVcontrastType")[0].value = "Omnipaque 350";
+                document.getElementsByName("contrastVolume")[0].value = 100;
+              } else { // it must be an MRI
+                  document.getElementsByName("IVcontrastType")[0].value ="MultiHance";
+                  document.getElementsByName("contrastVolume")[0].value = 10;
+                }
+            } else {
+                document.getElementsByName("IVcontrastType")[0].value ="None";
+                document.getElementsByName("contrastVolume")[0].value = "";
+              }     
+
+      }
+
+}
+
+
+function PreCheckGFR(){
+
+  if (document.getElementsByName("ordered-IV-contrast")[1].className != "buttonPressed"){  //with is not buttonPressed so nonCon
+    document.getElementsByName("eGFR")[0].checked=true; // nonCon now checked
+    checkGFR("nonCon"); // calls functions to uncheck the others
+  } else if(document.getElementsByName("age")[0].value<60){
+      document.getElementsByName("eGFR")[2].checked=true; //na set to checked
+      checkGFR("na"); // calls functions to uncheck the others
+    }
+
+  if(document.getElementsByName("age")[0].value>=60 && document.getElementsByName("ordered-IV-contrast")[1].className === "buttonPressed"){
+    // old and contrast given so uncheck all
+    document.getElementsByName("eGFR")[0].checked=false;
+    document.getElementsByName("eGFR")[1].checked=false;
+    document.getElementsByName("eGFR")[2].checked=false;
+    checkGFR("");
+  } 
+  
+}
+
+
+function checkGFR(thisClick){
+  var nonCon = document.getElementsByName("eGFR")[0]; // nonCon true of false
+  var sixty = document.getElementsByName("eGFR")[1]; // sixty true of false
+  var na = document.getElementsByName("eGFR")[2]; // na true of false
+
+
+  if(nonCon.value===thisClick && nonCon.checked){
+    sixty.checked=false;
+    na.checked=false;
+    hideToggle('showOlderGFR');
+  }
+
+  if (sixty.value===thisClick && sixty.checked){
+      nonCon.checked=false;
+      na.checked=false;
+      hideToggle('showOlderGFR');
+  } 
+  
+  if (na.value===thisClick && na.checked){
+      sixty.checked=false;
+      nonCon.checked=false;
+      hideToggle('showOlderGFR');
+  } 
+  
+  if(sixty.checked==false && nonCon.checked==false && na.checked==false) { // all were unchecked
+      unHide('showOlderGFR');
+  } 
+}
+
 
 function buildOrder(){
   var oral = " ";
   var modality = document.getElementById("order-modality").value;
   var IVcontrast = document.getElementById("ordered-IV-contrast").value;
-// I think the orderOther is not obselete
+// I think the orderOther is not obselete.  When I removed from the HTML it quit working!
   var orderOther = document.getElementsByName("orderOther")[0].value; 
   var bodyPart = document.getElementsByName("order-bodyPart")[0].value;
   var oralNeeded = document.getElementById("order-oral").value;
 
   IVcontrast+="IV contrast. "
 
-  if (oralNeeded==="Yes"){
-    oral = "Oral contrast.";
-  } else if (oralNeeded==="No"){
-    oral = "No oral.";
+  if(modality==="CT"){
+    if (oralNeeded==="Yes"){
+      oral = "Oral contrast.";
+    } else if (oralNeeded==="No"){
+      oral = "No oral.";
+    }
   }
 
   var angio = document.getElementsByName("ordered-IV-contrast")[0].className;   // angio
   var without = document.getElementsByName("ordered-IV-contrast")[2].className; // without
+  var withIV = document.getElementsByName("ordered-IV-contrast")[1].className; // with
 
 
-  if(modality === "CT" && angio === "buttonPressed" && without === "buttonPressed"){
+  if(modality === "CT" && angio === "buttonPressed" && without === "buttonPressed" && withIV != "buttonPressed"){
       window.alert("That order looks funny!  Please check again!");
       document.getElementById("totalOrder").classList.add("red");
   } else document.getElementById("totalOrder").classList.remove("red");
@@ -29,7 +117,48 @@ function buildOrder(){
   var orderText = modality + " " + bodyPart + " " + IVcontrast + orderOther + oral;
 
   document.getElementById("totalOrder").value = orderText;
+
+  updateContrastTypeAndVolume("ordered");
 }
+
+
+function buildSuggested(){
+  var oral = " ";
+  var modality = document.getElementById("suggested-modality").value;
+  var IVcontrast = document.getElementById("suggested-IV-contrast").value;
+// I think the orderOther is not obselete
+  var orderOther = document.getElementsByName("orderOther")[0].value; 
+  var bodyPart = document.getElementsByName("suggested-bodyPart")[0].value;
+  var oralNeeded = document.getElementById("suggested-oral").value;
+
+  IVcontrast+="IV contrast. "
+
+  if(modality==="CT"){
+    if (oralNeeded==="Yes"){
+      oral = "Oral contrast.";
+    } else if (oralNeeded==="No"){
+      oral = "No oral.";
+    }
+  }
+
+  var angio = document.getElementsByName("suggested-IV-contrast")[0].className;   // angio
+  var without = document.getElementsByName("suggested-IV-contrast")[2].className; // without
+  var withIV = document.getElementsByName("suggested-IV-contrast")[1].className; // with
+
+
+  if(modality === "CT" && angio === "buttonPressed" && without === "buttonPressed" && withIV != "buttonPressed"){
+      window.alert("That order looks funny!  Please check again!");
+      document.getElementById("totalSuggested").classList.add("red");
+  } else document.getElementById("totalSuggested").classList.remove("red");
+
+
+  var orderText = modality + " " + bodyPart + " " + IVcontrast + orderOther + oral;
+
+  document.getElementById("totalSuggested").value = orderText;
+
+  updateContrastTypeAndVolume("suggested");
+}
+
 
 
 function updateHx(){
@@ -54,12 +183,12 @@ function updateHx(){
 
   if(mvcPressed==="buttonPressed"){
     if(restrained==="" || driver ==="" || airbag===""){
-      window.alert("Must choose one of each of the MVC option buttons!");
-      document.getElementsByName("hx")[0].classList.add("red");
+      window.alert("If known, please choose one of each of the MVC option buttons!");
+      // document.getElementsByName("hx")[0].classList.add("red");
       
     } else {
       totalHistory="MVC, " +  restrained + " " + driver + " with " + airbag + " deployment.";
-      document.getElementsByName("hx")[0].classList.remove("red");
+      // document.getElementsByName("hx")[0].classList.remove("red");
     }
   }
 
@@ -133,8 +262,8 @@ function calculate_top() {
 
 
 
-
-
+// I never call this right not, i just wanted it not to run during my testing.
+// function runFirebase(){
 
 
 
@@ -158,8 +287,13 @@ var config = {
 // Reference to the protocols object in your Firebase database
 var newProtocols = firebase.database().ref("newProtocols");
 
+
+
 // Save a new protocol to the database, using the input in the form
 var submitNewProtocol = function () {
+
+
+  
 
     // Get input values from each of the form elements
 
@@ -278,7 +412,7 @@ var submitNewProtocol = function () {
 
 */
 
-
+// }
 
 
 
@@ -357,25 +491,9 @@ function buttonCheckMulti(btnName, btnValue) {
   
   document.getElementById(btnName).value = valueTotal;
 
+ // updateContrastInfo();
 
 
-  updateContrastInfo();
-
-
-
-
-/*
-// this part is going to adjust the contrast type and volume to none if without checked but not with
-// actually this part will send it to eval the with part if without is pressed
-  var without = document.getElementsByName("suggested-IV-contrast")[2].className;  // 2 is the value of without
-  var IdToSend = "suggested-IV-contrast";
-
-  if (without==="buttonPressed"){
-    // var OrderedOrSuggested = document.getElementById ("suggested-IV-contrast"); // This is just in case i need to chck if ordered or suggested.  I think it will work without this discrimination because the suggested auto equals the ordered until it is changed.
-    checkContrastNone(IdToSend);
-  }
-*/
-  
 }
 
 
@@ -416,10 +534,11 @@ function ageCalc(dateOfBirth, hiddenWtId){
   var ageDate = new Date(ageDifMs); // miliseconds from epoch
   agePatient = Math.abs(ageDate.getFullYear() - 1970);
   document.getElementsByName("age")[0].value = agePatient;
-  if(agePatient<18){
-    unHide(hiddenWtId);
-  }
+ 
 } 
+
+
+
 
 function doctor(doc){
   window.open("https://www.baptistfirst.org/find-a-doctor/provider-search-results?ProviderText="+ doc + "&&LocationDescendants=true", "_blank", "scrollbars=yes,resizable=yes,top=300,left=800,width=400,height=600");
@@ -436,41 +555,40 @@ function sameCheck(hiddenDIV){
 }
 
 function setSuggestedToOrdered(){
-  document.getElementsByName("suggested-modality")[0].value= document.getElementsByName("order-modality")[0].value
-  document.getElementsByName("suggested-IV-contrast")[0].value= document.getElementsByName("ordered-IV-contrast")[0].value
-  document.getElementsByName("suggested-bodyPart")[0].value= document.getElementsByName("order-bodyPart")[0].value
-  document.getElementsByName("suggested-oral")[0].value= document.getElementsByName("order-oral")[0].value
-  document.getElementsByName("suggestedOther")[0].value= document.getElementsByName("order_otherContrast_details")[0].value
+  // need something to set all the same ones to class=buttonPushed
+  var modality = document.getElementsByName("order-modality")[0].className;
+  var angio = document.getElementsByName("ordered-IV-contrast")[0].className;
+  var withIV = document.getElementsByName("ordered-IV-contrast")[1].className;
+  var without = document.getElementsByName("ordered-IV-contrast")[2].className;
+  var bodyPart = document.getElementsByName("order-bodyPart")[0].value;
+  var oral = document.getElementsByName("order-oral")[0].className;
+  // var otherDetails = document.getElementsByName("order_otherContrast_details")[0].value;
+
+ // console.log(modality + " " + IVcontrast + " " + bodyPart + " " + oral);
+
+  document.getElementsByName("suggested-modality")[0].className= modality;
+  document.getElementsByName("suggested-IV-contrast")[0].className= angio;
+  document.getElementsByName("suggested-IV-contrast")[1].className= withIV;
+  document.getElementsByName("suggested-IV-contrast")[2].className= without;
+  document.getElementsByName("suggested-bodyPart")[0].value= bodyPart;
+  document.getElementsByName("suggested-oral")[0].className= oral;
+ // document.getElementsByName("suggestedOther")[0].value= otherDetails;
 
 
-  // order_otherContrast_details suggetedOther
+  document.getElementById("suggested-modality").value = document.getElementById("order-modality").value;
+  document.getElementById("suggested-IV-contrast").value = document.getElementById("ordered-IV-contrast").value;
+  document.getElementById("suggested-oral").value = document.getElementById("order-oral").value;
 
-/*
-  if (document.getElementsByName("order-modality")[0].className==="buttonPushed"){
-    document.getElementsByName("suggested-modality")[0].className="buttonPushed";
-  }
+// why does oral not populate here?
+  checkOralSuggested();
 
-  if (document.getElementsByName("order-modality")[1].className==="buttonPushed"){
-    document.getElementsByName("suggested-modality")[1].className="buttonPushed";
-  }
 
-  if (document.getElementsByName("ordered-IV-contrast")[0].className==="buttonPushed"){
-    document.getElementsByName("suggested-IV-contrast")[0].className="buttonPushed";
-  }
-
-  if (document.getElementsByName("order-bodyPart")[0].className==="buttonPushed"){
-    document.getElementsByName("suggested-bodyPart")[0].className="buttonPushed";
-  }
-
-  if (document.getElementsByName("order-oral")[0].className==="buttonPushed"){
-    document.getElementsByName("suggested-oral")[0].className="buttonPushed";
-  }
-*/
+ 
 
 
 
 
-// need something to set all the same ones to class=buttonPushed
+
 }
 
 
@@ -523,7 +641,7 @@ function updateContrastInfo(){  // take the ordered exam and give choices for in
 
 
 
-  var OrderedButtonClassName = document.getElementsByName("ordered-IV-contrast")[2].className;
+  var OrderedButtonClassName = document.getElementsByName("ordered-IV-contrast")[2].className; //without is [2]
   var SuggestedButtonClassName = document.getElementsByName("suggested-IV-contrast")[2].className;
 
   if(typeof SuggestedButtonClassName !== "undefined"){
@@ -551,7 +669,7 @@ function checkContrastNone(nameOfSending){
   //console.log("checking contrast none function now");
   //console.log(withPressed);
 
-  if (withPressed === "button"){
+  if (withPressed != "buttonPressed"){
     document.getElementsByName("IVcontrastType")[0].value ="None";
     document.getElementsByName("contrastVolume")[0].value = "";
   }
