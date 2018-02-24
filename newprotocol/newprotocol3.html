@@ -30,16 +30,16 @@
 
 
 			<form id="protocolForm" method="post">
-
+			Patient Data: 
 			<table>
 <!--
 
 
 
 -->
-
+				
 				<tr>
-					<td class="one">Patient Name: <span style="margin-left:36px">Last: </span> </td>	
+					<td class="one" style="text-align: right"> Last:</td>	
 					<td class="two"> 		<input type="text" name="lastname" style="width: 9em"></td> 	
 					<td class="three">First: 	<input type="text" name="firstname" style="width: 9em"></td>
 					<td class="four"> </td> 		
@@ -70,7 +70,9 @@ Need to change the js not to worry about peds age for wt in the function
 
 			</table>
 	      	
-		  		Gender:		<!-- below are the two functions to hide and show relevent info  -->
+		  				
+		  		<span style="margin-left:77px">Gender: </span>
+		  		<!-- below are the two functions to hide and show relevent info  -->
 						      	 
 					<input type="button" class= "button" name="genderSelect" value ="Male" onclick="var divToHide ='hiddenDivFemale'; hideToggle(divToHide); buttonCheck(this.name, this.value)">
 					
@@ -162,8 +164,9 @@ Need to change the js not to worry about peds age for wt in the function
 					</div>
 
 				<br>
-
-				Ordering clinician: <input type="text" style ="width: 249px; text-align: center" name="refering-doc" placeholder ="click 'tab' after entering name" onchange="doctor(this.value); style ='width: 249px; text-align: left'">       
+				Ordering clinician:  
+				
+				<input type="text" style ="width: 249px; text-align: center; margin-left:10px" name="refering-doc" placeholder ="click 'tab' after entering name" onchange="doctor(this.value); style ='width: 249px; text-align: left'">       
 
 				
 				<span style="margin-left: 15px" >
@@ -262,7 +265,7 @@ Need to change the js not to worry about peds age for wt in the function
 				
 				<!-- Ordered Exam Text: -->
 				<br>
-				<input type="text" id="totalOrder" style="width: 862px; margin-left: 50px; margin-top: 10px;" placeholder="Click here to update text to the order the Radiologist will see.  You may then edit the text as needed. " onclick="buildOrder()">
+				<input type="text" id="totalOrder" style="width: 852px; margin-left: 60px; margin-top: 10px;" placeholder="Click here to update text to the order the Radiologist will see.  You may then edit the text as needed. " onclick="buildOrder()">
 
 				<br>
 				<br>
@@ -281,7 +284,7 @@ My totalHistory plan has a flaw.  If you choose Driver then change to Passenger,
 
 				<!-- Episode: --> 
 				
-				<input type="button" style ="margin-left: 40px" class="buttonPressed" name="episode" value ="Initial" onclick="buttonCheck(this.name, this.value);">
+				<input type="button" style ="margin-left: 125px" class="buttonPressed" name="episode" value ="Initial" onclick="buttonCheck(this.name, this.value);">
 		      	<input type="button" class="button" name="episode" value ="Follow-up" onclick="buttonCheck(this.name, this.value);">
 		      	  			      	
 		      	<input type="hidden" id="episode" value="Initial">  <!-- hidden (form) value -->
@@ -289,14 +292,14 @@ My totalHistory plan has a flaw.  If you choose Driver then change to Passenger,
 				<br>
 
 
-				<input type="button" style ="margin-left: 40px" class="button" name="MVC" value ="MVC" onclick="unHide('mvcDetails'); buttonToggle(this.name);">
+				<input type="button" style ="margin-left: 125px" class="button" name="MVC" value ="MVC" onclick="unHide('mvcDetails'); buttonToggle(this.name);">
 
 
 				<!-- hidden if no MVC -->
 				
 				<span id ="mvcDetails" class="hideDIV">
 				<!--  Restrained -->
-					<input type="button" style ="margin-left: 40px" class="button" name="restrained" value ="Restrained" onclick="buttonCheck(this.name, this.value);">
+					<input type="button" style ="margin-left: 5px" class="button" name="restrained" value ="Restrained" onclick="buttonCheck(this.name, this.value);">
 			      	<input type="button" style ="width: 110px" class="button" name="restrained" value ="Unrestrained" onclick="buttonCheck(this.name, this.value);">
 			      	<input type="hidden" id="restrained" value="">  <!-- hidden (form) value -->
 
@@ -317,10 +320,12 @@ My totalHistory plan has a flaw.  If you choose Driver then change to Passenger,
 
 				
 				<!-- Pain -->
-				<input type="button" style ="margin-left: 40px" class="button" name="pain" value ="Pain" onclick="unHide('painDetails'); buttonToggle(this.name);">
+				<input type="button" style ="margin-left: 125px" class="button" name="pain" value ="Pain" onclick="unHide('painDetails'); buttonToggle(this.name);">
 
 				<span id ="painDetails" class="hideDIV">
-					<input type="text" name="painDetails" style="width: 764px" placeholder="Enter laterality / localize, context, severity, duration?">
+					<input type="text" name="painDetails" style="width: 679px" placeholder="Enter laterality / localize, context, severity, duration?">
+
+					<!--  764px width previously -->
 				</span>
 				<br>
 				
@@ -328,7 +333,7 @@ My totalHistory plan has a flaw.  If you choose Driver then change to Passenger,
 				
 				
 				<!-- The No's -->
-				<input type="button" style ="margin-left: 40px" class="button" name="injury" value ="Injury" onclick="unHide('theNosDetails'); buttonToggle(this.name);">
+				<input type="button" style ="margin-left: 125px" class="button" name="injury" value ="Injury" onclick="unHide('theNosDetails'); buttonToggle(this.name);">
 				
 				<input type="button" class="button" name="surgery" value ="Surgery" onclick="unHide('theNosDetails'); buttonToggle(this.name);">
 				
@@ -347,7 +352,7 @@ I need updateHx2 function to paste the updated hx after it is done.  should be l
 --> 
 				<br>
 				<!-- Indication: --> 
-				<textarea name="hx" rows="2" class="" style="vertical-align: top; margin-left: 40px; width: 868px" placeholder="Click here to update text to the history that will be seen by the Radiologist. You may then add text as needed." onclick="updateHx()"></textarea>
+				<textarea name="hx" rows="2" class="" style="vertical-align: top; margin-left: 125px; width: 783px" placeholder="Click here to update text to the history that will be seen by the Radiologist. You may then add text as needed." onclick="updateHx()"></textarea>
 
 				<br><br>
 
