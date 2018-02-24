@@ -114,19 +114,20 @@ td {
 }
 
 .one {
-    width: 12.5%;
+    width:  100px;
+    /* I previously used these percentages but converted to pixels at 700px for 100%.  12.5% 12.5% 24%, 50%   */
 }
 
 .two{
-    width: 12.5%;
+    width: 88px;
 }
 
 .three {
-    width: 24%;
+    width: 176px;
 }
 
 .four {
-    width: 50%;
+    width: 336px;
 }
 
 input[type=number]::-webkit-outer-spin-button,
