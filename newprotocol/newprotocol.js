@@ -591,39 +591,85 @@ function sameCheck(hiddenDIV){
 }
 
 function setSuggestedToOrdered(){
-  // need something to set all the same ones to class=buttonPushed
-  var modality = document.getElementsByName("order-modality")[0].className;
-  var angio = document.getElementsByName("ordered-IV-contrast")[0].className;
-  var withIV = document.getElementsByName("ordered-IV-contrast")[1].className;
-  var without = document.getElementsByName("ordered-IV-contrast")[2].className;
-  var bodyPart = document.getElementsByName("order-bodyPart")[0].value;
-  var oral = document.getElementsByName("order-oral")[0].className;
-  // var otherDetails = document.getElementsByName("order_otherContrast_details")[0].value;
-
- // console.log(modality + " " + IVcontrast + " " + bodyPart + " " + oral);
-
-  document.getElementsByName("suggested-modality")[0].className= modality;
-  document.getElementsByName("suggested-IV-contrast")[0].className= angio;
-  document.getElementsByName("suggested-IV-contrast")[1].className= withIV;
-  document.getElementsByName("suggested-IV-contrast")[2].className= without;
-  document.getElementsByName("suggested-bodyPart")[0].value= bodyPart;
-  document.getElementsByName("suggested-oral")[0].className= oral;
- // document.getElementsByName("suggestedOther")[0].value= otherDetails;
 
 
-  document.getElementById("suggested-modality").value = document.getElementById("order-modality").value;
-  document.getElementById("suggested-IV-contrast").value = document.getElementById("ordered-IV-contrast").value;
-  document.getElementById("suggested-oral").value = document.getElementById("order-oral").value;
-
-// why does oral not populate here?
-  checkOralSuggested();
+  if(document.getElementById("same-exam-check").checked===false)
+  {
 
 
+    // need something to set all the same ones to class=buttonPushed
+    var modalityCT = document.getElementsByName("order-modality")[0].className;
+    var modalityMRI = document.getElementsByName("order-modality")[1].className;
+    var angio = document.getElementsByName("ordered-IV-contrast")[0].className;
+    var withIV = document.getElementsByName("ordered-IV-contrast")[1].className;
+    var without = document.getElementsByName("ordered-IV-contrast")[2].className;
+    var bodyPart = document.getElementsByName("order-bodyPart")[0].value;
+    var oral = document.getElementsByName("order-oral")[0].className;
+    // var otherDetails = document.getElementsByName("order_otherContrast_details")[0].value;
+
+   // console.log(modality + " " + IVcontrast + " " + bodyPart + " " + oral);
+
+    document.getElementsByName("suggested-modality")[0].className= modalityCT;
+    document.getElementsByName("suggested-modality")[1].className= modalityMRI;
+
+    document.getElementsByName("suggested-IV-contrast")[0].className= angio;
+    document.getElementsByName("suggested-IV-contrast")[1].className= withIV;
+    document.getElementsByName("suggested-IV-contrast")[2].className= without;
+    document.getElementsByName("suggested-bodyPart")[0].value= bodyPart;
+    document.getElementsByName("suggested-oral")[0].className= oral;
+   // document.getElementsByName("suggestedOther")[0].value= otherDetails;
+
+
+    document.getElementById("suggested-modality").value = document.getElementById("order-modality").value;
+    document.getElementById("suggested-IV-contrast").value = document.getElementById("ordered-IV-contrast").value;
+    document.getElementById("suggested-oral").value = document.getElementById("order-oral").value;
+
+  // why does oral not populate here?
+    checkOralSuggested();
+
+
+  } else {
+    // here it should change values to  none and unpress the buttons.  the button part works but vaules not so much!
+
+    // window.alert("delete same stuff");
+
+    // need something to set all the same ones to class=buttonPushed
+    /*
+    var modalityCT = document.getElementsByName("order-modality")[0].className;
+    var modalityMRI = document.getElementsByName("order-modality")[1].className;
+    var angio = document.getElementsByName("ordered-IV-contrast")[0].className;
+    var withIV = document.getElementsByName("ordered-IV-contrast")[1].className;
+    var without = document.getElementsByName("ordered-IV-contrast")[2].className;
+    var bodyPart = document.getElementsByName("order-bodyPart")[0].value;
+    var oral = document.getElementsByName("order-oral")[0].className;
+  */
+    // var otherDetails = document.getElementsByName("order_otherContrast_details")[0].value;
+
+   // console.log(modality + " " + IVcontrast + " " + bodyPart + " " + oral);
+
+    document.getElementsByName("suggested-modality")[0].className= button;
+    document.getElementsByName("suggested-modality")[1].className= button;
+
+    document.getElementsByName("suggested-IV-contrast")[0].className= button;
+    document.getElementsByName("suggested-IV-contrast")[1].className= button;
+    document.getElementsByName("suggested-IV-contrast")[2].className= button;
+    document.getElementsByName("suggested-bodyPart")[0].value= "***** ERROR *****";
+    document.getElementsByName("suggested-oral")[0].className= button;
+   // document.getElementsByName("suggestedOther")[0].value= otherDetails;
+
+
+    document.getElementById("suggested-modality").value = "";
+    document.getElementById("suggested-IV-contrast").value = "";
+    document.getElementById("suggested-oral").value = "";
+
+
+    // look into this one but I think I am correct to get rid of it checkOralSuggested();
+    }
  
 
 
 
-
+    buildSuggested();
 
 }
 
