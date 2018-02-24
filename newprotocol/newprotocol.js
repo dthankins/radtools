@@ -185,20 +185,25 @@ function updateHx(){
     if(restrained==="" || driver ==="" || airbag===""){
       window.alert("If known, please choose one of each of the MVC option buttons!");
       // document.getElementsByName("hx")[0].classList.add("red");
-      
-    } else {
-      totalHistory="MVC, " +  restrained + " " + driver + " with " + airbag + " deployment.";
+    } 
+
+    totalHistory="MVC, " +  restrained + " " + driver + " with " + airbag + " deployment.";
       // document.getElementsByName("hx")[0].classList.remove("red");
-    }
-  }
+  } 
+
+
 
   if(painPressed==="buttonPressed"){
     totalHistory += " Complains of pain. " + painDetails + ". ";
   }
 
-  if(injuryPressed==="buttonPressed"){
+  if(injuryPressed==="buttonPressed" && mvcPressed != "buttonPressed"){
     totalHistory += " Injury. ";
-  } else totalHistory += " No injury. ";
+  } else if(mvcPressed != "buttonPressed") {
+      totalHistory += " No injury. ";
+    } 
+
+
 
   if(surgeryPressed==="buttonPressed"){
     totalHistory += " Surgery. ";
