@@ -4,10 +4,25 @@ function updateContrastTypeAndVolume(orderedOrSuggested){
     if (document.getElementsByName("ordered-IV-contrast")[1].className==="buttonPressed"){ // [1] is with
         if (document.getElementById("order-modality").value==="CT"){
             document.getElementsByName("IVcontrastType")[0].value = "Omnipaque 350";
-            document.getElementsByName("contrastVolume")[0].value = 100;
+            // next we assign the volume at 100 unless they weigh less than 100 lbs
+            if(document.getElementsByName("wt")[0].value >= 100){
+                document.getElementsByName("contrastVolume")[0].value = 100;
+            } else document.getElementsByName("contrastVolume")[0].value = document.getElementsByName("wt")[0].value;
+            
           } else { // it must be an MRI
               document.getElementsByName("IVcontrastType")[0].value ="MultiHance";
-              document.getElementsByName("contrastVolume")[0].value = 10;
+
+              // next we assign the volume at the lower of 10 or wt based MultiHance calculation
+              // https://www.radiology.wisc.edu/contrastCorner/gadcalc.php
+              var MultiHanceDose = Math.trunc((0.1*document.getElementsByName("wt")[0].value/2.2/0.5));
+              // *** This would be different for other forms of Gad
+
+              if(MultiHanceDose <10){
+                  document.getElementsByName("contrastVolume")[0].value = MultiHanceDose;
+              } else document.getElementsByName("contrastVolume")[0].value = 10;
+
+
+              
             }
         } else {
             document.getElementsByName("IVcontrastType")[0].value ="None";
@@ -18,10 +33,26 @@ function updateContrastTypeAndVolume(orderedOrSuggested){
          if (document.getElementsByName("suggested-IV-contrast")[1].className==="buttonPressed"){ // [1] is with
             if (document.getElementById("suggested-modality").value==="CT"){
                 document.getElementsByName("IVcontrastType")[0].value = "Omnipaque 350";
-                document.getElementsByName("contrastVolume")[0].value = 100;
+                // next we assign the volume at 100 unless they weigh less than 100 lbs
+                if(document.getElementsByName("wt")[0].value >= 100){
+                    document.getElementsByName("contrastVolume")[0].value = 100;
+                } else document.getElementsByName("contrastVolume")[0].value = document.getElementsByName("wt")[0].value;
+
+
               } else { // it must be an MRI
                   document.getElementsByName("IVcontrastType")[0].value ="MultiHance";
-                  document.getElementsByName("contrastVolume")[0].value = 10;
+                  
+
+                  // next we assign the volume at the lower of 10 or wt based MultiHance calculation
+                  // https://www.radiology.wisc.edu/contrastCorner/gadcalc.php
+                  var MultiHanceDose = Math.trunc((0.1*document.getElementsByName("wt")[0].value/2.2/0.5));
+                  // *** This would be different for other forms of Gad
+
+                  if(MultiHanceDose <10){
+                      document.getElementsByName("contrastVolume")[0].value = MultiHanceDose;
+                  } else document.getElementsByName("contrastVolume")[0].value = 10;
+
+
                 }
             } else {
                 document.getElementsByName("IVcontrastType")[0].value ="None";
