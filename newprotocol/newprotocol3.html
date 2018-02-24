@@ -2,7 +2,9 @@
 <html>
     <head>
         <meta charset="utf-8">
+<!-- -->
         <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+
         <script src="newprotocol.js"></script>
 	    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 		<link rel="stylesheet" href="newprotocol.css">
@@ -16,6 +18,11 @@
    		at <span style="color: blue"> EMIC </span>
 
    		<input type="button" class="button" onclick="logout1();" value="Logout">
+   		
+   		<br>
+   		<span style="color: blue">
+   		<script> document.write(new Date().toDateString()); </script> 
+   		</span>
 
       	<h1>Protocol Form: </h1>
 
@@ -47,10 +54,10 @@ I may need to change from using size to style= "width: 22px" in some areas so th
 <!--
 Need to change the js not to worry about peds age for wt in the function 
 -->
-					<td class="two"> <input type="date" name="DOB" style="width: 9em" onchange="var dateToSend=this.value; var sendWt = 'hiddenWt'; ageCalc(dateToSend, sendWt); document.getElementsByName('wt')[0].focus();">  
+					<td class="two"> <input type="date" name="DOB" style="width: 9em" onchange="var dateToSend=this.value; var sendWt = 'hiddenWt'; ageCalc(dateToSend, sendWt); document.getElementsByName('wt')[0].focus(); PreCheckGFR()">  
 					</td>
 					<td class="three">
-						Age: <input type="text" name="age" style="text-align: center; width: 30px">
+						Age: <input type="number" name="age" style="text-align: center; width: 30px" onchange="PreCheckGFR()">
 
 						<span style="margin-left: 27px"> Wt: </span> <input type="text" name="wt" style="text-align: center; width: 30px">
 						pounds
@@ -194,7 +201,7 @@ Need to change the js not to worry about peds age for wt in the function
 
 					<input type="button" class= "button" name="ordered-IV-contrast" value ="Angiogram" onclick="buttonCheckMulti(this.name, this.value);">
 
-			      	<input type="button" class="button" name="ordered-IV-contrast" value ="With" onclick="buttonCheckMulti(this.name, this.value);">
+			      	<input type="button" class="button" name="ordered-IV-contrast" value ="With" onclick="buttonCheckMulti(this.name, this.value); PreCheckGFR()">
 
 			      	<input type="button" class= "button" name="ordered-IV-contrast" value ="Without" onclick="buttonCheckMulti(this.name, this.value);">
 					
@@ -216,7 +223,7 @@ Need to change the js not to worry about peds age for wt in the function
 
 				Body part:
 					<select name="order-bodyPart" style="width: 205px" onchange="checkOral()">		
-						  <option value="default-bodyPart"> -- Select Exam Area -- </option>	
+						  <option value="***** ERROR *****"> -- Select Exam Area -- </option>	
 						  <option value="Chest">Chest</option>
 						  <option value="Abdomen">Abdomen</option>
 						  <option value="Abdomen and Pelvis">Abdomen and Pelvis</option>
@@ -242,10 +249,13 @@ Need to change the js not to worry about peds age for wt in the function
 							<input type="hidden" id="order-oral" value="">  <!-- hidden (form) value -->
 				</span>
 			
+
+<!-- not sure why the order and sugested text updates fail to work if I remove this obselete text? -->	
 				<div id="hiddenOrderedOther" class="hideDIV" style="margin-left: 31px; margin-top: 5px">
 						Other details: 
 						<input type="text" name="orderOther" size="100">
 				</div>
+		
 
 				
 				<!-- Ordered Exam Text: -->
@@ -345,9 +355,16 @@ I need updateHx2 function to paste the updated hx after it is done.  should be l
 				<span style="margin-left: 5px"> (Leave date blank if NA.)</span> 		 
 
 				<br>
-				
+
+				<label class="container" style="margin-left: 55px; margin-top: 3px;"> NA -- Non-contrasted exam.  
+					<input type="checkbox" name="eGFR" value="nonCon" checked onchange="checkGFR(this.value)">
+					<span class="checkmark"></span>
+				</label>
+
+				<br>
+
 				<label class="container" style="margin-left: 5px; margin-left: 55px; margin-top: 3px;"> eGFR > 60
-					<input type="checkbox" id="eGFR-check" name="eGFR" value="overSixty" unchecked onchange="var gfrCheck = 'showOlderGFR'; sameCheck(gfrCheck)">
+					<input type="checkbox" name="eGFR" value="sixty" unchecked onchange="checkGFR(this.value)">
 					<span class="checkmark"></span>
 				
 				</label>
@@ -355,13 +372,13 @@ I need updateHx2 function to paste the updated hx after it is done.  should be l
 				<br>
 
 				<label class="container" style="margin-left: 55px; margin-top: 3px;"> NA -- Patient is < 60 y/o with no history of diabetes, hypertension, renal disease, kidney surgery or single kidney.  
-					<input type="checkbox" id="eGFR-check" name="eGFR" value="gfrNA" checked onchange="var gfrCheck = 'showOlderGFR'; sameCheck(gfrCheck)">
+					<input type="checkbox" name="eGFR" value="na" unchecked onchange="checkGFR(this.value)">
 					<span class="checkmark"></span>
 				</label>
 
-		
-
 				<br>
+		
+				
 				 	
 
 					
@@ -376,6 +393,7 @@ I need updateHx2 function to paste the updated hx after it is done.  should be l
 					<br>
 					<span style="margin-left: 11px"> Older GFR: </span>   <input type="number" name="OlderGFR" style="margin-left: 12px; width: 25px; text-align: center;"  >
 					<input type="date" name="DateOlderGFR">
+					(Leave date blank if no older GFR.)
 					
 				</div>
 
@@ -386,7 +404,7 @@ I need updateHx2 function to paste the updated hx after it is done.  should be l
 				<br><br>	
 				<strong> Exam Suggested: </strong>
 				<label class="container">Same
-					<input type="checkbox" id="same-exam-check" name="same-result" checked onchange="var suggestedUnhide='hiddenSuggestedStuff'; sameCheck(suggestedUnhide); setSuggestedToOrdered();checkOralSuggested();">
+					<input type="checkbox" id="same-exam-check" name="same-result" checked onchange="var suggestedUnhide='hiddenSuggestedStuff'; sameCheck(suggestedUnhide); setSuggestedToOrdered();">
 					<span class="checkmark"></span>
 				</label>
 
@@ -418,8 +436,9 @@ I need updateHx2 function to paste the updated hx after it is done.  should be l
 
 				      	<input type="button" class= "button" name="suggested-IV-contrast" value ="Without" onclick="buttonCheckMulti(this.name, this.value)">
 						
+<!--
 						<input type="button" class= "button" name="suggested-IV-contrast" value ="Other" onclick="var divToUnHide ='hiddenSuggestedOther'; unHideMulti(divToUnHide); buttonCheckMulti(this.name, this.value)">
-
+-->
 
 						<br>
 						<input type="hidden" size="100" id="suggested-IV-contrast" value="">  <!-- hidden (form) value -->
@@ -434,7 +453,7 @@ I need updateHx2 function to paste the updated hx after it is done.  should be l
 					<span class="needsIndent"></span> 
 					Body part:
 						<select name="suggested-bodyPart" style="width: 205px" onchange="checkOralSuggested()">		
-							  <option value="default-bodyPart"> -- Select Exam Area -- </option>	
+							  <option value="***** ERROR *****"> -- Select Exam Area -- </option>	
 							  <option value="Chest">Chest</option>
 							  <option value="Abdomen">Abdomen</option>
 							  <option value="Abdomen and Pelvis">Abdomen and Pelvis</option>
@@ -464,15 +483,22 @@ I need updateHx2 function to paste the updated hx after it is done.  should be l
 				
 				
 
-	
+					
 					<div id="hiddenSuggestedOther" class="hideDIV" style="margin-left: 31px; margin-top: 5px">
 						Other details: 
 						<input type="text" name="suggestedOther" size="100">
 					</div>
+					
+
+					<!-- Suggested Exam Text: -->
+					<br>
+	<!-- Not sure why this does not work! -->
+					<input type="text" id="totalSuggested" style="width: 862px; margin-left: 50px; margin-top: 10px;" placeholder="Click here to update text to the order the Radiologist will see.  You may then edit the text as needed. " onclick="buildSuggested()">
 
 				</div>  <!-- closes the hidden div suggested -->
 
 
+				
 
 			
 
