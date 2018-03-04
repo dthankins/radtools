@@ -42,7 +42,7 @@
 	     		<!-- if yes, it is at least a 4 -->
      			<!-- if no, it is a 3 -->
      			<br><br>
-	     		<input type="button" class="button" name="DWI" value ="Yes" onclick="buttonCheck(this.name, this.value); updateDWI(this.value)">
+	     		<input type="button" class="button" name="DWI" value ="Yes" onclick="buttonCheck(this.name, this.value); updateDWI(this.value); window.location.hash = '#footer';">
 		      	<input type="button" class="button" name="DWI" value ="No" onclick="buttonCheck(this.name, this.value); updateDWI(this.value)">
 		     	<input type="hidden" id="DWI" value="">  <!-- hidden (form) value -->
 		     	<br><br>
@@ -111,7 +111,7 @@ Need to add NV bundle, capsular bulge and obliteration of the recto-prostate ang
 		     		
 		     		Was there early contrast enhancement? 
 		     		<br> 
-		     		Early is with 10 seconds of the femoral artery or beore the rest of the prostate.
+		     		Early is with 10 seconds of the femoral artery or before the rest of the prostate.
 
 	     			<br><br>
 
@@ -122,7 +122,8 @@ Need to add NV bundle, capsular bulge and obliteration of the recto-prostate ang
 			     	<br><br>
 
 		     		<div id="PZ3noDCE" class="hideDIV">
-		     			<strong>PI-RADS 3, Probably Benign.</strong>  You had a peripheral zone lesion that was focally dark on ADC but only iso-intense to other / normal areas within the peripheral zone.  Negative DCE.
+		     			<strong>PI-RADS 3, Intermediate (the presence of clinically significant cancer is equivocal).</strong>  
+		     			<br>  You had a peripheral zone lesion that was focally dark on ADC but only iso-intense to other / normal areas within the peripheral zone.  Negative DCE.
 		     		</div>
 
 		     		<div id="PZ3yesDCE" class="hideDIV">
@@ -157,8 +158,7 @@ Need to add NV bundle, capsular bulge and obliteration of the recto-prostate ang
 	     	</div>
 
 	     	<div id="resultSmudged" class="hideDIV">
-	     		Next Question!
-	     		<br><br>
+	     		
 	     		Homogeneous and Hypo-intense with a lenticular or "water drop" shape?  
 	     		<br><br>
 	     		Also click yes if the lesion involves the AFMS (Anterior Fibro-Muscular Stroma) or the Urethral Sphincter.
@@ -171,7 +171,7 @@ Need to add NV bundle, capsular bulge and obliteration of the recto-prostate ang
 		     	<br><br>
 
 	     		<div id="TZhetero" class="hideDIV">
-	     			DWI Score of 5?  (ADC dark with bright DWI larger that 1.5 cm)
+	     			DWI Score of 5?  (ADC dark with bright DWI measuring larger that 1.5 cm)
 	     			<br><br>
 
 	     			<input type="button" class="button" name="TZ3DWI" value ="Yes" onclick="buttonCheck(this.name, this.value); unHide('TZ3posDWI'); hide('TZ3negDWI')">
@@ -181,7 +181,9 @@ Need to add NV bundle, capsular bulge and obliteration of the recto-prostate ang
 			     	<br><br>
 
 			     	<div id="TZ3negDWI" class="hideDIV">
-	     				<strong>PI-RADS 3, Probably Benign.</strong>  You had a transitional zone lesion with ill defined margins that was not lenticular, homogeneous or hypo-intense. DWI score < 5.
+	     				<strong>PI-RADS 3, Intermediate (the presence of clinically significant cancer is equivocal).</strong>  
+	     				<br> You had a transitional zone lesion with ill defined margins that was not lenticular, homogeneous or hypo-intense. DWI score < 5.
+
 	     			</div>
 
 			     	<div id="TZ3posDWI" class="hideDIV">
@@ -192,8 +194,7 @@ Need to add NV bundle, capsular bulge and obliteration of the recto-prostate ang
 	     		</div>
 
 	     		<div id="TZhomo" class="hideDIV">
-	     			Next Question!
-	     			<br><br>
+	     			
 	     			Larger than 1.5 cm or ECE (Extra-Capsular Extension)?
 	     			<br><br>
 
