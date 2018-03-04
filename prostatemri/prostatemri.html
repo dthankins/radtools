@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+       	<script src="prostatemri.js"></script>
+		<link rel="stylesheet" href="prostatemri.css">
+        <title>Prostate MRI</title>
+    </head>
+
+   	<body>
+<!-- -->
+		<h1>Prostate MRI</h1>
+
+     	<div id="BCE" class="">
+     		This is for the <span style="color: red; font-weight: bold"> surgically naive prostate</span>. <a href="BCE.html"> Click here </a> for post-treatment cases with biochemical recurrance (BCE).
+     	</div>
+
+     	<br>
+
+		<!-- Location: -->
+
+      	<input type="button" class="button" name="location" value ="Peripheral Zone" onclick="buttonCheck(this.name, this.value); updateZone(this.value); hide('BCE');">
+      	<input type="button" class="button" name="location" value ="Transitional Zone" onclick="buttonCheck(this.name, this.value); updateZone(this.value); hide('BCE');">
+     	<input type="hidden" id="location" value="">  <!-- hidden (form) value -->
+
+     	<br><br>
+     	
+     	<div id="PZ" class="hideDIV">
+     		DWI / ADC are the dominant sequences for Peripheral Zone (PZ) lesions.
+     		<br><br>
+     		Is there a focal dark area on ADC?
+     		<!-- if yes, it is at least a 3 -->
+     		<!-- if not focal dark on ADC, it is a 2 and you just see something in the PZ on T2 with nothing on DWI/ADC -->
+     		<br><br>
+     		<input type="button" class="button" name="ADC" value ="Yes" onclick="buttonCheck(this.name, this.value); updateADC(this.value)">
+	      	<input type="button" class="button" name="ADC" value ="No" onclick="buttonCheck(this.name, this.value); updateADC(this.value)">
+	     	<input type="hidden" id="ADC" value="">  <!-- hidden (form) value -->
+	     	<br><br>
+
+	     	<div id="posADC" class="hideDIV">
+	     		Was DWI focal and brighter than other areas (non-lesions) in the prostate?
+	     		<!-- if yes, it is at least a 4 -->
+     			<!-- if no, it is a 3 -->
+     			<br><br>
+	     		<input type="button" class="button" name="DWI" value ="Yes" onclick="buttonCheck(this.name, this.value); updateDWI(this.value)">
+		      	<input type="button" class="button" name="DWI" value ="No" onclick="buttonCheck(this.name, this.value); updateDWI(this.value)">
+		     	<input type="hidden" id="DWI" value="">  <!-- hidden (form) value -->
+		     	<br><br>
+<!--  
+
+Need to add part about contrast enhancement bumping you to pirads 4 or 5
+
+ -->	     	
+		     	<div id="hyperDWI" class="hideDIV" onclick="">
+		     		This is at least a PI-RADS 4.
+		     		<br><br>
+		     		Any of the following present?
+		     		<br><br>
+<!--  
+
+Need to add NV bundle, capsular bulge and obliteration of the recto-prostate angle.
+
+ -->	
+
+		     		<label class="container" style="margin-left: 5px; margin-top: 3px;"> Larger than 1.5 cm.
+						<input type="checkbox" name="PZ_5_features" value="size" unchecked onchange="updatePZ_5(this.value)">
+						<span class="checkmark"></span>
+					</label>
+					<br>
+
+		     		<label class="container" style="margin-left: 5px; margin-top: 3px;"> Lesion contracts the capsule over at least 1 cm.
+						<input type="checkbox" name="PZ_5_features" value="contact" unchecked onchange="updatePZ_5(this.value)">
+						<span class="checkmark"></span>
+					</label>
+					<br>		     		
+
+		     		<label class="container" style="margin-left: 5px; margin-top: 3px;"> Capsular breakthrough.
+						<input type="checkbox" name="PZ_5_features" value="breakthrough" unchecked onchange="updatePZ_5(this.value)">
+						<span class="checkmark"></span>
+					</label>	
+					<br>
+
+		     		<label class="container" style="margin-left: 5px; margin-top: 3px;"> NV Bundle Involvement.
+						<input type="checkbox" name="PZ_5_features" value="NV Bundle" unchecked onchange="updatePZ_5(this.value)">
+						<span class="checkmark"></span>
+					</label>
+					<br>	
+
+		     		<label class="container" style="margin-left: 5px; margin-top: 3px;"> None of the above.
+						<input type="checkbox" name="PZ_5_features" value="none" unchecked onchange="updatePZ_5(this.value)">
+						<span class="checkmark"></span>
+					</label>
+					<br>
+					<br>
+
+					
+					<div id="pirads4" class="hideDIV">
+			     		<strong>PI-RADS 4, Suspicious.</strong>  Biopsy is recommended.
+			     	</div>
+
+					
+					<div id="pirads5" class="hideDIV">
+			     		<strong>PI-RADS 5, Highly Suspicious.</strong>  Biopsy is recommended.
+			     	</div>
+
+		 
+		     		
+		     	</div>
+
+		     	<div id="isoDWI" class="hideDIV">
+		     		
+		     		Was there early contrast enhancement? 
+		     		<br> 
+		     		Early is with 10 seconds of the femoral artery or beore the rest of the prostate.
+
+	     			<br><br>
+
+		     		<input type="button" class="button" name="DCEon3" value ="Yes" onclick="buttonCheck(this.name, this.value); unHide('PZ3yesDCE'); hide('PZ3noDCE')">
+			      	<input type="button" class="button" name="DCEon3" value ="No" onclick="buttonCheck(this.name, this.value); unHide('PZ3noDCE'); hide('PZ3yesDCE') ">
+			     	<input type="hidden" id="DCEon3" value="">  <!-- hidden (form) value -->
+
+			     	<br><br>
+
+		     		<div id="PZ3noDCE" class="hideDIV">
+		     			<strong>PI-RADS 3, Probably Benign.</strong>  You had a peripheral zone lesion that was focally dark on ADC but only iso-intense to other / normal areas within the peripheral zone.  Negative DCE.
+		     		</div>
+
+		     		<div id="PZ3yesDCE" class="hideDIV">
+		     			<strong>PI-RADS 4, Suspicious.</strong>  Biopsy is recommended. DWI score was 3 but bumped up to PI-RADS 4 because of the positive DCE. 
+		     			<br> Peripheral zone lesion that was focally dark on ADC but only iso-intense to other / normal areas within the peripheral zone.
+		     		</div>
+
+		     	</div>
+
+	     	</div>
+
+	     	<div id="negADC" class="hideDIV">
+	     		<strong>PI-RADS 2, Benign.</strong>  You had a peripheral zone lesion on T2 but no corresponding focal abnormality on ADC.
+	     	</div>
+
+     		<br>
+     	</div> <!-- end PZ div stuff -->
+
+     	<div id="TZ" class="hideDIV">
+     		T2 is the dmoinant sequence for Transitional Zone (TZ) lesions.
+     		<br><br>
+     		On T2, is the lesion "encapsulated" with clearly defined margins?  If so, that would be a benign BPH nodule.
+     		<br><br>
+     		<input type="button" class="button" name="BPH" value ="BPH Nodule" onclick="buttonCheck(this.name, this.value); updateBPH(this.value)">
+	      	<input type="button" class="button" name="BPH" value ="Smudged Charcoal" onclick="buttonCheck(this.name, this.value); updateBPH(this.value)">
+	     	<input type="hidden" id="BPH" value="">  <!-- hidden (form) value -->
+	     	<br><br>
+	     	
+	     	<div id="resultBPH" class="hideDIV">
+	     		<strong>PI-RADS 2, Benign.</strong>  You had a transitional zone lesion on T2 with classic features of a benign BPH nodule.  DWI / ADW and contrast enhancement are all irrelevant.
+	     	
+	     	</div>
+
+	     	<div id="resultSmudged" class="hideDIV">
+	     		Next Question!
+	     		<br><br>
+	     		Homogeneous and Hypo-intense with a lenticular or "water drop" shape?  
+	     		<br><br>
+	     		Also click yes if the lesion involves the AFMS (Anterior Fibro-Muscular Stroma) or the Urethral Sphincter.
+	     		<br><br>
+
+	     		<input type="button" class="button" name="TZ3or4" value ="Yes" onclick="buttonCheck(this.name, this.value); unHide('TZhomo'); hide('TZhetero')">
+		      	<input type="button" class="button" name="TZ3or4" value ="No" onclick="buttonCheck(this.name, this.value); unHide('TZhetero'); hide('TZhomo') ">
+		     	<input type="hidden" id="TZ3or4" value="">  <!-- hidden (form) value -->
+
+		     	<br><br>
+
+	     		<div id="TZhetero" class="hideDIV">
+	     			DWI Score of 5?  (ADC dark with bright DWI larger that 1.5 cm)
+	     			<br><br>
+
+	     			<input type="button" class="button" name="TZ3DWI" value ="Yes" onclick="buttonCheck(this.name, this.value); unHide('TZ3posDWI'); hide('TZ3negDWI')">
+			      	<input type="button" class="button" name="TZ3DWI" value ="No" onclick="buttonCheck(this.name, this.value); unHide('TZ3negDWI'); hide('TZ3posDWI') ">
+			     	<input type="hidden" id="TZ3DWI" value="">  <!-- hidden (form) value -->
+
+			     	<br><br>
+
+			     	<div id="TZ3negDWI" class="hideDIV">
+	     				<strong>PI-RADS 3, Probably Benign.</strong>  You had a transitional zone lesion with ill defined margins that was not lenticular, homogeneous or hypo-intense. DWI score < 5.
+	     			</div>
+
+			     	<div id="TZ3posDWI" class="hideDIV">
+	     				<strong>PI-RADS 4, Suspicious.</strong>  Biopsy is recommended.  Score by T2 was 3 but the DWI score of 5 bumped the PI-RADS total score to 4.
+
+	     			</div>
+
+	     		</div>
+
+	     		<div id="TZhomo" class="hideDIV">
+	     			Next Question!
+	     			<br><br>
+	     			Larger than 1.5 cm or ECE (Extra-Capsular Extension)?
+	     			<br><br>
+
+	     			<input type="button" class="button" name="TZ4to5" value ="Yes" onclick="buttonCheck(this.name, this.value); unHide('TZpirads5'); hide('TZpirads4'); window.location.hash = '#footer';">
+			      	<input type="button" class="button" name="TZ4to5" value ="No" onclick="buttonCheck(this.name, this.value); unHide('TZpirads4'); hide('TZpirads5'); window.location.hash = '#footer'; ">
+			     	<input type="hidden" id="TZ4to5" value="">  <!-- hidden (form) value -->
+
+			     	<br><br>
+
+					<div id="TZpirads4" class="hideDIV">
+			     		<strong>PI-RADS 4, Suspicious.</strong>  Biopsy is recommended.
+			     	</div>
+
+					
+					<div id="TZpirads5" class="hideDIV">
+			     		<strong>PI-RADS 5, Highly Suspicious.</strong>  Biopsy is recommended.
+			     	</div>
+
+	     		</div>
+
+
+
+	     		
+	     	</div>
+
+<!--  
+
+Need to add buttons for BPH nodule vs Smudged Charcoal
+
+ -->	
+
+     		<!-- -->
+     		<br>
+     	</div>
+
+     	<br><br>
+     	<footer id="footer"> 
+     		<a href="notes.html" > Click Here </a> for more general Prostate MRI notes. 
+     		<br><br>
+     		<a href="http://pubs.rsna.org/doi/full/10.1148/rg.2016150234" > PI-RADS Version 2: A Pictorial Update <br> RadioGraphics 2016; 36:1354–1372.  </a> 
+     	</footer>
+   	</body>
+</html>
