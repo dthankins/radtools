@@ -4,17 +4,81 @@
     <head>
         <meta charset="utf-8">
         <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+        <script src="login.js"></script>
         <script src="newprotocol.js"></script>
+        <!--
+        
+        
 
-        <!-- <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script> -->
+        <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script> 
 
-		<link rel="stylesheet" href="newprotocol.css">
+        -->
+
+        <!-- -->
+
+    <link rel="stylesheet" href="newprotocol.css">
 
         <title>MRA Protocol Login Page</title>
     </head>
 
-   	<body>
+    <body onload="initializeFirebase()">
         <h1 style="text-align: center">Login Page</h1>
+
+        <center>
+            <br>
+
+            <form>
+                <h4>User name: <input id="username" name="username" type="text" onmouseover="this.focus();"> </h4> 
+                
+                <h4>Password:  <input id="password" type="password" onmouseover="this.focus();"></h4> 
+               
+                
+
+                <!--
+
+                <br><br>Check current user:<br>
+                <input type="button" onclick="window.alert(checkLogin());" value="Check Login">
+                
+                -->
+
+            </form>
+
+
+            <div id="location" value="">
+                <h4>Facility:</h4>
+                <input type="button" class= "button" value ="NIC" name ="location" onclick="buttonCheck(this.name, this.value)">
+                <input type="button" class= "button" value ="EMIC" name ="location" onclick="buttonCheck(this.name, this.value)">
+                <input type="button" class= "button" value ="PIC" name ="location" onclick="buttonCheck(this.name, this.value)">
+
+                <br>
+
+                <input type="button" class= "button" value ="South" name ="location" onclick="buttonCheck(this.name, this.value)">
+                <input type="button" class= "button" value ="East" name ="location" onclick="buttonCheck(this.name, this.value)">
+                <input type="button" class= "button" value ="Prattville" name ="location" onclick="buttonCheck(this.name, this.value)">
+
+            </div>
+
+            <br>
+
+            <div id="techModality" value="">
+                <h4>Modality:</h4>
+                <input type="button" class= "button" value ="CT" name ="techModality" onclick="buttonCheck(this.name, this.value);">
+                <input type="button" class= "button" value ="MRI" name ="techModality" onclick="buttonCheck(this.name, this.value);">
+                
+
+            </div>
+
+
+            <br><br>
+
+            <input type="button" style="width: 100px" class="submitButton" value="Login" onclick="login()"> 
+            <input type="button" style="width: 100px" class="submitButton" value="Logout" onclick="logout()">
+
+        </center>
+
+
+
+
 
     </body>
 </html>
