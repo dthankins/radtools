@@ -37,6 +37,8 @@ function login() {
             var modality = document.getElementById("techModality").value;
             var user = firebase.auth().currentUser.email;
             window.alert(user + " is logged is at " + location + " working in " + modality + ".  ");
+            var element = document.getElementById("menuDiv");
+            element.classList.remove("hideDIV");        //toggle class hideDIV
         }, // like an else
         function(error) {
             // Handle Errors here.
@@ -46,11 +48,23 @@ function login() {
             window.alert("Invalid username/password!");
         });
 }
+/*
+element.classList.add("hideDIV");       //toggle class hideDIV
+}
 
+
+function unHide(hiddenDIV){
+  var element = document.getElementById(hiddenDIV);
+  element.classList.remove("hideDIV");        //toggle class hideDIV
+
+*/
 function logout() {
     firebase.auth().signOut().then(function() {
         // Sign-out successful.
         window.alert("Logout succesful!");
+        var element = document.getElementById("menuDiv");
+        element.classList.add("hideDIV");        //toggle class hideDIV
+        
     }, function(error) {
         // An error happened.
         // console.log("Error with logout: ", error.code, " ", error.message);
