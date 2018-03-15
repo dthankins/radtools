@@ -36,9 +36,14 @@ function login() {
             var location = document.getElementById("location").value;
             var modality = document.getElementById("techModality").value;
             var user = firebase.auth().currentUser.email;
-            window.alert(user + " is logged is at " + location + " working in " + modality + ".  ");
-            var element = document.getElementById("menuDiv");
-            element.classList.remove("hideDIV");        //toggle class hideDIV
+            if(location === undefined || modality === undefined){
+                window.alert(user + ", please select a Location and Modality before clicking Login.");
+            } else {
+                window.alert(user + " is logged is at " + location + " working in " + modality + ".  ");
+                var element = document.getElementById("menuDiv");
+                element.classList.remove("hideDIV");        //toggle class hideDIV
+            }
+            
         }, // like an else
         function(error) {
             // Handle Errors here.
