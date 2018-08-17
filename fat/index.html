@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="fat.css">
+        <script src="fat.js"></script>
+        <title>Fat for Pat</title>
+    </head>
+
+    <body>
+        <h1>Liver Fat Quantification Using MRI</h1>
+
+        <div id="selectMagnetStrength">
+
+            <input type="button" class="buttonPressed" name="magnet" value ="3" onclick="buttonCheck(this.name, this.value); calcFat()">
+
+            <input type="button" class="button" name="magnet" value ="1.5" onclick="buttonCheck(this.name, this.value); calcFat()">
+
+            <input type="hidden" id="magnet" value=3>  <!-- hidden form value -->
+
+        </div>
+
+        <br><br>
+
+        <div id="getInput">
+
+            IP: <input type="number" id="IP" onchange="calcFat()">
+            OP: <input type="number" id="OP" onchange="calcFat()">
+<!--
+            <select id="sampleNumber" onchange="calcFat()">
+                <option value="">Select</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
+-->
+        </div>
+
+        <br><br>
+
+        <div id="calc">
+            Fat Fraction: 
+            <input type="number" id="calcResult">
+            %
+        </div>
+
+        <br><br>
+        <p>
+            <a href="https://www.ncbi.nlm.nih.gov/pubmed/21094444"> Magn Reson Imaging Clin N Am. 2010 August 1; 18(3): 337–357.</a>
+        </p>
+
+        
+    </body>
+</html>
+
+
+
+
