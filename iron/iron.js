@@ -56,8 +56,10 @@ function calcIron(){
 
   if(R2>0){
     document.getElementById("iron").value = iron;
+    document.getElementById("iron2").value = iron;
   } else {
     document.getElementById("iron").value = "";
+    document.getElementById("iron2").value = "";
   }
 
 
