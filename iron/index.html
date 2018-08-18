@@ -7,10 +7,13 @@
         <title>Liver Iron Quantification Using MRI at 3T or 1.5 Tesla</title>
     </head>
 
-    <body>
+    <body onload="calcAverage();calcIron()">
         <h1>Liver Iron Quantification Using MRI</h1>
 
         <div id="selectMagnetStrength">
+
+            Select Magnet Strength:  
+            
 
             <input type="button" class="buttonPressed" name="magnet" value ="3" onclick="buttonCheck(this.name, this.value); calcIron()">
 
@@ -20,14 +23,16 @@
 
         </div>
 
-        <br><br>
+        <br>
 
-        <div id="getInput">
+        <div id="getInput" >
 
-            Measure ROI at least 3 areas. Include right and left hepatic lobes and avoid areas of artifact, large vessels and volume averaging. 
+
+
+            Measure ROI in 3 areas. Include right and left hepatic lobes and avoid areas of artifact, large vessels and volume averaging. 
             <br><br>
             ROI #1:
-            <select id="ROI1" >  <!--onchange="calcFat()" -->
+            <select id="ROI1" onmouseover="this.focus();" onchange="calcAverage(); calcIron()">  
                 <option value="0">0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -109,7 +114,7 @@
                 <option value="77">77</option>
                 <option value="78">78</option>
                 <option value="79">79</option>
-                <option value="80">80</option>
+                <option selected value="80">80</option>
                 <option value="81">81</option>
                 <option value="82">82</option>
                 <option value="83">83</option>
@@ -237,7 +242,7 @@
             </select>
             <br>
             ROI #2:
-            <select id="ROI2" >  <!--onchange="calcFat()" -->
+            <select id="ROI2" onmouseover="this.focus();" onchange="calcAverage(); calcIron()">  
                 <option value="0">0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -319,7 +324,7 @@
                 <option value="77">77</option>
                 <option value="78">78</option>
                 <option value="79">79</option>
-                <option value="80">80</option>
+                <option selected value="80">80</option>
                 <option value="81">81</option>
                 <option value="82">82</option>
                 <option value="83">83</option>
@@ -445,7 +450,7 @@
             </select>
             <br>
             ROI #3:
-            <select id="ROI3" onchange="calcAverage(); calcIron()">  
+            <select id="ROI3" onmouseover="this.focus();" onchange="calcAverage(); calcIron()">  
                 <option value="0">0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -527,7 +532,7 @@
                 <option value="77">77</option>
                 <option value="78">78</option>
                 <option value="79">79</option>
-                <option value="80">80</option>
+                <option selected value="80">80</option>
                 <option value="81">81</option>
                 <option value="82">82</option>
                 <option value="83">83</option>
@@ -651,24 +656,27 @@
                 <option value="199">199</option>
                 <option value="200">200</option>
             </select>
-            <br><br>
-            ROI Average:  
-            <input type="text" style="width: 50px;" id="ROIaverage" onclick="calcAverage(); calcIron()">
+        </div> <!-- end inputs div -->
+        
+        <br>
+        ROI Average:  
+        <input type="text" style="width: 25px; text-align: center;" id="ROIaverage" onclick="calcAverage(); calcIron()">
 
+        <br><br>
+        Liver Iron concentration (mg Fe / g liver weight) = 
+        <input type="text" style="width: 25px; text-align: center;" id="iron" onclick="calcIron()">
+
+
+        
+        <div id="impression">
+            <br>
+            IMPRESSION:  Calculated liver iron concentration is <input type="text" style="width: 25px; text-align: center;" id="iron2" onclick="calcIron()"> mg of iron/grams of dry liver weight.
             <br><br>
-            Liver Iron concentration (mg Fe / g liver weight) = 
-            <input type="text" style="width: 50px;" id="iron" onclick="calcIron()">
-            
-            <br><br><br><br>
-            IMPRESSION:
-            <br><br>
-            Calculated liver iron concentration is _ mg of iron/grams of dry liver weight.
-            <br><br><br>
 
 
 
             INTERPRETATION OF LIVER IRON QUANTIFICATION
-            <br><br><br>
+            <br><br>
                     
             Normal:                                  < 4 mg Fe / grams dry liver 
             weight
@@ -681,32 +689,13 @@
             Severe hepatic iron burden:          >10 mg Fe / grams dry liver weight
             <br>
 
-<!--
-            IP: <input type="number" id="IP" onchange="calcFat()">
-            OP: <input type="number" id="OP" onchange="calcFat()">
-
-            <select id="sampleNumber" onchange="calcFat()">
-                <option value="">Select</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-            </select>
-
         </div>
 
-        <br><br>
+        
 
-        <div id="calc">
-            Fat Fraction: 
-            <input type="number" id="calcResult">
-            %
--->
-        </div> <!-- end inputs div -->
-
-        <br><br>
+        <br>
         <p>
-            <a href="https://www.ncbi.nlm.nih.gov/pubmed/21094444"> Magn Reson Imaging Clin N Am. 2010 August 1; 18(3): 337–357.</a>
+            <a href="https://www.hindawi.com/journals/rrp/2013/628150/"> Reference: Hepatic Iron Quantification on 3 Tesla (3 T) Magnetic Resonance (MR): Technical Challenges and Solutions</a>
         </p>
 
         
