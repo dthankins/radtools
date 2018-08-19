@@ -64,6 +64,12 @@ function calcIron(){
 
 
 }  // end calcIron
+
+function setROI23(){  // sets ROI2 and 3 equal to ROI1 to save scrolling energy
+  ROI1=document.getElementById("ROI1").value
+  document.getElementById("ROI2").value = ROI1;
+  document.getElementById("ROI3").value = ROI1;
+}  // end setROI23
             
   
 
