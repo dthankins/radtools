@@ -62,10 +62,8 @@ input[type=text] {
 input.text,
 input[type="text"],
 select {
-    background-color: #ffffff;
-    /*
     -webkit-appearance: none;
-    */
+    background-color: #ffffff;
 }
 
 /* New below to stop zoom on select options with iPhone -- does not appear to work*/
