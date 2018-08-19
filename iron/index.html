@@ -31,7 +31,7 @@
 
             Measure ROI in 3 areas. Include right and left hepatic lobes and avoid areas of artifact, large vessels and volume averaging. 
             <br><br>
-            ROI #1:
+            ROI #1:  
             <select id="ROI1" onmouseover="this.focus();" onchange="setROI23();calcAverage(); calcIron();">  
                 <option value="0">0</option>
                 <option value="1">1</option>
@@ -291,7 +291,10 @@
 
 
             </select>
+            * ROI's 2 and 3 will initially be set to the value you enter for ROI #1 to make scrolling easier.
+
             <br>
+            
             ROI #2:
             <select id="ROI2" onmouseover="this.focus();" onchange="calcAverage(); calcIron()">  
                 <option value="0">0</option>
