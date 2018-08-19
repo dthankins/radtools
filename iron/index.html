@@ -2,8 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-          <!-- hope to fix zoom problem 
-<meta name="viewport" content="width=device-width, initial-scale=1">-->
+        <meta name="viewport" content="width=device-width, initial-scale=1">  <!-- hope to fix zoom problem -->
         <link rel="stylesheet" href="iron.css">
         <script src="iron.js"></script>
         <title>Liver Iron Quantification Using MRI at 3T or 1.5 Tesla</title>
@@ -33,6 +32,8 @@
 
             Measure ROI in 3 areas. Include right and left hepatic lobes and avoid areas of artifact, large vessels and volume averaging. 
             <br><br>
+            * ROI's 2 and 3 are initially set to ROI #1 for scrolling ease.
+            <br>
             ROI #1:  
             <select id="ROI1" onmouseover="this.focus();" onblur="setROI23();calcAverage(); calcIron();" onchange="setROI23();calcAverage(); calcIron();">  
                 <option value="0">0</option>
@@ -293,7 +294,7 @@
 
 
             </select>
-            * ROI's 2 and 3 are initially set to ROI #1 for scrolling ease.
+            
 
             <br>
 
