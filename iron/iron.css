@@ -1,6 +1,6 @@
 body {
     background-color: lightgray;
-    font-size: 20px; /* previously nothing here */
+    font-size: 16px; /* previously nothing here */
 }
 
 .button {
@@ -18,7 +18,7 @@ body {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 32px;
+    font-size: 16px;
     margin: 4px 2px;
 }
 
@@ -38,43 +38,61 @@ body {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 32px;
+    font-size: 16px;
     margin: 4px 2px;
 }
 
 input {
-    font-size: 32px;
+    font-size: 16px;
 }
 
 select {
-    font-size: 32px;
-    width: 110px; 
+    font-size: 16px;
+    width: 75px; 
     text-align: center;
 
 }
 
 input[type=text] {
-    font-size: 32px;
-    width: 90px; 
+    font-size: 16px;
+    width: 25px; 
     text-align: center;
 }
 
 input.text,
 input[type="text"],
 select {
-    background-color: #ffffff;
-    /*
     -webkit-appearance: none;
-    */
+    background-color: #ffffff;
 }
 
-/* New below to stop zoom on select options with iPhone */
+/* New below to stop zoom on select options with iPhone -- does not appear to work*/
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
 select:focus, textarea:focus, input:focus {
-        font-size: 32px;
+        font-size: 16px;
     }
 }
         
+
+
+
+/*   Might use something like this in the future to fix font size issues
+
+# Mobile first
+input, textarea, select {
+  font-size: 16px;
+}
+
+# Tablet upwards
+@media (min-width: 768px) {
+  font-size: 14px;
+}
+
+
+
+
+
+*/
 
 
 
