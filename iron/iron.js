@@ -24,6 +24,85 @@ function buttonCheck(btnName, btnValue) {
 } // end buttonCheck
 
 
+function calcIronTypeROI(){
+  // 1st get the values and length then calc avg
+  
+  ROIvaluesTyped= document.getElementsByName("ROIt");
+
+
+  //alert(ROIvaluesTyped.length);
+
+  numROIs=0;
+  sumTyped=0;
+  avgTyped=0;
+
+  for (var i = 0; i < ROIvaluesTyped.length; i++) {
+
+    
+
+    ROIvalueInt=parseFloat(ROIvaluesTyped[i].value);
+
+    //alert(ROIvalueInt);
+
+    //alert("text: " + ROIvaluesTyped[i].value);
+    //alert("text: " + ROIvalueInt;
+
+    if (ROIvalueInt>0){
+      numROIs+=1;
+      sumTyped+=parseFloat(ROIvalueInt);
+
+      //alert(numROIs);
+    }
+
+     
+ 
+  }
+
+  avgTyped=parseFloat(sumTyped)/numROIs;
+  // put in avg blank
+  document.getElementById("ROIaverageType").value = avgTyped;
+
+
+
+
+  // now use average as R2 in the other formula like we did for scroll
+
+  R2=parseFloat(avgTyped);
+
+  R23T=2*R2-11;
+
+  magnetStrength=parseFloat(document.getElementById("magnet").value);
+
+  if(magnetStrength==1.5){
+    iron = parseFloat((0.0254*R2+ 0.202).toFixed(1));
+  } else { // must be 3T
+    iron = parseFloat((0.0254*R23T+ 0.202).toFixed(1));
+    
+  }
+
+
+  
+
+  if(R2>0){
+    document.getElementById("ironImpType").value = iron;
+    document.getElementById("ironType").value = iron;
+  } else {
+    document.getElementById("ironImpType").value = "";
+    document.getElementById("ironType").value = "";
+  }
+    
+
+} // end calcIronTypeROI()
+
+
+
+
+
+
+
+
+
+
 function calcAverage(){
   ROI1=parseInt(document.getElementById("ROI1").value);
   ROI2=parseInt(document.getElementById("ROI2").value);
@@ -35,8 +114,10 @@ function calcAverage(){
     document.getElementById("ROIaverage").value = "";
   }
 
-
 } // end calcAverage
+
+
+
 
 function calcIron(){
   R2=document.getElementById("ROIaverage").value;
@@ -96,3 +177,14 @@ function calcFat(){
 }  // end calcFat
 
 
+function hide(divSent){
+  // window.alert()
+  var element = document.getElementById(divSent);
+  element.classList.add("hideDIV");       //toggle class hideDIV
+} // end hide
+
+
+function unHide(divSent){
+  var element = document.getElementById(divSent);
+  element.classList.remove("hideDIV");        //toggle class hideDIV
+} // end unHide
