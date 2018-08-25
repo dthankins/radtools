@@ -16,10 +16,10 @@
             Select Magnet Strength:  
             <br>
 
-            <input type="button" class="buttonPressed" name="magnet" value ="3" onclick="buttonCheck(this.name, this.value); calcIron()">
+            <input type="button" class="buttonPressed" name="magnet" value ="3" onclick="buttonCheck(this.name, this.value); calcIron(); calcIronTypeROI(); addHighlightScroll();addHighlight();">
 
-            <input type="button" class="button" name="magnet" value ="1.5" onclick="buttonCheck(this.name, this.value); calcIron()">
-
+            <input type="button" class="button" name="magnet" value ="1.5" onclick="buttonCheck(this.name, this.value); calcIron(); calcIronTypeROI(); addHighlightScroll();addHighlight();">
+            
             <input type="hidden" id="magnet" value=3>  <!-- hidden form value -->
 
         </div>
