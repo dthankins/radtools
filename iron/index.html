@@ -56,7 +56,7 @@
                 * ROI's 2 and 3 are initially set to ROI #1 for scrolling ease.
                 <br><br>
                 ROI #1:  
-                <select id="ROI1" onmouseover="this.focus();" onblur="setROI23();calcAverage(); calcIron();" onchange="setROI23();calcAverage(); calcIron();">  
+                <select id="ROI1" onblur="setROI23();calcAverage(); calcIron();" onchange="setROI23();calcAverage(); calcIron();">  
                     <option value="0">0</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -320,7 +320,7 @@
                 <br>
 
                 ROI #2:
-                <select id="ROI2" onmouseover="this.focus();" onblur="setROI23();calcAverage(); calcIron();" onchange="calcAverage(); calcIron()">  
+                <select id="ROI2" onblur="calcAverage(); calcIron();" onchange="calcAverage(); calcIron()">  
                     <option value="0">0</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -579,7 +579,7 @@
                 </select>
                 <br>
                 ROI #3:
-                <select id="ROI3" onblur="setROI23();calcAverage(); calcIron();" onchange="calcAverage(); calcIron()">  
+                <select id="ROI3" onblur="calcAverage(); calcIron();" onchange="calcAverage(); calcIron()">  
                     <option value="0">0</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
