@@ -58,7 +58,7 @@ function calcIronTypeROI(){
  
   }
 
-  avgTyped=parseFloat(sumTyped)/numROIs;
+  avgTyped=parseFloat(sumTyped/numROIs).toFixed(1);
   // put in avg blank
   document.getElementById("ROIaverageType").value = avgTyped;
 
