@@ -56,7 +56,7 @@
                 * ROI's 2 and 3 are initially set to ROI #1 for scrolling ease.
                 <br><br>
                 ROI #1:  
-                <select id="ROI1" onblur="setROI23();calcAverage(); calcIron();" onchange="setROI23();calcAverage(); calcIron();">  
+                <select id="ROI1" onblur="setROI23();calcAverage(); calcIron(); addHighlightScroll();" onchange="setROI23();calcAverage(); calcIron(); addHighlightScroll();">  
                     <option value="0">0</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -320,7 +320,7 @@
                 <br>
 
                 ROI #2:
-                <select id="ROI2" onblur="calcAverage(); calcIron();" onchange="calcAverage(); calcIron()">  
+                <select id="ROI2" onblur="calcAverage(); calcIron(); addHighlightScroll();" onchange="calcAverage(); calcIron(); addHighlightScroll();">  
                     <option value="0">0</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -579,7 +579,7 @@
                 </select>
                 <br>
                 ROI #3:
-                <select id="ROI3" onblur="calcAverage(); calcIron();" onchange="calcAverage(); calcIron()">  
+                <select id="ROI3" onblur="calcAverage(); calcIron(); addHighlightScroll();" onchange="calcAverage(); calcIron(); addHighlightScroll();">  
                     <option value="0">0</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -863,17 +863,22 @@
             <div id="INTERPRETATION" style="font-size: 14px">
                 INTERPRETATION OF LIVER IRON QUANTIFICATION
                 <br><br>
-                        
-                Normal:                                  < 4 mg Fe / grams dry liver 
-                weight
-                <br><br>    
-                Mild hepatic iron burden:              4 - 7 mg Fe / grams dry liver weight
-                <br><br>
-                                
-                Moderate hepatic iron burden:        7 - 10 mg Fe / grams dry liver weight
-                <br><br>            
-                Severe hepatic iron burden:          >10 mg Fe / grams dry liver weight
+                
+                <div id="normalScroll" class="">        
+                    Normal:                                  < 4 mg Fe / grams dry liver weight
+                </div>
+                <br> 
+                <div id="mildScroll" class="">  
+                    Mild hepatic iron burden:              4 - 7 mg Fe / grams dry liver weight
+                </div>
                 <br>
+                <div id="modScroll" class="">                 
+                    Moderate hepatic iron burden:        7 - 10 mg Fe / grams dry liver weight
+                </div>
+                <br>     
+                <div id="severeScroll" class="">         
+                    Severe hepatic iron burden:          >10 mg Fe / grams dry liver weight
+                </div>
 
             </div>
 
