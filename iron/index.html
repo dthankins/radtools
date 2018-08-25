@@ -887,34 +887,30 @@
         </div> <!-- end scroll div -->
 
         
-
-        
-
-
         <div id="typeROI" class=""> <!--  hideDIV -->
             <br>
             Measure ROI in 3 areas. Include right and left hepatic lobes and avoid areas of artifact, large vessels and volume averaging. 
             <br><br>
 
             ROI #1:  
-            <input type="text" class="typedROI"  name="ROIt" min="0" onblur="calcIronTypeROI()" onchange="calcIronTypeROI()">  <!-- t is for typed -->
+            <input type="text" class="typedROI"  name="ROIt" min="0" onblur="calcIronTypeROI(); addHighlight();" onchange="calcIronTypeROI(); addHighlight();">  <!-- t is for typed -->
             <br>
             ROI #2:  
-            <input type="text" class="typedROI" name="ROIt" min="0" onblur="calcIronTypeROI()" onchange="calcIronTypeROI()"> 
+            <input type="text" class="typedROI" name="ROIt" min="0" onblur="calcIronTypeROI(); addHighlight();" onchange="calcIronTypeROI(); addHighlight();">
             <br>
             ROI #3:  
-            <input type="text" class="typedROI" name="ROIt" min="0" onblur="calcIronTypeROI()" onchange="calcIronTypeROI()"> 
+            <input type="text" class="typedROI" name="ROIt" min="0" onblur="calcIronTypeROI(); addHighlight();" onchange="calcIronTypeROI(); addHighlight();">
             <br><br>
             Addional ROI's are optional.
             <br><br>
             ROI #4:  
-            <input type="text" class="typedROI" name="ROIt" min="0" onblur="calcIronTypeROI()" onchange="calcIronTypeROI()"> 
+            <input type="text" class="typedROI" name="ROIt" min="0" onblur="calcIronTypeROI(); addHighlight();" onchange="calcIronTypeROI(); addHighlight();">
             <br>
             ROI #5:  
-            <input type="text" class="typedROI" name="ROIt" min="0" onblur="calcIronTypeROI()" onchange="calcIronTypeROI()"> 
+            <input type="text" class="typedROI" name="ROIt" min="0" onblur="calcIronTypeROI(); addHighlight();" onchange="calcIronTypeROI(); addHighlight();">
             <br>
             ROI #6:  
-            <input type="text" class="typedROI" name="ROIt" min="0" onblur="calcIronTypeROI()" onchange="calcIronTypeROI()"> 
+            <input type="text" class="typedROI" name="ROIt" min="0" onblur="calcIronTypeROI(); addHighlight();" onchange="calcIronTypeROI(); addHighlight();">
 
             <br><br>
 
@@ -939,16 +935,22 @@
             <div id="INTERPRETATIONtype" style="font-size: 14px">
                 INTERPRETATION OF LIVER IRON QUANTIFICATION
                 <br><br>
-                        
-                Normal:                                  < 4 mg Fe / grams dry liver 
-                weight
-                <br><br>    
-                Mild hepatic iron burden:              4 - 7 mg Fe / grams dry liver weight
-                <br><br>
-                                
-                Moderate hepatic iron burden:        7 - 10 mg Fe / grams dry liver weight
-                <br><br>            
-                Severe hepatic iron burden:          >10 mg Fe / grams dry liver weight
+                
+                <div id="normal" class="">        
+                    Normal:                                  < 4 mg Fe / grams dry liver weight
+                </div>
+                <br> 
+                <div id="mild" class="">  
+                    Mild hepatic iron burden:              4 - 7 mg Fe / grams dry liver weight
+                </div>
+                <br>
+                <div id="mod" class="">                 
+                    Moderate hepatic iron burden:        7 - 10 mg Fe / grams dry liver weight
+                </div>
+                <br>     
+                <div id="severe" class="">         
+                    Severe hepatic iron burden:          >10 mg Fe / grams dry liver weight
+                </div>
                 <br>
 
             </div>
