@@ -95,6 +95,45 @@ function calcIronTypeROI(){
 } // end calcIronTypeROI()
 
 
+function addHighlight(){
+
+  
+
+  ironVal=parseFloat(document.getElementById("ironType").value);
+
+
+ 
+  if(ironVal<4){
+    // normal
+    divHighlight="normal";
+  } else if (ironVal<7){//(ironVal>=4) and 
+    //mild
+    divHighlight="mild";
+  } else if (ironVal<=10){//(ironVal>=7) and 
+    // mod
+    divHighlight="mod";
+  } else if (ironVal>10){
+    // severe
+    divHighlight="severe";
+  }
+
+
+
+
+  // make sure they are all unhighlighted
+
+  document.getElementById("normal").classList.remove("highlight");
+  document.getElementById("mild").classList.remove("highlight");    
+  document.getElementById("mod").classList.remove("highlight");          
+  document.getElementById("severe").classList.remove("highlight");    
+
+
+  //add only the sent one
+  var element = document.getElementById(divHighlight);
+  element.classList.add("highlight");       //toggle class highlight
+} // end addHighlight
+
+
 
 
 
