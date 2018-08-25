@@ -4,7 +4,10 @@ body {
 }
 
 .highlight{
+    /*
     width: 35%;
+    works better on iPhone to be 100% but looks worse on laptop 
+    */
     outline: 2px solid red;
     background-color:yellow;
 }
