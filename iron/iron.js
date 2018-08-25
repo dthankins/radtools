@@ -135,6 +135,44 @@ function addHighlight(){
 
 
 
+function addHighlightScroll(){
+
+  
+
+  ironVal=parseFloat(document.getElementById("iron").value);
+
+
+ 
+  if(ironVal<4){
+    // normal
+    divHighlight="normalScroll";
+  } else if (ironVal<7){//(ironVal>=4) and 
+    //mild
+    divHighlight="mildScroll";
+  } else if (ironVal<=10){//(ironVal>=7) and 
+    // mod
+    divHighlight="modScroll";
+  } else if (ironVal>10){
+    // severe
+    divHighlight="severeScroll";
+  }
+
+
+
+
+  // make sure they are all unhighlighted
+
+  document.getElementById("normalScroll").classList.remove("highlight");
+  document.getElementById("mildScroll").classList.remove("highlight");    
+  document.getElementById("modScroll").classList.remove("highlight");          
+  document.getElementById("severeScroll").classList.remove("highlight");    
+
+
+  //add only the sent one
+  var element = document.getElementById(divHighlight);
+  element.classList.add("highlight");       //toggle class highlight
+} // end addHighlightScroll
+
 
 
 
