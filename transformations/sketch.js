@@ -19,7 +19,7 @@ let ySpeedRect=-5;
 
 
 function setup() {
-  createCanvas(displayWidth*0.9,displayHeight*0.9); // screenWidth, screenHeight);
+  createCanvas(displayWidth*0.9,displayHeight*0.8); // screenWidth, screenHeight);
   angleMode(DEGREES);
   rectMode(CENTER);
 }
@@ -27,7 +27,7 @@ function setup() {
 function draw() {
     background(0);
     let screenWidth=displayWidth*0.9; //800;
-    let screenHeight=displayHeight*0.9; //400;
+    let screenHeight=displayHeight*0.8; //400;
     
     push();
         fill(255, 0, 0);
