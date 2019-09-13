@@ -32,7 +32,7 @@ let ySpeedRect=-5;
 var smallBoxSize = 10;
 
 
-var xBox=400*0.5; // x starts in the middle of the screen at the top
+var xBox=100; // x starts in the middle of the screen at the top
 var yBox=smallBoxSize;
 
 var buffer = smallBoxSize*2;
