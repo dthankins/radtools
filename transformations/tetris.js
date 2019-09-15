@@ -2,10 +2,10 @@
 // https://www.khanacademy.org/computer-programming/spin-off-of-vertex-shape-drawing-tool/4996753861607424
 
 var screenFactor = 0.6;
-var screenSize = 200;
+var screenSize = 375;
 
 function setup() {
-    createCanvas(screenSize,screenSize*2); // screenWidth, screenHeight);
+    createCanvas(screenSize,screenSize*1.34); // screenWidth, screenHeight);
     angleMode(DEGREES);
     //rectMode(CENTER);
     frameRate(30);
@@ -33,7 +33,7 @@ var now;
 function draw() {
     background(0);
     var screenWidth=screenSize; //displayWidth*screenFactor; //800;
-    var screenHeight=screenSize*2; //displayHeight*screenFactor; //400;
+    var screenHeight=screenSize*1.34; //displayHeight*screenFactor; //400;
 
     
     if(yBox==screenHeight){
