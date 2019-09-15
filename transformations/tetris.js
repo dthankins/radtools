@@ -123,6 +123,7 @@ function drawNewPiece(_chosenShape,_smallBoxSize, _xBox, _yBox){
 
 
 function drawSshape(smallBoxSizeTemp, startXtemp,startYtemp){
+    fill(255, 0, 0);
     let smallBox = smallBoxSizeTemp;
     let startX=0;
     let startY=0;
@@ -137,6 +138,7 @@ function drawSshape(smallBoxSizeTemp, startXtemp,startYtemp){
 
 
 function drawMirrorS(smallBoxSizeTemp, startXtemp,startYtemp){
+    fill(0, 0, 255);
     let smallBox = smallBoxSizeTemp;
     let startX=0;
     let startY=0;
@@ -152,6 +154,7 @@ function drawMirrorS(smallBoxSizeTemp, startXtemp,startYtemp){
 
 
 function drawTshape(smallBoxSizeTemp, startXtemp,startYtemp){
+    fill(0,255,255);
     let smallBox = smallBoxSizeTemp;
     let startX=0;
     let startY=0;
@@ -166,6 +169,7 @@ function drawTshape(smallBoxSizeTemp, startXtemp,startYtemp){
 
 
 function drawLshape(smallBoxSizeTemp, startXtemp,startYtemp){
+    fill(0, 255, 0);
     let smallBox = smallBoxSizeTemp;
     let startX=0;
     let startY=0;
@@ -179,6 +183,7 @@ function drawLshape(smallBoxSizeTemp, startXtemp,startYtemp){
 
 
 function drawMirrorL(smallBoxSizeTemp, startXtemp,startYtemp){
+    fill(244, 232, 104);
     let smallBox = smallBoxSizeTemp;
     let startX=0;
     let startY=0;
@@ -192,14 +197,11 @@ function drawMirrorL(smallBoxSizeTemp, startXtemp,startYtemp){
 
   
 function drawRect(smallBoxSizeTemp, startXtemp,startYtemp){
+    fill(252, 8, 219);
     let smallBox = smallBoxSizeTemp;
     let startX=0;
     let startY=0;
-
-    
-    //print('smallBox: '+smallBox);
-    //print('startX: '+startX);
-    
+   
     // to make the RECTANLE shape for tetris I need 4 adjacent squares
     square(startX,startY,smallBox);
     square(startX+smallBox,startY,smallBox);
@@ -207,30 +209,17 @@ function drawRect(smallBoxSizeTemp, startXtemp,startYtemp){
     square(startX+3*smallBox,startY,smallBox);
 
 
-
-    /*
-    beginShape();
-      vertex(0, 0);
-      vertex(60, 0);
-      vertex(60, 20);
-      vertex(0, 20);
-    endShape(CLOSE);
-    */
 }
   
 function drawBox(smallBoxSizeTemp, startXtemp,startYtemp){
     // By default, the first two parameters set the location of the upper-left corner, 
     // the third sets the side size of the square. The way these parameters are 
     // interpreted, however, may be changed with the rectMode() function.
-    
+    fill(255, 170, 71);
     let smallBox = smallBoxSizeTemp;
     let startX=0;
     let startY=0;
 
-    
-    //print('smallBox: '+smallBox);
-    //print('startX: '+startX);
-    
     // to make the box shape for tetris I need 4 adjacent squares
     square(startX,startY,smallBox);
     square(startX+smallBox,startY,smallBox);
