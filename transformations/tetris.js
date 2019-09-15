@@ -57,16 +57,16 @@ function draw() {
     yBox+=1; // I previously used smallBoxSize
 
     if (mouseIsPressed){
-        if(mouseX>xBox+buffer){  // move right
-            xBox+=smallBoxSize;
-        } else if (mouseX<xBox-buffer){
-            xBox-=smallBoxSize;
-        } else if (abs(mouseY-yBox)<=buffer){
-            now = (new Date()).getTime();
-            if(now-lastTouchEnd>150){
-                angle+=90;
-            }
-            
+        now = (new Date()).getTime();
+        if(now-lastTouchEnd>150){
+
+            if(mouseX>xBox+buffer){  // move right
+                xBox+=smallBoxSize;
+            } else if (mouseX<xBox-buffer){
+                xBox-=smallBoxSize;
+            } else if (abs(mouseY-yBox)<=buffer){
+                  angle+=90;
+                }
         }
         lastTouchEnd=now;
     }
