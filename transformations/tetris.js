@@ -4,7 +4,7 @@
 var screenFactor = 0.6;
 
 function setup() {
-    createCanvas(600,1100); // screenWidth, screenHeight);
+    createCanvas(400,800); // screenWidth, screenHeight);
     angleMode(DEGREES);
     //rectMode(CENTER);
     frameRate(30);
@@ -51,8 +51,8 @@ var now;
 
 function draw() {
     background(0);
-    var screenWidth=600; //displayWidth*screenFactor; //800;
-    var screenHeight=1100; //displayHeight*screenFactor; //400;
+    var screenWidth=400; //displayWidth*screenFactor; //800;
+    var screenHeight=800; //displayHeight*screenFactor; //400;
 
     
     if(yBox==screenHeight){
