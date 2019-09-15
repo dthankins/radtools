@@ -8,7 +8,7 @@ function setup() {
     createCanvas(screenSize,screenSize*1.34); // screenWidth, screenHeight);
     angleMode(DEGREES);
     //rectMode(CENTER);
-    frameRate(50);
+    //frameRate(50);
   
 } // end setup
 
@@ -58,7 +58,7 @@ function draw() {
 
     if (mouseIsPressed){
         now = (new Date()).getTime();
-        if(now-lastTouchEnd>100){
+        if(now-lastTouchEnd>50){
 
             if(mouseX>xBox+buffer){  // move right
                 xBox+=smallBoxSize;
