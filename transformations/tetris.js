@@ -1,8 +1,19 @@
 // helpful visualization  https://adamnizol.github.io/Transformation-Visualization-in-Processing/
 // https://www.khanacademy.org/computer-programming/spin-off-of-vertex-shape-drawing-tool/4996753861607424
 
-var screenFactor = 0.6;
-var screenSize = 375;
+// formerly between
+
+var angle;
+var smallBoxSize;
+var startX;
+var xBox;
+var yBox;
+var buffer;
+var shapeArray;
+var chosenShape;
+var lastTouchEnd;
+var now;
+
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
@@ -10,47 +21,53 @@ function setup() {
     angleMode(DEGREES);
     //rectMode(CENTER);
     //frameRate(50);
-    console.log("setup");
-    console.log("windowWidth: " + windowWidth);
-    console.log("windowHeight: " + windowHeight);
+
+    angle = 0;
+    smallBoxSize = 0.05*windowWidth;
+
+    startX = 300;//windowWidth/2; //screenSize/2;
+    xBox=startX; // x starts in the middle of the screen at the top
+    yBox=0;//smallBoxSize;
+
+    buffer = smallBoxSize*2;
+
+    shapeArray = ['L','T','MirrorL','S','Z','rect','box'];
+    chosenShape = shapeArray[Math.floor(Math.random()*shapeArray.length)];
+
+    lastTouchEnd = 0;
+
+
   
 } // end setup
 
 
-let angle = 0;
-var smallBoxSize = 0.1*windowWidth;
-
-let startX = windowWidth/2; //screenSize/2;
-var xBox=startX; // x starts in the middle of the screen at the top
-var yBox=smallBoxSize;
-
-var buffer = smallBoxSize*3;
-
-var shapeArray = ['L','T','MirrorL','S','Z','rect','box'];
-var chosenShape;
-chosenShape = shapeArray[Math.floor(Math.random()*shapeArray.length)];
-
-var lastTouchEnd = 0;
-var now;
-
-console.log("between");
-console.log("windowWidth: " + windowWidth);
-console.log("windowHeight: " + windowHeight);
-
-
 function draw() {
+    print("in draw");
+    //shapeArray = ['L','T','MirrorL','S','Z','rect','box'];
     background(0);
-    var screenWidth=screenSize; //displayWidth*screenFactor; //800;
-    var screenHeight=screenSize*1.34; //displayHeight*screenFactor; //400;
+    //var screenWidth=screenSize; //displayWidth*screenFactor; //800;
+    //var screenHeight=screenSize*1.34; //displayHeight*screenFactor; //400;
 
     console.log("windowWidth: " + windowWidth);
     console.log("windowHeight: " + windowHeight);
 
-    if(yBox>=windowHeight){
+    print("xBox: " + xBox);
+    print("yBox: " + yBox);
+
+
+    if(yBox>=windowHeight-buffer){
         chosenShape = shapeArray[Math.floor(Math.random()*shapeArray.length)];
         yBox=0;
         xBox=startX;
     }
+
+    
+    //chosenShape = shapeArray[Math.floor(Math.random()*shapeArray.length)];
+
+    print("shapeArray: " + shapeArray);
+    print ("shapeArray.length: " + shapeArray.length);
+    print("chosenShape: " + chosenShape);
+
     
     push();
         fill(0, 0, 255);
@@ -100,9 +117,10 @@ function getRndInteger(min, max) {
 }
 
 function drawNewPiece(_chosenShape,_smallBoxSize, _xBox, _yBox){
-    let chosenShape=_chosenShape;
+    print("in drawNewPiece");
+    let chosenShapeLocal=_chosenShape;
 
-    switch(chosenShape) {
+    switch(chosenShapeLocal) {
         case "L":
             drawLshape(_smallBoxSize, _xBox, _yBox);
             break;
@@ -125,7 +143,7 @@ function drawNewPiece(_chosenShape,_smallBoxSize, _xBox, _yBox){
             drawBox(_smallBoxSize, _xBox, _yBox);
             break;
         default:
-            console.log("Something went wrong. chosenShape was: " + chosenShape + ".");
+            console.log("Something went wrong. chosenShape was: " + chosenShapeLocal + ".");
     } // end switch
        
 
