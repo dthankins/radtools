@@ -37,7 +37,7 @@ function draw() {
     var screenHeight=screenSize*1.34; //displayHeight*screenFactor; //400;
 
     
-    if(yBox>=screenHeight){
+    if(yBox>=windowHeight){
         chosenShape = shapeArray[Math.floor(Math.random()*shapeArray.length)];
         yBox=0;
         xBox=startX;
