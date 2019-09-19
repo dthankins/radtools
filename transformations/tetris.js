@@ -10,6 +10,9 @@ function setup() {
     angleMode(DEGREES);
     //rectMode(CENTER);
     //frameRate(50);
+    console.log("setup");
+    console.log("windowWidth: " + windowWidth);
+    console.log("windowHeight: " + windowHeight);
   
 } // end setup
 
@@ -30,13 +33,19 @@ chosenShape = shapeArray[Math.floor(Math.random()*shapeArray.length)];
 var lastTouchEnd = 0;
 var now;
 
+console.log("between");
+console.log("windowWidth: " + windowWidth);
+console.log("windowHeight: " + windowHeight);
+
 
 function draw() {
     background(0);
     var screenWidth=screenSize; //displayWidth*screenFactor; //800;
     var screenHeight=screenSize*1.34; //displayHeight*screenFactor; //400;
 
-    
+    console.log("windowWidth: " + windowWidth);
+    console.log("windowHeight: " + windowHeight);
+
     if(yBox>=windowHeight){
         chosenShape = shapeArray[Math.floor(Math.random()*shapeArray.length)];
         yBox=0;
@@ -116,7 +125,7 @@ function drawNewPiece(_chosenShape,_smallBoxSize, _xBox, _yBox){
             drawBox(_smallBoxSize, _xBox, _yBox);
             break;
         default:
-            print("Something went wrong. chosenShape was: " + chosenShape + ".");
+            console.log("Something went wrong. chosenShape was: " + chosenShape + ".");
     } // end switch
        
 
