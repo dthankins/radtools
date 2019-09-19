@@ -15,7 +15,7 @@ function setup() {
 
 
 let angle = 0;
-var smallBoxSize = 10;
+var smallBoxSize = 0.1*windowWidth;
 
 let startX = windowWidth/2; //screenSize/2;
 var xBox=startX; // x starts in the middle of the screen at the top
