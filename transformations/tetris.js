@@ -31,7 +31,7 @@ function setup() {
     angle = 0;
     smallBoxSize = 0.1*windowWidth;
 
-    startX = 300;//windowWidth/2; //screenSize/2;
+    startX = 150;//windowWidth/2; //screenSize/2;
     xBox=startX; // x starts in the middle of the screen at the top
     yBox=0;//smallBoxSize;
 
