@@ -1,3 +1,4 @@
+// version1123
 // helpful visualization  https://adamnizol.github.io/Transformation-Visualization-in-Processing/
 // https://www.khanacademy.org/computer-programming/spin-off-of-vertex-shape-drawing-tool/4996753861607424
 
@@ -13,6 +14,8 @@ var shapeArray;
 var chosenShape;
 var lastTouchEnd;
 var now;
+var screenWidth;
+var screenHeight;
 
 
 function setup() {
@@ -21,6 +24,9 @@ function setup() {
     angleMode(DEGREES);
     //rectMode(CENTER);
     //frameRate(50);
+
+    screenWidth=windowWidth;
+    screenHeight=windowHeight;
 
     angle = 0;
     smallBoxSize = 0.05*windowWidth;
@@ -48,14 +54,14 @@ function draw() {
     //var screenWidth=screenSize; //displayWidth*screenFactor; //800;
     //var screenHeight=screenSize*1.34; //displayHeight*screenFactor; //400;
 
-    console.log("windowWidth: " + windowWidth);
-    console.log("windowHeight: " + windowHeight);
+    console.log("windowWidth: " + screenWidth);
+    console.log("windowHeight: " + screenHeight);
 
     print("xBox: " + xBox);
     print("yBox: " + yBox);
 
 
-    if(yBox>=windowHeight-buffer){
+    if(yBox>=screenHeight-buffer){
         chosenShape = shapeArray[Math.floor(Math.random()*shapeArray.length)];
         yBox=0;
         xBox=startX;
