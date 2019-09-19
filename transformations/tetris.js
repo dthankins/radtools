@@ -1,4 +1,4 @@
-// version1123
+//version 1129
 // helpful visualization  https://adamnizol.github.io/Transformation-Visualization-in-Processing/
 // https://www.khanacademy.org/computer-programming/spin-off-of-vertex-shape-drawing-tool/4996753861607424
 
@@ -43,14 +43,18 @@ function setup() {
     lastTouchEnd = 0;
 
 
+
   
 } // end setup
 
 
 function draw() {
+
     print("in draw");
     //shapeArray = ['L','T','MirrorL','S','Z','rect','box'];
     background(0);
+    fill(255, 0, 0);
+    ellipse(111,111,44,44);
     //var screenWidth=screenSize; //displayWidth*screenFactor; //800;
     //var screenHeight=screenSize*1.34; //displayHeight*screenFactor; //400;
 
