@@ -20,7 +20,7 @@ let startX = screenSize/2;
 var xBox=startX; // x starts in the middle of the screen at the top
 var yBox=smallBoxSize;
 
-var buffer = smallBoxSize*6;
+var buffer = smallBoxSize*3;
 
 var shapeArray = ['L','T','MirrorL','S','Z','rect','box'];
 var chosenShape;
@@ -59,7 +59,7 @@ function draw() {
         now = (new Date()).getTime();
         if(now-lastTouchEnd>50){
 
-            if (abs(mouseY-yBox)<=buffer){
+            if (abs(mouseY-yBox+smallBoxSize)<=buffer){
                   angle+=90;
             }
         }
