@@ -5,7 +5,8 @@ var screenFactor = 0.6;
 var screenSize = 375;
 
 function setup() {
-    createCanvas(screenSize,screenSize*1.34); // screenWidth, screenHeight);
+    createCanvas(windowWidth, windowHeight);
+    //createCanvas(screenSize,screenSize*1.34); // screenWidth, screenHeight);
     angleMode(DEGREES);
     //rectMode(CENTER);
     //frameRate(50);
@@ -16,7 +17,7 @@ function setup() {
 let angle = 0;
 var smallBoxSize = 10;
 
-let startX = screenSize/2;
+let startX = windowWidth/2; //screenSize/2;
 var xBox=startX; // x starts in the middle of the screen at the top
 var yBox=smallBoxSize;
 
