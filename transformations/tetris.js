@@ -29,7 +29,7 @@ function setup() {
     screenHeight=windowHeight;
 
     angle = 0;
-    smallBoxSize = 0.05*windowWidth;
+    smallBoxSize = 0.1*windowWidth;
 
     startX = 300;//windowWidth/2; //screenSize/2;
     xBox=startX; // x starts in the middle of the screen at the top
@@ -53,8 +53,8 @@ function draw() {
     print("in draw");
     //shapeArray = ['L','T','MirrorL','S','Z','rect','box'];
     background(0);
-    fill(255, 0, 0);
-    ellipse(111,111,44,44);
+    //fill(255, 0, 0);
+    //ellipse(111,111,44,44);
     //var screenWidth=screenSize; //displayWidth*screenFactor; //800;
     //var screenHeight=screenSize*1.34; //displayHeight*screenFactor; //400;
 
@@ -96,7 +96,7 @@ function draw() {
         now = (new Date()).getTime();
         if(now-lastTouchEnd>50){
 
-            if (abs(mouseY-yBox+smallBoxSize)<=buffer){
+            if (abs(mouseY-yBox-smallBoxSize)<=buffer){ // changed to - from + smallBoxSize
                   angle+=90;
             }
         }
