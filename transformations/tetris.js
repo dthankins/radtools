@@ -38,8 +38,6 @@ function draw() {
     
     if(yBox>=screenHeight){
         chosenShape = shapeArray[Math.floor(Math.random()*shapeArray.length)];
-        //print("shapeArray.length = " + shapeArray.length);
-        //print("next chosenShape = " + chosenShape);
         yBox=0;
         xBox=startX;
     }
@@ -56,25 +54,17 @@ function draw() {
 
     yBox+=1; // I previously used smallBoxSize
 
+    
     if (mouseIsPressed){
         now = (new Date()).getTime();
         if(now-lastTouchEnd>50){
 
-            if(mouseX>xBox+buffer){  // move right
-                xBox+=smallBoxSize;
-            } else if (mouseX<xBox-buffer){
-                xBox-=smallBoxSize;
-            } else if (abs(mouseY-yBox)<=buffer){
+            if (abs(mouseY-yBox)<=buffer){
                   angle+=90;
-                }
+            }
         }
         lastTouchEnd=now;
     }
-
-
-    
-    
- 
     
 } // end main draw function
 
@@ -84,6 +74,16 @@ Seven different shapes called tetrominoes:
 S-shape, Z-shape, T-shape, L-shape, Line-shape, MirroredL-shape, and a Square-shape. 
 Each of these shapes is formed with four squares. 
 */
+
+function touchMoved() { // I think this is like a mouse dragged
+    if(mouseX>xBox+buffer){  // move right
+        xBox+=smallBoxSize;
+    } else if (mouseX<xBox-buffer){
+        xBox-=smallBoxSize;
+    } 
+    // prevent default
+    return false;
+}
 
 function getRndInteger(min, max) {
     return Math.floor(random(min, max)) + min;
