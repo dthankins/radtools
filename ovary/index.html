@@ -1,1 +1,116 @@
-ff
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+
+    <style> body {padding: 0; margin: 0} </style> <!-- this line removes any default padding -->
+<!-- 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+--> 
+    <title>Ovarian Lesion Ultrasound</title>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.sound.min.js"></script>
+
+
+    <script type="text/javascript" src="ovary.js"></script>
+    <link rel="stylesheet" href="ovary.css">
+
+    <style> body {padding: 0; margin: 0;} canvas {vertical-align: top;} </style>
+  </head>
+
+
+
+
+
+  <body>
+    <!-- 
+    --> 
+
+    <h1>International Ovarian Tumor Analysis (IOTA) Simple Rules
+    </h1>
+
+        According to the references below, all you need to know to categorized ovarian lesions with ultrasound is <strong> 3 Rules, 5 Benign Features and 5 Malignant Features</strong>.  <br>
+
+        About 25% cannot be categorized as benign or malignant using this method and will be classified as indeterminate.
+        <br><br>
+
+        <strong><u>3 Simple Rules</u></strong>  <br>                                         
+        <ol>
+            <li>If one or more malignant features is present in the absence of any benign features, the lesion is malignant.</li>
+   
+
+            <li>If one or more benign features is present in the absence of any malignant features, the lesion is benign. </li>
+
+            <li>If both benign and malignant features are present, the lesion is indeterminate.</li>
+        
+            <br>
+
+            According to the AJR article referenced below:  The prevalence of malignancy in the indeterminate category was 10.7% (7/65) and in the malignant category was 34.3% (12/35). Only one malignancy was misclassified as benign by the IOTA simple rules. The sensitivity of the IOTA simple rules for malignancy was 90.0%; specificity, 96.5%; PPV, 29.0%; NPV, 99.8%; and accuracy, 96.4%. 
+
+        </ol>
+
+    
+    <div class="row">
+        <div class="column">
+
+
+
+            <p id="col1">
+                <strong><u>5 Benign Features</u></strong>  <br>                                         
+                <ol>
+                    <li>Any size of unilocular cyst</li>
+                    <li>Solid components smaller than 7 mm in diameter</li>
+                    <li>Acoustic shadowing</li>
+                    <li>Smooth multilocular tumor smaller than 10 cm</li>
+                    <li>No Doppler blood flow</li>
+                </ol>
+            </p>
+        </div>
+
+        <div class="column">
+
+            <p id="col2">
+
+                <strong><u>5 Malignant Features</u></strong>    <br>
+                <ol>
+                    <li>Irregular solid tumor </li>
+                    <li>Ascites</li>
+                    <li>At least four papillary structures</li>
+                    <li>Irregular multilocular solid tumor measuring 10 cm or larger</li>
+                    <li>Very strong Doppler blood flow in the solid component </li>
+                </ol>
+
+            </p>
+        </div>
+    </div>
+
+    <p>
+        <br>
+
+        <u><strong>References:     </u></strong><br><br>
+
+
+        <a href="https://radiopaedia.org/articles/iota-ultrasound-rules-for-ovarian-masses">IOTA Simple Rules explained at Radiopaedia.</a>
+        
+        <br><br>
+
+        <a href="http://www.radtools.us/ovary/ovaryRADs.pdf">O-Rads article.</a>
+
+        <br><br>
+
+        <a href="http://www.radtools.us/ovary/simpleRules.pdf">AJR 2020; 214:1–7.  Comparison of International Ovarian Tumor Analysis Simple Rules to Society of Radiologists in Ultrasound Guidelines for Detection of Malignancy in Adnexal Cysts.</a>
+
+    </p>
+    
+
+
+
+
+  </body>
+
+
+</html>
