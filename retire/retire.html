@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">  <!-- hope to fix zoom problem -->
+        <link rel="stylesheet" href="retire.css">
+        <script src="retire.js"></script>
+        <title>When Can I Retire?</title>
+    </head>
+
+    <body> <!-- onload="calcAverage();calcIron();checkInput();" -->
+
+        <h1>When Can I Retire?</h1>
+
+        <h2>Calculate the number of years until you reach financial independence (FI)!</h2>
+
+  
+<!-- 
+    
+   onblur =  When you leave the input field, a function is triggered which transforms the input text 
+
+spend
+withdrawl
+multiple
+amountNeed
+amountHave
+difference
+contribution
+rate
+numberCompundsPerYear
+
+calculateTime()
+
+<div id="data">
+  -->          
+            
+
+            
+
+                
+                How much money do you spend each year?  
+                <br>  
+                <input type="text" class="typedROI"  id="spend" min="0" onblur="setNewValues(); " onchange="setNewValues(); ">  
+
+                
+                <br><br>Withdrawl rate each year: 
+                <br> 
+                <input type="text" class="typedROI"  id="withdrawl" min="0" onblur="setNewValues();  " onchange=" ">  
+
+                
+                
+
+                
+                <br><br>Amount you currently have:  
+                <br>
+                <input type="text" class="typedROI"  id="amountHave" min="0" onblur="setNewValues();  " onchange=" ">  
+
+                
+ <!--
+                <br><br>Difference: 
+                <br> 
+                <input type="text" class="typedROI"  id="difference" min="0" onblur=" " onchange=" ">  
+-->
+
+                
+                <br><br>Monthly contribution:  
+                <br>
+                <input type="text" class="typedROI"  id="contribution" min="0" onblur="setNewValues();  " onchange=" ">  
+
+                
+                <br><br>Rate of return:  
+                <br>
+                <input type="text" class="typedROI"  id="rate" min="0" onblur="setNewValues();  " onchange=" ">  
+
+<!--                
+                <br><br>Number of contributions and compounding per year:  
+                <br>
+                <input type="text" class="typedROI"  id="numberCompundsPerYear" min="0" onblur="setNewValues();  " onchange=" ">  
+-->
+
+                <br><br>Multiple needed:  
+                <br>
+                <input type="text" class="typedROI"  id="multiple" min="0" onblur=" " onchange=" ">  
+
+                
+                <br><br>Amount you need to retire: 
+                <br> 
+                <input type="text" class="typedROI"  id="amountNeed" min="0" onblur=" " onchange=" ">  
+
+
+                <br><br>Years until financial independence:  
+                <br>
+                <input type="text" class="typedROI"  id="time" min="0" onblur=" " onchange=" ">  
+
+
+
+        
+    </body>
+</html>
+
+
+
+
